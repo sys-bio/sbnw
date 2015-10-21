@@ -34,6 +34,9 @@ currentModel = None
 global loadSBML
 loadSBML = None
 
+global writePNG
+writePNG = None
+
 def findNodeById(nodeid):
     '''
     Returns a reaction with the given id, throws RuntimeError if no such reaction exists
@@ -256,6 +259,9 @@ class Autolayout(MainWindowBaseClass):
 
         global loadSBML
         loadSBML = self.openfile
+
+        global writePNG
+        writePNG = self.mainframe.renderPNG
 
         # Menu actions
 
