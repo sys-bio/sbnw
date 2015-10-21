@@ -30,6 +30,10 @@ else:
 global currentModel
 currentModel = None
 
+# function to load an SBML file
+global loadSBML
+loadSBML = None
+
 def findNodeById(nodeid):
     '''
     Returns a reaction with the given id, throws RuntimeError if no such reaction exists
@@ -77,6 +81,10 @@ def setRegulatorColor(rxnid, color):
 def setNodeColor(nodeid, color):
     n = findNodeById(nodeid)
     n.custom.customColor = color
+
+def clearNodeColor(nodeid):
+    n = findNodeById(nodeid)
+    n.custom.customColor = None
 
 if not inspyder:
   enable_matplotlib2tikz = True
@@ -245,6 +253,9 @@ class Autolayout(MainWindowBaseClass):
 
         if not hasattr(self, 'configCls'):
           self.configCls = ConfigCls
+
+        global loadSBML
+        loadSBML = self.openfile
 
         # Menu actions
 
