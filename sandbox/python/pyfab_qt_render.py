@@ -99,9 +99,12 @@ class PyQtRenderer(pyfab_app.PyfabRenderer):
     else:
       node_color1 = pyfab_app.tuple2QColor(config.state.node_color1)
       node_color2 = pyfab_app.tuple2QColor(config.state.node_color2)
+      if node.custom.customColor is not None:
+          node_color1 = pyfab_app.tuple2QColor(node.custom.customColor)
+          node_color2 = node_color1.darker()
 
       gradient = pyfab_app.QLinearGradient(pyfab_app.QPoint((x0+width/2,y0)), pyfab_app.QPoint((x0+width/2,y1)))
-      gradient.setColorAt(0,node_color1)
+      gradient.setColorAt(0, node_color1)
       gradient.setColorAt(1, node_color2)
 
       brush = pyfab_app.QBrush(gradient)

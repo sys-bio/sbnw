@@ -30,6 +30,16 @@ else:
 global currentModel
 currentModel = None
 
+def findNodeById(nodeid):
+    '''
+    Returns a reaction with the given id, throws RuntimeError if no such reaction exists
+    '''
+    global currentModel
+    for n in currentModel.layout.network.nodes:
+        if n.id == nodeid:
+            return n
+    raise RuntimeError('No node with id {}'.format(nodeid))
+
 def findReactionById(rxnid):
     '''
     Returns a reaction with the given id, throws RuntimeError if no such reaction exists
@@ -38,7 +48,7 @@ def findReactionById(rxnid):
     for r in currentModel.layout.network.rxns:
         if r.id == rxnid:
             return r
-    raise RuntimeError('No node with id {}'.format(rxnid))
+    raise RuntimeError('No reaction with id {}'.format(rxnid))
 
 def setCurveColor(rxn, k, color):
     rxn.setCurveColor(k, color)
@@ -63,6 +73,10 @@ def setRegulatorColor(rxnid, color):
         if not (curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT'):
             setCurveColor(r, k, color)
         k += 1
+
+def setNodeColor(nodeid, color):
+    n = findNodeById(nodeid)
+    n.custom.customColor = color
 
 if not inspyder:
   enable_matplotlib2tikz = True
@@ -1028,6 +1042,11 @@ class LayoutFrame(FrameBaseClass):
 
                               # highlight curves
                               setReactionColor(rxn.id, (1.0, 0.0, 0.0, 1.0))
+
+                              # highlight nodes
+                              for n in self.network.nodes:
+                                  if rxn.has(n):
+                                      setNodeColor(n.id, (1.0, 0.0, 0.0, 1.0))
                               break
 
                 if not dragging_object:
@@ -1049,6 +1068,7 @@ class LayoutFrame(FrameBaseClass):
             else:
               self.dragging = False
               for node in self.network.nodes:
+                  node.custom.customColor = None
                   if node.custom.isBeingDragged:
                       node.custom.isBeingDragged = False
               for rxn in self.network.rxns:
