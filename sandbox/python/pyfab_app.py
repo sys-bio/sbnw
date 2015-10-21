@@ -260,9 +260,6 @@ class Autolayout(MainWindowBaseClass):
         global loadSBML
         loadSBML = self.openfile
 
-        global writePNG
-        writePNG = self.mainframe.renderPNG
-
         # Menu actions
 
         # File
@@ -472,6 +469,9 @@ class Autolayout(MainWindowBaseClass):
         self.toolbar.addWidget(self.sliderwidget)
 
         self.model = None
+
+        global writePNG
+        writePNG = self.mainframe.renderPNG
 
 
     def stiffness_changed_via_slider(self):
