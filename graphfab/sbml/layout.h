@@ -183,7 +183,7 @@ _GraphfabExport void gf_setModelNamespace(gf_layoutInfo* l, unsigned long level,
 
 /** @brief Get the network associated with the model
  *  @param[in] l The layout info; contains the network
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_network gf_getNetwork(gf_layoutInfo* l);
 
@@ -206,7 +206,8 @@ _GraphfabExport void gf_clearNetwork(gf_network* n);
  */
 _GraphfabExport void gf_releaseNetwork(gf_network* n);
 
-/** @brief Get the id, user frees memory
+/** @brief Get the id of the network (via the SBML Model object)
+ *  @note Memory must be freed by caller
  *  @param[in] n Network
  *  \ingroup C_API
  */
@@ -233,7 +234,7 @@ _GraphfabExport size_t gf_nw_getNumComps(const gf_network* n);
 /** @brief Get the node at index i
  *  @param[in] n Network
  *  @param[in] i Node index
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_node gf_nw_getNode(gf_network* n, size_t i);
 
@@ -248,7 +249,7 @@ _GraphfabExport gf_node* gf_nw_getNodep(gf_network* n, size_t i);
 /** @brief Get the node at index i
  *  @param[in] n Network
  *  @param[in] i Node index
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_reaction gf_nw_getRxn(gf_network* n, size_t i);
 
@@ -269,7 +270,7 @@ _GraphfabExport void gf_nw_removeRxn(gf_network* n, gf_reaction* r);
 /** @brief Get the compartment at index i
  *  @param[in] n Network
  *  @param[in] i Node index
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_compartment gf_nw_getCompartment(gf_network* n, size_t i);
 
@@ -297,7 +298,7 @@ _GraphfabExport void gf_nw_recenterJunctions(gf_network* n);
  *  @param[in] id The node's requested ID (or null to determine it automatically)
  *  @param[in] name The node's name
  *  @param[in] compartment The compartment to place the node in (may be NULL for no compartment)
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_node gf_nw_newNode(gf_network* nw, const char* id, const char* name, gf_compartment* compartment);
 
@@ -334,7 +335,7 @@ _GraphfabExport void gf_node_setCompartment(gf_node* n, gf_compartment* c);
 
 /** @brief Clear the node - does not deallocate
  *  @param[in] n Node
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport void gf_clearNode(gf_node* n);
 
@@ -522,7 +523,7 @@ _GraphfabExport size_t gf_reaction_getNumCurves(const gf_reaction* r);
 
 /** @brief Get the curve i
  *  @param[in] r Reaction
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_curve gf_reaction_getCurve(const gf_reaction* r, size_t i);
 
@@ -764,7 +765,7 @@ _GraphfabExport void gf_release_transform(gf_transform* tf);
 
 /** @brief Get the canvas associated with the model
  *  @param[in] l The layout info
- *  \ingroup C_API
+ *  \ingroup C_Internal
  */
 _GraphfabExport gf_canvas gf_getCanvas(gf_layoutInfo* l);
 
