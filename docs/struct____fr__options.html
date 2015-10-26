@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,27 +88,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct____fr__options-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">__fr_options Struct Reference</div>  </div>
+<div class="title">__fr_options Struct Reference<div class="ingroups"><a class="el" href="group__C__API.html">External C API</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Options passed to the Fruchterman-Reingold algorithm.  
+ <a href="struct____fr__options.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="fr_8h_source.html">fr.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aecaec85416530956d8ae98c16f924662"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aecaec85416530956d8ae98c16f924662"></a>
 <a class="el" href="SagittariusCommon_8h.html#ae7a6f565d80e0bdd0e77f0f7b2cc0ec2">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#aecaec85416530956d8ae98c16f924662">k</a></td></tr>
-<tr class="memdesc:aecaec85416530956d8ae98c16f924662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Algorithm constant. <br /></td></tr>
+<tr class="memdesc:aecaec85416530956d8ae98c16f924662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stiffness. <br /></td></tr>
 <tr class="separator:aecaec85416530956d8ae98c16f924662"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada1199919d22c6c31169800c754f2766"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada1199919d22c6c31169800c754f2766"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#ada1199919d22c6c31169800c754f2766">boundary</a></td></tr>
-<tr class="memdesc:ada1199919d22c6c31169800c754f2766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constrain to boundary? <br /></td></tr>
+<tr class="memitem:ada1199919d22c6c31169800c754f2766"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#ada1199919d22c6c31169800c754f2766">boundary</a></td></tr>
+<tr class="memdesc:ada1199919d22c6c31169800c754f2766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constrain network elements to boundary (i.e. the drawing canvas?  <a href="#ada1199919d22c6c31169800c754f2766">More...</a><br /></td></tr>
 <tr class="separator:ada1199919d22c6c31169800c754f2766"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf333a4467f09782d3bf25217997a11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cf333a4467f09782d3bf25217997a11"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#a0cf333a4467f09782d3bf25217997a11">mag</a></td></tr>
-<tr class="memdesc:a0cf333a4467f09782d3bf25217997a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use magnetism? (forces bridge reactions) <br /></td></tr>
+<tr class="memitem:a0cf333a4467f09782d3bf25217997a11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#a0cf333a4467f09782d3bf25217997a11">mag</a></td></tr>
+<tr class="memdesc:a0cf333a4467f09782d3bf25217997a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use magnetism?  <a href="#a0cf333a4467f09782d3bf25217997a11">More...</a><br /></td></tr>
 <tr class="separator:a0cf333a4467f09782d3bf25217997a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1289bf60b8b6ba6bef01c3fbc4977fd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1289bf60b8b6ba6bef01c3fbc4977fd3"></a>
 <a class="el" href="SagittariusCommon_8h.html#ae7a6f565d80e0bdd0e77f0f7b2cc0ec2">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#a1289bf60b8b6ba6bef01c3fbc4977fd3">grav</a></td></tr>
-<tr class="memdesc:a1289bf60b8b6ba6bef01c3fbc4977fd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Amount of gravity. <br /></td></tr>
+<tr class="memdesc:a1289bf60b8b6ba6bef01c3fbc4977fd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strength of gravity. <br /></td></tr>
 <tr class="separator:a1289bf60b8b6ba6bef01c3fbc4977fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2ed8d3b940dcec552e4478f99b17435"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2ed8d3b940dcec552e4478f99b17435"></a>
 <a class="el" href="SagittariusCommon_8h.html#ae7a6f565d80e0bdd0e77f0f7b2cc0ec2">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#ac2ed8d3b940dcec552e4478f99b17435">baryx</a></td></tr>
@@ -123,20 +126,55 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 <tr class="separator:a37b4f63210efd38b10af2e9cfd95f5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67fee45b90f08b584a2881a96a8ad0e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67fee45b90f08b584a2881a96a8ad0e1"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#a67fee45b90f08b584a2881a96a8ad0e1">enable_comps</a></td></tr>
-<tr class="memdesc:a67fee45b90f08b584a2881a96a8ad0e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable compartment force calc? <br /></td></tr>
+<tr class="memdesc:a67fee45b90f08b584a2881a96a8ad0e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable compartment-compartment and compartment-node interaction? <br /></td></tr>
 <tr class="separator:a67fee45b90f08b584a2881a96a8ad0e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf4e38810a454707d3c14e082a90cebc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf4e38810a454707d3c14e082a90cebc"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html#acf4e38810a454707d3c14e082a90cebc">prerandomize</a></td></tr>
 <tr class="memdesc:acf4e38810a454707d3c14e082a90cebc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Randomize node positions before doing layout algo (library code DOES NOT call srand for reproducibility reasons) <br /></td></tr>
 <tr class="separator:acf4e38810a454707d3c14e082a90cebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Options passed to the Fruchterman-Reingold algorithm. </p>
+<dl class="section author"><dt>Author</dt><dd>JKM</dd></dl>
+<p>This structure holds the settings used by the Fruchterman-Reingold algorithm. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ada1199919d22c6c31169800c754f2766"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __fr_options::boundary</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constrain network elements to boundary (i.e. the drawing canvas? </p>
+<dl class="section note"><dt>Note</dt><dd>It should never be necessary to use this option, as <a class="el" href="group__C__API.html#ga0dc933c3b813ac68401a99c765f6dc92">gf_tf_fitToWindow</a> or <a class="el" href="group__C__API.html#ga912310d43f3b3c24a71f14c19f69e1f7">gf_fit_to_window</a> can be used to achieve the same effect but with more robustness. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0cf333a4467f09782d3bf25217997a11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __fr_options::mag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use magnetism? </p>
+<p>When "magnetism" is enabled, forces can bridge reactions (i.e. nodes can exert attractive forces on each other if connected by a reaction). </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>graphfab/layout/<a class="el" href="fr_8h_source.html">fr.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 17 2015 17:14:44 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 26 2015 14:44:45 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

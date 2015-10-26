@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,25 +87,25 @@ Introduction</h1>
 <div class="fragment"><div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//       #include &quot;autolayoutc_api.h&quot;</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       //...</span></div>
+<div class="line"><span class="comment">//       /* ... */</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // type to store layout info</span></div>
+<div class="line"><span class="comment">//       /* type to store layout info */</span></div>
 <div class="line"><span class="comment">//       gf_layoutInfo* l;</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // load the model</span></div>
+<div class="line"><span class="comment">//       /* load the model */</span></div>
 <div class="line"><span class="comment">//       gf_SBMLModel* mod = gf_loadSBMLbuf(buf);</span></div>
 <div class="line"><span class="comment">// </span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // options for layout algo</span></div>
+<div class="line"><span class="comment">//       /* options for layout algo */</span></div>
 <div class="line"><span class="comment">//       fr_options opt;</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // read layout info from the model</span></div>
+<div class="line"><span class="comment">//       /* read layout info from the model */</span></div>
 <div class="line"><span class="comment">//       l = gf_processLayout(mod);</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // randomize node positions</span></div>
+<div class="line"><span class="comment">//       /* randomize node positions */</span></div>
 <div class="line"><span class="comment">//       gf_randomizeLayout(l);</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//       // do layout algo</span></div>
@@ -117,24 +117,46 @@ Introduction</h1>
 <div class="line"><span class="comment">//       opt.autobary = 1;</span></div>
 <div class="line"><span class="comment">//       gf_doLayoutAlgorithm(opt, l);</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // save layout information to new SBML file</span></div>
+<div class="line"><span class="comment">//       /* save layout information to new SBML file */</span></div>
 <div class="line"><span class="comment">//       gf_writeSBMLwithLayout(outfile, mod, l);</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // run destructors on the model</span></div>
+<div class="line"><span class="comment">//       /* run destructors on the model */</span></div>
 <div class="line"><span class="comment">//       gf_freeSBMLModel(mod);</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//</span></div>
-<div class="line"><span class="comment">//       // run destructors on the layout</span></div>
+<div class="line"><span class="comment">//       /* run destructors on the layout */</span></div>
 <div class="line"><span class="comment">//       gf_freeLayoutInfo(l);</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">// </span></div>
+</div><!-- fragment --><h1><a class="anchor" id="error_handling_sec"></a>
+Error handling</h1>
+<pre class="fragment"> The library has several functions in the C API for error handling:
+ @ref gf_haveError, @ref gf_getLastError, and @ref gf_clearError,
+ Errors can be read by gf_getLastError. gf_haveError can be called
+ to determine if there is an error or not.
+</pre><div class="fragment"><div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//       /* Clear any previous errors */</span></div>
+<div class="line"><span class="comment">//       gf_clearError();</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//       /* Load a model from disk */</span></div>
+<div class="line"><span class="comment">//       gf_SBMLModel* mod = gf_loadSBMLfile(&quot;mymodel.xml&quot;);</span></div>
+<div class="line"><span class="comment">//</span></div>
+<div class="line"><span class="comment">//       /* Did an error occur? */</span></div>
+<div class="line"><span class="comment">//       if ( gf_haveError() ) {</span></div>
+<div class="line"><span class="comment">//         /* Print the error message */</span></div>
+<div class="line"><span class="comment">//         fprintf(stderr, &quot;Error message: %s\n&quot;, gf_getLastError());</span></div>
+<div class="line"><span class="comment">//         /* Clear the error so that future calls to gf_haveError return false */</span></div>
+<div class="line"><span class="comment">//         gf_clearError();</span></div>
+<div class="line"><span class="comment">//       }</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">// </span></div>
 </div><!-- fragment --><h1><a class="anchor" id="install_sec"></a>
 Installation</h1>
-<pre class="fragment"> Installation documentation is provided at https://github.com/0u812/sbnw.</pre> </div></div><!-- contents -->
+<pre class="fragment"> Installation documentation is provided at https://github.com/sys-bio/sbnw.</pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 17 2015 17:14:44 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 26 2015 14:44:45 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
