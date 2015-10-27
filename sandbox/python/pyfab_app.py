@@ -81,6 +81,22 @@ def setRegulatorColor(rxnid, color):
             setCurveColor(r, k, color)
         k += 1
 
+def setReactionWeight(rxnid, weight):
+    r = findReactionById(rxnid)
+    k = 0
+    for curve in r.curves:
+        if curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT':
+            setCurveWeight(r, k, weight)
+        k += 1
+
+def setRegulatorWeight(rxnid, weight):
+    r = findReactionById(rxnid)
+    k = 0
+    for curve in r.curves:
+        if not (curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT'):
+            setCurveWeight(r, k, weight)
+        k += 1
+
 def setNodeColor(nodeid, color):
     n = findNodeById(nodeid)
     n.custom.customColor = color
