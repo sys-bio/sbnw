@@ -217,8 +217,8 @@ namespace Graphfab {
             double getColorB() const { return color_b_; }
             void setColorB(double v) { customized_ = true; color_b_ = v; }
 
-            bool getLineWeight() const { return weight_; }
-            void setLineWeight(bool v) { customized_ = true; weight_ = v; }
+            double getLineWeight() const { return weight_; }
+            void setLineWeight(double v) { customized_ = true; weight_ = v; }
             
             /// Transform
             Affine2d tf_;
