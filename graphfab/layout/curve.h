@@ -74,6 +74,9 @@ namespace Graphfab {
             RxnBezier() {
               ns = ne = NULL;
               customized_ = false;
+              color_a_ = 1.;
+              color_r_ = color_g_ = color_b_ = 0.;
+              weight_ = 1.;
             }
 
             virtual ~RxnBezier() {
