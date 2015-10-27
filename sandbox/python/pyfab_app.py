@@ -1090,12 +1090,12 @@ class LayoutFrame(FrameBaseClass):
                               self.dragSource = mouse
 
                               # highlight curves
-                              #setReactionColor(rxn.id, (1.0, 0.0, 0.0, 1.0))
+                              setReactionColor(rxn.id, (1.0, 0.0, 0.0, 1.0))
 
                               # highlight nodes
-                              #for n in self.network.nodes:
-                                  #if rxn.has(n):
-                                      #setNodeColor(n.id, (1.0, 0.0, 0.0, 1.0))
+                              for n in self.network.nodes:
+                                  if rxn.has(n):
+                                      setNodeColor(n.id, (1.0, 0.0, 0.0, 1.0))
                               break
 
                 if not dragging_object:
@@ -1123,7 +1123,7 @@ class LayoutFrame(FrameBaseClass):
               for rxn in self.network.rxns:
                   if hasattr(rxn, 'custom') and rxn.custom.isBeingDragged:
                       rxn.custom.isBeingDragged = False
-                      #rxn.clearCustomizations()
+                      rxn.clearCustomizations()
               self.update()
         if(event.button() == 4):
             self.panning = False
