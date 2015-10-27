@@ -97,6 +97,10 @@ def setRegulatorWeight(rxnid, weight):
             setCurveWeight(r, k, weight)
         k += 1
 
+def clearReactionCustomizations(rxnid):
+    r = findReactionById(rxnid)
+    r.clearCustomizations()
+
 def setNodeColor(nodeid, color):
     n = findNodeById(nodeid)
     n.custom.customColor = color
