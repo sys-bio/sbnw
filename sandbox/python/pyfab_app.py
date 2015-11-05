@@ -37,6 +37,8 @@ loadSBML = None
 global writePNG
 writePNG = None
 
+global global_render
+
 def findNodeById(nodeid):
     '''
     Returns a reaction with the given id, throws RuntimeError if no such reaction exists
@@ -59,9 +61,11 @@ def findReactionById(rxnid):
 
 def setCurveColor(rxn, k, color):
     rxn.setCurveColor(k, color)
+    global_render()
 
 def setCurveWeight(rxn, k, weight):
     rxn.setCurveWeight(k, weight)
+    global_render()
 
 # https://github.com/0u812/sbnw/issues/37
 def setReactionColor(rxnid, color):
@@ -71,6 +75,7 @@ def setReactionColor(rxnid, color):
         if curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT':
             setCurveColor(r, k, color)
         k += 1
+    global_render()
 
 # https://github.com/0u812/sbnw/issues/37
 def setRegulatorColor(rxnid, color):
@@ -80,6 +85,7 @@ def setRegulatorColor(rxnid, color):
         if not (curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT'):
             setCurveColor(r, k, color)
         k += 1
+    global_render()
 
 def setReactionWeight(rxnid, weight):
     r = findReactionById(rxnid)
@@ -88,6 +94,7 @@ def setReactionWeight(rxnid, weight):
         if curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT':
             setCurveWeight(r, k, weight)
         k += 1
+    global_render()
 
 def setRegulatorWeight(rxnid, weight):
     r = findReactionById(rxnid)
@@ -96,18 +103,22 @@ def setRegulatorWeight(rxnid, weight):
         if not (curve[4] == 'SUBSTRATE' or curve[4] == 'PRODUCT'):
             setCurveWeight(r, k, weight)
         k += 1
+    global_render()
 
 def clearReactionCustomizations(rxnid):
     r = findReactionById(rxnid)
     r.clearCustomizations()
+    global_render()
 
 def setNodeColor(nodeid, color):
     n = findNodeById(nodeid)
     n.custom.customColor = color
+    global_render()
 
 def clearNodeColor(nodeid):
     n = findNodeById(nodeid)
     n.custom.customColor = None
+    global_render()
 
 if not inspyder:
   enable_matplotlib2tikz = True
@@ -503,6 +514,9 @@ class Autolayout(MainWindowBaseClass):
 
         global writePNG
         writePNG = self.mainframe.renderPNG
+
+        global global_render
+        global_render = self.mainframe.render
 
 
     def stiffness_changed_via_slider(self):
