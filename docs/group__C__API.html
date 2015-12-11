@@ -222,6 +222,9 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga67f6fab6213007a80df141c6d20360c0"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga67f6fab6213007a80df141c6d20360c0">gf_nw_getNodep</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, size_t i)</td></tr>
 <tr class="memdesc:ga67f6fab6213007a80df141c6d20360c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node at index i.  <a href="#ga67f6fab6213007a80df141c6d20360c0">More...</a><br /></td></tr>
 <tr class="separator:ga67f6fab6213007a80df141c6d20360c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5cafaf2de3aa4cd9559202275f20029d"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga5cafaf2de3aa4cd9559202275f20029d">gf_nw_getNodepFromId</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id)</td></tr>
+<tr class="memdesc:ga5cafaf2de3aa4cd9559202275f20029d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node with the given id.  <a href="#ga5cafaf2de3aa4cd9559202275f20029d">More...</a><br /></td></tr>
+<tr class="separator:ga5cafaf2de3aa4cd9559202275f20029d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaec11f56722f050951135d2ae038e08c7"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__reaction.html">gf_reaction</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaec11f56722f050951135d2ae038e08c7">gf_nw_getRxnp</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, size_t i)</td></tr>
 <tr class="memdesc:gaec11f56722f050951135d2ae038e08c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node at index i.  <a href="#gaec11f56722f050951135d2ae038e08c7">More...</a><br /></td></tr>
 <tr class="separator:gaec11f56722f050951135d2ae038e08c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2491,6 +2494,42 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="ga5cafaf2de3aa4cd9559202275f20029d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>* gf_nw_getNodepFromId </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the node with the given id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The node id </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the node with the given id; returns NULL if no such node exists </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga57090590619f76e7932cc778f0156bf2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -3831,7 +3870,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 26 2015 15:58:15 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 11 2015 12:52:32 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
