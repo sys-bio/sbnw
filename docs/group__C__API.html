@@ -393,6 +393,9 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga0dc933c3b813ac68401a99c765f6dc92"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__transform.html">gf_transform</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga0dc933c3b813ac68401a99c765f6dc92">gf_tf_fitToWindow</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l, double left, double top, double right, double bottom)</td></tr>
 <tr class="memdesc:ga0dc933c3b813ac68401a99c765f6dc92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fit to the specified window (do not apply transform)  <a href="#ga0dc933c3b813ac68401a99c765f6dc92">More...</a><br /></td></tr>
 <tr class="separator:ga0dc933c3b813ac68401a99c765f6dc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7bf38305370ddce3129f1bf61f17c8b1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga7bf38305370ddce3129f1bf61f17c8b1">gf_moveNetworkToFirstQuad</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l, double x_disp, double y_disp)</td></tr>
+<tr class="memdesc:ga7bf38305370ddce3129f1bf61f17c8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the entire network to the first quadrant.  <a href="#ga7bf38305370ddce3129f1bf61f17c8b1">More...</a><br /></td></tr>
+<tr class="separator:ga7bf38305370ddce3129f1bf61f17c8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga609014d0724448bb48c07b6bcdf22661"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structCPoint.html">CPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga609014d0724448bb48c07b6bcdf22661">gf_tf_apply_to_point</a> (<a class="el" href="structgf__transform.html">gf_transform</a> *tf, <a class="el" href="structCPoint.html">CPoint</a> p)</td></tr>
 <tr class="memdesc:ga609014d0724448bb48c07b6bcdf22661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply transform to point.  <a href="#ga609014d0724448bb48c07b6bcdf22661">More...</a><br /></td></tr>
 <tr class="separator:ga609014d0724448bb48c07b6bcdf22661"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -405,9 +408,6 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga6b491d8de92b8f67b1d8fff93442b3a4"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__point.html">gf_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga6b491d8de92b8f67b1d8fff93442b3a4">gf_tf_getPostDisplacement</a> (<a class="el" href="structgf__transform.html">gf_transform</a> *tf)</td></tr>
 <tr class="memdesc:ga6b491d8de92b8f67b1d8fff93442b3a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the displacement component of the transform.  <a href="#ga6b491d8de92b8f67b1d8fff93442b3a4">More...</a><br /></td></tr>
 <tr class="separator:ga6b491d8de92b8f67b1d8fff93442b3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7b70ec41493eaa5dfb922182d16e52d5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga7b70ec41493eaa5dfb922182d16e52d5">gf_dump_transform</a> (<a class="el" href="structgf__transform.html">gf_transform</a> *tf)</td></tr>
-<tr class="memdesc:ga7b70ec41493eaa5dfb922182d16e52d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump transform.  <a href="#ga7b70ec41493eaa5dfb922182d16e52d5">More...</a><br /></td></tr>
-<tr class="separator:ga7b70ec41493eaa5dfb922182d16e52d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6bbad3ade1eb9fb2228e5009e0db972e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga6bbad3ade1eb9fb2228e5009e0db972e">gf_release_transform</a> (<a class="el" href="structgf__transform.html">gf_transform</a> *tf)</td></tr>
 <tr class="memdesc:ga6bbad3ade1eb9fb2228e5009e0db972e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release transform.  <a href="#ga6bbad3ade1eb9fb2228e5009e0db972e">More...</a><br /></td></tr>
 <tr class="separator:ga6bbad3ade1eb9fb2228e5009e0db972e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1353,30 +1353,6 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
-<a class="anchor" id="ga7b70ec41493eaa5dfb922182d16e52d5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_GraphfabExport void gf_dump_transform </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgf__transform.html">gf_transform</a> *&#160;</td>
-          <td class="paramname"><em>tf</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Dump transform. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tf</td><td>Transform </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ga912310d43f3b3c24a71f14c19f69e1f7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1865,6 +1841,48 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>The buffer containing the SBML file </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">r</td><td>The SBML model; the model that contains the SBML info from the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7bf38305370ddce3129f1bf61f17c8b1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport void gf_moveNetworkToFirstQuad </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x_disp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y_disp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move the entire network to the first quadrant. </p>
+<p>Uses the network's bounding box to move all coordinates to the first quadrant. x_disp and y_disp are an additional offset to apply to the bounding box's minimum corner. If they are zero, the corner will be at the origin. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">l</td><td>The layout info object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_disp</td><td>X displacement to post-apply to the bounding box </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y_disp</td><td>Y displacement to post-apply to the bounding box </td></tr>
   </table>
   </dd>
 </dl>
@@ -3870,7 +3888,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 11 2015 12:52:32 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 21 2015 15:22:08 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
