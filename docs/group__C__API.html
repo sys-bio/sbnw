@@ -198,6 +198,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga1740084bdd98a1ab068eceeca0c11777"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga1740084bdd98a1ab068eceeca0c11777">gf_setModelNamespace</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l, unsigned long level, unsigned long version)</td></tr>
 <tr class="memdesc:ga1740084bdd98a1ab068eceeca0c11777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the level and version of the SBML.  <a href="#ga1740084bdd98a1ab068eceeca0c11777">More...</a><br /></td></tr>
 <tr class="separator:ga1740084bdd98a1ab068eceeca0c11777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7feb91f4f5ae2abe846d12d087937f5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaf7feb91f4f5ae2abe846d12d087937f5">gf_getDefaultCompartmentId</a> ()</td></tr>
+<tr class="memdesc:gaf7feb91f4f5ae2abe846d12d087937f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of the default SBML compartment.  <a href="#gaf7feb91f4f5ae2abe846d12d087937f5">More...</a><br /></td></tr>
+<tr class="separator:gaf7feb91f4f5ae2abe846d12d087937f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1cdf0b35f047296ef88a6d842784fa67"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga1cdf0b35f047296ef88a6d842784fa67">gf_setDefaultCompartmentId</a> (const char *id)</td></tr>
+<tr class="memdesc:ga1cdf0b35f047296ef88a6d842784fa67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the id of the default SBML compartment.  <a href="#ga1cdf0b35f047296ef88a6d842784fa67">More...</a><br /></td></tr>
+<tr class="separator:ga1cdf0b35f047296ef88a6d842784fa67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8188b0db9b6f94ce7ee305ffff68a41d"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__network.html">gf_network</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga8188b0db9b6f94ce7ee305ffff68a41d">gf_getNetworkp</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l)</td></tr>
 <tr class="memdesc:ga8188b0db9b6f94ce7ee305ffff68a41d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the network associated with the model.  <a href="#ga8188b0db9b6f94ce7ee305ffff68a41d">More...</a><br /></td></tr>
 <tr class="separator:ga8188b0db9b6f94ce7ee305ffff68a41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,9 +213,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga54af8dc336c3f2de367aaa22a44e4cbb"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga54af8dc336c3f2de367aaa22a44e4cbb">gf_releaseNetwork</a> (<a class="el" href="structgf__network.html">gf_network</a> *n)</td></tr>
 <tr class="memdesc:ga54af8dc336c3f2de367aaa22a44e4cbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the network.  <a href="#ga54af8dc336c3f2de367aaa22a44e4cbb">More...</a><br /></td></tr>
 <tr class="separator:ga54af8dc336c3f2de367aaa22a44e4cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga45705d597b154f58a5020cb98f555e21"><td class="memItemLeft" align="right" valign="top">_GraphfabExport char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga45705d597b154f58a5020cb98f555e21">gf_nw_getID</a> (<a class="el" href="structgf__network.html">gf_network</a> *n)</td></tr>
-<tr class="memdesc:ga45705d597b154f58a5020cb98f555e21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of the network (via the SBML Model object)  <a href="#ga45705d597b154f58a5020cb98f555e21">More...</a><br /></td></tr>
-<tr class="separator:ga45705d597b154f58a5020cb98f555e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f06f0427792a487e1cfbb583643bdce"><td class="memItemLeft" align="right" valign="top">_GraphfabExport char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga3f06f0427792a487e1cfbb583643bdce">gf_nw_getId</a> (<a class="el" href="structgf__network.html">gf_network</a> *n)</td></tr>
+<tr class="memdesc:ga3f06f0427792a487e1cfbb583643bdce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id of the network (i.e. the SBML model)  <a href="#ga3f06f0427792a487e1cfbb583643bdce">More...</a><br /></td></tr>
+<tr class="separator:ga3f06f0427792a487e1cfbb583643bdce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga083fa5aef06d94e6f07acff8cdd90d99"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga083fa5aef06d94e6f07acff8cdd90d99">gf_nw_setId</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, const char *id)</td></tr>
+<tr class="memdesc:ga083fa5aef06d94e6f07acff8cdd90d99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the id of the network (via the SBML model)  <a href="#ga083fa5aef06d94e6f07acff8cdd90d99">More...</a><br /></td></tr>
+<tr class="separator:ga083fa5aef06d94e6f07acff8cdd90d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga84a8c825e23338788cce329ca8377f0e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga84a8c825e23338788cce329ca8377f0e">gf_nw_getNumNodes</a> (const <a class="el" href="structgf__network.html">gf_network</a> *n)</td></tr>
 <tr class="memdesc:ga84a8c825e23338788cce329ca8377f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of nodes.  <a href="#ga84a8c825e23338788cce329ca8377f0e">More...</a><br /></td></tr>
 <tr class="separator:ga84a8c825e23338788cce329ca8377f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1596,6 +1605,25 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="gaf7feb91f4f5ae2abe846d12d087937f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport const char* gf_getDefaultCompartmentId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the id of the default SBML compartment. </p>
+<dl class="section note"><dt>Note</dt><dd>The default compartment is not rendered </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The id (memory owned by the library) </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga35493b9c455bf49d1585b8a7dc9ea4e1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2407,12 +2435,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
-<a class="anchor" id="ga45705d597b154f58a5020cb98f555e21"></a>
+<a class="anchor" id="ga3f06f0427792a487e1cfbb583643bdce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">_GraphfabExport char* gf_nw_getID </td>
+          <td class="memname">_GraphfabExport char* gf_nw_getId </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -2421,7 +2449,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 
-<p>Get the id of the network (via the SBML Model object) </p>
+<p>Get the id of the network (i.e. the SBML model) </p>
 <dl class="section note"><dt>Note</dt><dd>Memory must be freed by caller </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -2796,6 +2824,42 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>Node index </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga083fa5aef06d94e6f07acff8cdd90d99"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport void gf_nw_setId </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the id of the network (via the SBML model) </p>
+<dl class="section note"><dt>Note</dt><dd>Memory must be freed by caller </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">n</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The id to use </td></tr>
   </table>
   </dd>
 </dl>
@@ -3509,6 +3573,31 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="ga1cdf0b35f047296ef88a6d842784fa67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport void gf_setDefaultCompartmentId </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the id of the default SBML compartment. </p>
+<dl class="section note"><dt>Note</dt><dd>The default compartment is not rendered </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The id of the default compartment </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga1740084bdd98a1ab068eceeca0c11777"></a>
 <div class="memitem">
 <div class="memproto">
@@ -3844,7 +3933,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 23 2015 11:26:02 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 29 2015 14:10:23 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
