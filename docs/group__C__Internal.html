@@ -101,6 +101,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gac9fe7492c274ef20100c2abb4646dbce"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gac9fe7492c274ef20100c2abb4646dbce">gf_nw_getNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, size_t i)</td></tr>
 <tr class="memdesc:gac9fe7492c274ef20100c2abb4646dbce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node at index i.  <a href="#gac9fe7492c274ef20100c2abb4646dbce">More...</a><br /></td></tr>
 <tr class="separator:gac9fe7492c274ef20100c2abb4646dbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad376a84be462bdad8ea7232b6020699a"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gad376a84be462bdad8ea7232b6020699a">gf_nw_getUniqueNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, size_t i)</td></tr>
+<tr class="memdesc:gad376a84be462bdad8ea7232b6020699a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the unique node at index i.  <a href="#gad376a84be462bdad8ea7232b6020699a">More...</a><br /></td></tr>
+<tr class="separator:gad376a84be462bdad8ea7232b6020699a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4bd7ee7025f40785ce103bcf5a98e512"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__reaction.html">gf_reaction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga4bd7ee7025f40785ce103bcf5a98e512">gf_nw_getRxn</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, size_t i)</td></tr>
 <tr class="memdesc:ga4bd7ee7025f40785ce103bcf5a98e512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node at index i.  <a href="#ga4bd7ee7025f40785ce103bcf5a98e512">More...</a><br /></td></tr>
 <tr class="separator:ga4bd7ee7025f40785ce103bcf5a98e512"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,12 +113,21 @@ Functions</h2></td></tr>
 <tr class="memitem:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga0c9c8fb0fdb12a23fc1c0ade374c68b2">gf_nw_newNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name, <a class="el" href="structgf__compartment.html">gf_compartment</a> *compartment)</td></tr>
 <tr class="memdesc:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new node to the network.  <a href="#ga0c9c8fb0fdb12a23fc1c0ade374c68b2">More...</a><br /></td></tr>
 <tr class="separator:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga728d984578859641ddfa3100fd1916a1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga728d984578859641ddfa3100fd1916a1">gf_nw_getNumInstances</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga728d984578859641ddfa3100fd1916a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of instances of the node.  <a href="#ga728d984578859641ddfa3100fd1916a1">More...</a><br /></td></tr>
+<tr class="separator:ga728d984578859641ddfa3100fd1916a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad153686028e6ca11cf3356481634fb7c"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gad153686028e6ca11cf3356481634fb7c">gf_nw_getInstance</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n, size_t i)</td></tr>
+<tr class="memdesc:gad153686028e6ca11cf3356481634fb7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ith instance of an aliased node.  <a href="#gad153686028e6ca11cf3356481634fb7c">More...</a><br /></td></tr>
+<tr class="separator:gad153686028e6ca11cf3356481634fb7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6fe07c6a5e9cd2ff629e951674c87575"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga6fe07c6a5e9cd2ff629e951674c87575">gf_clearNode</a> (<a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
 <tr class="memdesc:ga6fe07c6a5e9cd2ff629e951674c87575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the node - does not deallocate.  <a href="#ga6fe07c6a5e9cd2ff629e951674c87575">More...</a><br /></td></tr>
 <tr class="separator:ga6fe07c6a5e9cd2ff629e951674c87575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8422af6953396548aaabaa4b10b0885"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gaa8422af6953396548aaabaa4b10b0885">gf_node_alias</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, <a class="el" href="structgf__network.html">gf_network</a> *m)</td></tr>
 <tr class="memdesc:gaa8422af6953396548aaabaa4b10b0885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias the node.  <a href="#gaa8422af6953396548aaabaa4b10b0885">More...</a><br /></td></tr>
 <tr class="separator:gaa8422af6953396548aaabaa4b10b0885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gaf202609d8cf00940cf3fee5ba8ae8250">gf_node_isIdentical</a> (<a class="el" href="structgf__node.html">gf_node</a> *u, <a class="el" href="structgf__node.html">gf_node</a> *v)</td></tr>
+<tr class="memdesc:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether two nodes are identical.  <a href="#gaf202609d8cf00940cf3fee5ba8ae8250">More...</a><br /></td></tr>
+<tr class="separator:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga94a00bd2388b30e9d4e58444e10f9542"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__curve.html">gf_curve</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga94a00bd2388b30e9d4e58444e10f9542">gf_reaction_getCurve</a> (const <a class="el" href="structgf__reaction.html">gf_reaction</a> *r, size_t i)</td></tr>
 <tr class="memdesc:ga94a00bd2388b30e9d4e58444e10f9542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the curve i.  <a href="#ga94a00bd2388b30e9d4e58444e10f9542">More...</a><br /></td></tr>
 <tr class="separator:ga94a00bd2388b30e9d4e58444e10f9542"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -340,6 +352,41 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gaf202609d8cf00940cf3fee5ba8ae8250"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_node_isIdentical </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tests whether two nodes are identical. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">u</td><td>A node object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>A node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga2e9e9cd465a3f67ec81db7c078706c7f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -369,6 +416,48 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>Node index </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad153686028e6ca11cf3356481634fb7c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> gf_nw_getInstance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the ith instance of an aliased node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The instance index </td></tr>
   </table>
   </dd>
 </dl>
@@ -410,6 +499,41 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga728d984578859641ddfa3100fd1916a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_nw_getNumInstances </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of instances of the node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga4bd7ee7025f40785ce103bcf5a98e512"></a>
 <div class="memitem">
 <div class="memproto">
@@ -435,6 +559,41 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the node at index i. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>Node index </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad376a84be462bdad8ea7232b6020699a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> gf_nw_getUniqueNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the unique node at index i. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
@@ -531,7 +690,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 29 2015 14:10:23 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 4 2016 12:47:39 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
