@@ -264,6 +264,9 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga44d27a60bb98ba04aac5aeb7c8fd571e">gf_nw_isLayoutSpecified</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw)</td></tr>
 <tr class="memdesc:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Did the SBML model include layout?  <a href="#ga44d27a60bb98ba04aac5aeb7c8fd571e">More...</a><br /></td></tr>
 <tr class="separator:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga728d984578859641ddfa3100fd1916a1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga728d984578859641ddfa3100fd1916a1">gf_nw_getNumInstances</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga728d984578859641ddfa3100fd1916a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of instances of the node.  <a href="#ga728d984578859641ddfa3100fd1916a1">More...</a><br /></td></tr>
+<tr class="separator:ga728d984578859641ddfa3100fd1916a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab1c81124518cbb361ac6616025b85068"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gab1c81124518cbb361ac6616025b85068">gf_nw_getInstancep</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n, size_t i)</td></tr>
 <tr class="memdesc:gab1c81124518cbb361ac6616025b85068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ith instance of an aliased node.  <a href="#gab1c81124518cbb361ac6616025b85068">More...</a><br /></td></tr>
 <tr class="separator:gab1c81124518cbb361ac6616025b85068"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2606,6 +2609,41 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="ga728d984578859641ddfa3100fd1916a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_nw_getNumInstances </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of instances of the node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga84a8c825e23338788cce329ca8377f0e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -4043,7 +4081,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jan 4 2016 12:47:39 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jan 4 2016 12:49:36 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
