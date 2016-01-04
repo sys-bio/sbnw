@@ -63,6 +63,7 @@ if pad > wndwidth or pad > wndheight:
     raise RuntimeError('Padding exceeds dimension')
 
 import random
+from random import randint
 import math
 import platform
 
@@ -749,6 +750,31 @@ class LayoutFrame(FrameBaseClass):
             self.qtrender.drawNode(node, x-hemiwidth, y-hemiheight, x+hemiwidth, y+hemiheight, config, painter, horizonEnabled=horizonEnabled)
             if enable_matplotlib2tikz:
               self.pypltrender.drawNode(node, x-hemiwidth, y-hemiheight, x+hemiwidth, y+hemiheight, screentx)
+
+        # draw unique nodes
+        for node in self.network.uniquenodes:
+            x, y = self.getNodeScreenSpaceCentroid(node)
+            offset = (-15,-15)
+            x = x+offset[0]
+            y = y+offset[1]
+            print('unqiue node {},{}'.format(x,y))
+
+            unique_color = QtGui.QColor(randint(0,255),randint(0,255),randint(0,255),255)
+            zpen = QtGui.QPen(QtGui.QBrush(unique_color), 4., QtCore.Qt.SolidLine)
+            zpainter = painter
+            zpainter.setPen(zpen)
+            zpainter.setFont(QtGui.QFont('sans', 26))
+            zpainter.drawText(QtCore.QRectF(x-node.width/2, y-node.height/2, node.width, node.height), QtCore.Qt.AlignLeft, '*')
+
+            zpainter.setFont(QtGui.QFont('sans', 20))
+
+            for instance in [self.network.getinstance(node, k) for k in range(self.network.getnuminstances(node))]:
+                x, y = self.getNodeScreenSpaceCentroid(instance)
+                offset = (-15,-15)
+                x = x+offset[0]
+                y = y+offset[1]
+                zpainter.drawText(QtCore.QRectF(x-instance.width/2, y-instance.height/2, instance.width, instance.height), QtCore.Qt.AlignLeft, '*')
+
 
         if config.state.text_halo_enabled:
             glowtextpainter = painter
