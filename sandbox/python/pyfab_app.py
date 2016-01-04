@@ -768,12 +768,14 @@ class LayoutFrame(FrameBaseClass):
 
             zpainter.setFont(QtGui.QFont('sans', 20))
 
-            for instance in [self.network.getinstance(node, k) for k in range(self.network.getnuminstances(node))]:
-                x, y = self.getNodeScreenSpaceCentroid(instance)
-                offset = (-15,-15)
-                x = x+offset[0]
-                y = y+offset[1]
-                zpainter.drawText(QtCore.QRectF(x-instance.width/2, y-instance.height/2, instance.width, instance.height), QtCore.Qt.AlignLeft, '*')
+            if node.isaliased():
+                for instance in [self.network.getinstance(node, k) for k in range(self.network.getnuminstances(node))]:
+                    #pass
+                    x, y = self.getNodeScreenSpaceCentroid(instance)
+                    offset = (-15,-15)
+                    x = x+offset[0]
+                    y = y+offset[1]
+                    zpainter.drawText(QtCore.QRectF(x-instance.width/2, y-instance.height/2, instance.width, instance.height), QtCore.Qt.AlignLeft, '*')
 
 
         if config.state.text_halo_enabled:
