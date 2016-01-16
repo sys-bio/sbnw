@@ -264,12 +264,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga44d27a60bb98ba04aac5aeb7c8fd571e">gf_nw_isLayoutSpecified</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw)</td></tr>
 <tr class="memdesc:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Did the SBML model include layout?  <a href="#ga44d27a60bb98ba04aac5aeb7c8fd571e">More...</a><br /></td></tr>
 <tr class="separator:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga728d984578859641ddfa3100fd1916a1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga728d984578859641ddfa3100fd1916a1">gf_nw_getNumInstances</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
-<tr class="memdesc:ga728d984578859641ddfa3100fd1916a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of instances of the node.  <a href="#ga728d984578859641ddfa3100fd1916a1">More...</a><br /></td></tr>
-<tr class="separator:ga728d984578859641ddfa3100fd1916a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaed185db9bd9e570a1fb4b9d125fbcc3f"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaed185db9bd9e570a1fb4b9d125fbcc3f">gf_nw_getInstancep</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n, uint64_t i)</td></tr>
-<tr class="memdesc:gaed185db9bd9e570a1fb4b9d125fbcc3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ith instance of an aliased node.  <a href="#gaed185db9bd9e570a1fb4b9d125fbcc3f">More...</a><br /></td></tr>
-<tr class="separator:gaed185db9bd9e570a1fb4b9d125fbcc3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91551b1bfdc75ef93412bb3901c62e4e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga91551b1bfdc75ef93412bb3901c62e4e">gf_nw_getNumAliasInstances</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga91551b1bfdc75ef93412bb3901c62e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of instances of the node.  <a href="#ga91551b1bfdc75ef93412bb3901c62e4e">More...</a><br /></td></tr>
+<tr class="separator:ga91551b1bfdc75ef93412bb3901c62e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f80ba514a76eeb59993fde2c58a0f54"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga7f80ba514a76eeb59993fde2c58a0f54">gf_nw_getAliasInstancep</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n, uint64_t i)</td></tr>
+<tr class="memdesc:ga7f80ba514a76eeb59993fde2c58a0f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ith instance of an aliased node.  <a href="#ga7f80ba514a76eeb59993fde2c58a0f54">More...</a><br /></td></tr>
+<tr class="separator:ga7f80ba514a76eeb59993fde2c58a0f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae8f225e1243e69bd892014b14d046c22"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae8f225e1243e69bd892014b14d046c22">gf_node_setCompartment</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, <a class="el" href="structgf__compartment.html">gf_compartment</a> *c)</td></tr>
 <tr class="memdesc:gae8f225e1243e69bd892014b14d046c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a node to a compartment.  <a href="#gae8f225e1243e69bd892014b14d046c22">More...</a><br /></td></tr>
 <tr class="separator:gae8f225e1243e69bd892014b14d046c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2412,6 +2412,47 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="ga7f80ba514a76eeb59993fde2c58a0f54"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>* gf_nw_getAliasInstancep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the ith instance of an aliased node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The instance index </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga79230fcf6f08dcd81984a3312f745c11"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2466,47 +2507,6 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="gaed185db9bd9e570a1fb4b9d125fbcc3f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>* gf_nw_getInstancep </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
-          <td class="paramname"><em>nw</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>i</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the ith instance of an aliased node. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The instance index </td></tr>
   </table>
   </dd>
 </dl>
@@ -2585,36 +2585,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
-<a class="anchor" id="gaea4f8bfe995fb39e4a837134f13d1b88"></a>
+<a class="anchor" id="ga91551b1bfdc75ef93412bb3901c62e4e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">_GraphfabExport uint64_t gf_nw_getNumComps </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the number of compartments. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ga728d984578859641ddfa3100fd1916a1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">_GraphfabExport int gf_nw_getNumInstances </td>
+          <td class="memname">_GraphfabExport int gf_nw_getNumAliasInstances </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
           <td class="paramname"><em>nw</em>, </td>
@@ -2638,6 +2614,30 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaea4f8bfe995fb39e4a837134f13d1b88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport uint64_t gf_nw_getNumComps </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of compartments. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
   </table>
   </dd>
 </dl>
@@ -4081,7 +4081,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 15 2016 11:02:35 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 15 2016 16:58:44 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
