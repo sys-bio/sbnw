@@ -110,9 +110,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ga623dd2270b22d3a21397a90efae60220"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga623dd2270b22d3a21397a90efae60220">gf_nw_getCompartment</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, uint64_t i)</td></tr>
 <tr class="memdesc:ga623dd2270b22d3a21397a90efae60220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compartment at index i.  <a href="#ga623dd2270b22d3a21397a90efae60220">More...</a><br /></td></tr>
 <tr class="separator:ga623dd2270b22d3a21397a90efae60220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae712e3493f74842372b8c90f04aae8dd"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gae712e3493f74842372b8c90f04aae8dd">gf_nw_newCompartment</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name)</td></tr>
+<tr class="memdesc:gae712e3493f74842372b8c90f04aae8dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new compartment to the network.  <a href="#gae712e3493f74842372b8c90f04aae8dd">More...</a><br /></td></tr>
+<tr class="separator:gae712e3493f74842372b8c90f04aae8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga0c9c8fb0fdb12a23fc1c0ade374c68b2">gf_nw_newNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name, <a class="el" href="structgf__compartment.html">gf_compartment</a> *compartment)</td></tr>
 <tr class="memdesc:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new node to the network.  <a href="#ga0c9c8fb0fdb12a23fc1c0ade374c68b2">More...</a><br /></td></tr>
 <tr class="separator:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3fb3582645093ba5346e55556e989e75"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga3fb3582645093ba5346e55556e989e75">gf_nw_aliasOf</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga3fb3582645093ba5346e55556e989e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new node that is the alias of a given node.  <a href="#ga3fb3582645093ba5346e55556e989e75">More...</a><br /></td></tr>
+<tr class="separator:ga3fb3582645093ba5346e55556e989e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga728d984578859641ddfa3100fd1916a1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga728d984578859641ddfa3100fd1916a1">gf_nw_getNumInstances</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
 <tr class="memdesc:ga728d984578859641ddfa3100fd1916a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of instances of the node.  <a href="#ga728d984578859641ddfa3100fd1916a1">More...</a><br /></td></tr>
 <tr class="separator:ga728d984578859641ddfa3100fd1916a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +137,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gaf202609d8cf00940cf3fee5ba8ae8250">gf_node_isIdentical</a> (<a class="el" href="structgf__node.html">gf_node</a> *u, <a class="el" href="structgf__node.html">gf_node</a> *v)</td></tr>
 <tr class="memdesc:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether two nodes are identical.  <a href="#gaf202609d8cf00940cf3fee5ba8ae8250">More...</a><br /></td></tr>
 <tr class="separator:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafaefd937cf68d8fa7c4550eb667ad155"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__reaction.html">gf_reaction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gafaefd937cf68d8fa7c4550eb667ad155">gf_nw_newReaction</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name)</td></tr>
+<tr class="memdesc:gafaefd937cf68d8fa7c4550eb667ad155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new reaction to the network.  <a href="#gafaefd937cf68d8fa7c4550eb667ad155">More...</a><br /></td></tr>
+<tr class="separator:gafaefd937cf68d8fa7c4550eb667ad155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac9b5cc8f06104116f7366dbaaf941aa2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__curve.html">gf_curve</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gac9b5cc8f06104116f7366dbaaf941aa2">gf_reaction_getCurve</a> (const <a class="el" href="structgf__reaction.html">gf_reaction</a> *r, uint64_t i)</td></tr>
 <tr class="memdesc:gac9b5cc8f06104116f7366dbaaf941aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the curve i.  <a href="#gac9b5cc8f06104116f7366dbaaf941aa2">More...</a><br /></td></tr>
 <tr class="separator:gac9b5cc8f06104116f7366dbaaf941aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -384,6 +393,41 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">u</td><td>A node object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>A node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3fb3582645093ba5346e55556e989e75"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> gf_nw_aliasOf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a new node that is the alias of a given node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The source node </td></tr>
   </table>
   </dd>
 </dl>
@@ -648,6 +692,48 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gae712e3493f74842372b8c90f04aae8dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a> gf_nw_newCompartment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a new compartment to the network. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The compartment's requested ID (or null to determine it automatically) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The compartment's name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga0c9c8fb0fdb12a23fc1c0ade374c68b2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -697,6 +783,48 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gafaefd937cf68d8fa7c4550eb667ad155"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__reaction.html">gf_reaction</a> gf_nw_newReaction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a new reaction to the network. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The reaction's requested ID (or null to determine it automatically) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The reaction's name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="gac9b5cc8f06104116f7366dbaaf941aa2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -734,7 +862,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 15 2016 16:58:44 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 26 2016 15:32:46 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

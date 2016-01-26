@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>libSBNW: graphfab/sbml/layout.h File Reference</title>
+<title>libSBNW: graphfab/interface/layout.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_76b195528b00a83a7b25c12d38dc232b.html">graphfab</a></li><li class="navelem"><a class="el" href="dir_e55fc26ef8e6b2e450c8407339502e17.html">sbml</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_76b195528b00a83a7b25c12d38dc232b.html">graphfab</a></li><li class="navelem"><a class="el" href="dir_0b411513b584f1bf55a909b252b7857c.html">interface</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -167,6 +167,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gad2fbf2096e94a2b86df4319f46b43437"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gad2fbf2096e94a2b86df4319f46b43437">gf_freeModelAndLayout</a> (<a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *mod, <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l)</td></tr>
 <tr class="memdesc:gad2fbf2096e94a2b86df4319f46b43437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call to clean up an instance of <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> and gf_SBMLModel when they are no longer needed.  <a href="group__C__API.html#gad2fbf2096e94a2b86df4319f46b43437">More...</a><br /></td></tr>
 <tr class="separator:gad2fbf2096e94a2b86df4319f46b43437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ff3c28187a7b27e70e0a9b57389d895"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga0ff3c28187a7b27e70e0a9b57389d895">gf_SBMLModel_new</a> ()</td></tr>
+<tr class="memdesc:ga0ff3c28187a7b27e70e0a9b57389d895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new SBML model.  <a href="group__C__API.html#ga0ff3c28187a7b27e70e0a9b57389d895">More...</a><br /></td></tr>
+<tr class="separator:ga0ff3c28187a7b27e70e0a9b57389d895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec9b04569c37124819d97535dd2ca0bb"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaec9b04569c37124819d97535dd2ca0bb">gf_layoutInfo_new</a> (uint64_t level, uint64_t version, uint64_t width, uint64_t height)</td></tr>
+<tr class="memdesc:gaec9b04569c37124819d97535dd2ca0bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new layout info object.  <a href="group__C__API.html#gaec9b04569c37124819d97535dd2ca0bb">More...</a><br /></td></tr>
+<tr class="separator:gaec9b04569c37124819d97535dd2ca0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf7382ee65d098d96f7ec6eb2ea7895fc"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaf7382ee65d098d96f7ec6eb2ea7895fc">gf_processLayout</a> (<a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *lo)</td></tr>
 <tr class="memdesc:gaf7382ee65d098d96f7ec6eb2ea7895fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the layout info from a document.  <a href="group__C__API.html#gaf7382ee65d098d96f7ec6eb2ea7895fc">More...</a><br /></td></tr>
 <tr class="separator:gaf7382ee65d098d96f7ec6eb2ea7895fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -248,15 +254,27 @@ Functions</h2></td></tr>
 <tr class="memitem:gac5b9dacfebcb76fbaae9c58d3c3a0bf2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gac5b9dacfebcb76fbaae9c58d3c3a0bf2">gf_nw_recenterJunctions</a> (<a class="el" href="structgf__network.html">gf_network</a> *n)</td></tr>
 <tr class="memdesc:gac5b9dacfebcb76fbaae9c58d3c3a0bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recenter reaction junctions.  <a href="group__C__API.html#gac5b9dacfebcb76fbaae9c58d3c3a0bf2">More...</a><br /></td></tr>
 <tr class="separator:gac5b9dacfebcb76fbaae9c58d3c3a0bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae712e3493f74842372b8c90f04aae8dd"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gae712e3493f74842372b8c90f04aae8dd">gf_nw_newCompartment</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name)</td></tr>
+<tr class="memdesc:gae712e3493f74842372b8c90f04aae8dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new compartment to the network.  <a href="group__C__Internal.html#gae712e3493f74842372b8c90f04aae8dd">More...</a><br /></td></tr>
+<tr class="separator:gae712e3493f74842372b8c90f04aae8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga0c9c8fb0fdb12a23fc1c0ade374c68b2">gf_nw_newNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name, <a class="el" href="structgf__compartment.html">gf_compartment</a> *compartment)</td></tr>
 <tr class="memdesc:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new node to the network.  <a href="group__C__Internal.html#ga0c9c8fb0fdb12a23fc1c0ade374c68b2">More...</a><br /></td></tr>
 <tr class="separator:ga0c9c8fb0fdb12a23fc1c0ade374c68b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3fb3582645093ba5346e55556e989e75"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#ga3fb3582645093ba5346e55556e989e75">gf_nw_aliasOf</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga3fb3582645093ba5346e55556e989e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new node that is the alias of a given node.  <a href="group__C__Internal.html#ga3fb3582645093ba5346e55556e989e75">More...</a><br /></td></tr>
+<tr class="separator:ga3fb3582645093ba5346e55556e989e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga23202f3595fa9de5ce3ff05a224ec5cd"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga23202f3595fa9de5ce3ff05a224ec5cd">gf_nw_newNodep</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name, <a class="el" href="structgf__compartment.html">gf_compartment</a> *compartment)</td></tr>
 <tr class="memdesc:ga23202f3595fa9de5ce3ff05a224ec5cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new node to the network.  <a href="group__C__API.html#ga23202f3595fa9de5ce3ff05a224ec5cd">More...</a><br /></td></tr>
 <tr class="separator:ga23202f3595fa9de5ce3ff05a224ec5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga50dbf71954af5831e1bf83d9c8ab7fcc">gf_nw_removeNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node)</td></tr>
 <tr class="memdesc:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from the network.  <a href="group__C__API.html#ga50dbf71954af5831e1bf83d9c8ab7fcc">More...</a><br /></td></tr>
 <tr class="separator:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gac50a2c91c966fb2d1ea73189ef9f1dba">gf_nw_connectNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node, <a class="el" href="structgf__reaction.html">gf_reaction</a> *reaction, <a class="el" href="group__C__API.html#ga6b16f3291a3b6ce49109acf2f3a4a74b">gf_specRole</a> role)</td></tr>
+<tr class="memdesc:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a node to a reaction.  <a href="group__C__API.html#gac50a2c91c966fb2d1ea73189ef9f1dba">More...</a><br /></td></tr>
+<tr class="separator:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaf7de6867dcda48a5d6ec5eac45bc10c5">gf_nw_isNodeConnected</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node, <a class="el" href="structgf__reaction.html">gf_reaction</a> *reaction)</td></tr>
+<tr class="memdesc:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the given node is connected to the given reaction.  <a href="group__C__API.html#gaf7de6867dcda48a5d6ec5eac45bc10c5">More...</a><br /></td></tr>
+<tr class="separator:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga44d27a60bb98ba04aac5aeb7c8fd571e">gf_nw_isLayoutSpecified</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw)</td></tr>
 <tr class="memdesc:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Did the SBML model include layout?  <a href="group__C__API.html#ga44d27a60bb98ba04aac5aeb7c8fd571e">More...</a><br /></td></tr>
 <tr class="separator:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -341,6 +359,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga64d791cebaca3e3cde79aaa2162c83a4"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga64d791cebaca3e3cde79aaa2162c83a4">gf_releaseRxn</a> (const <a class="el" href="structgf__reaction.html">gf_reaction</a> *r)</td></tr>
 <tr class="memdesc:ga64d791cebaca3e3cde79aaa2162c83a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the reaction.  <a href="group__C__API.html#ga64d791cebaca3e3cde79aaa2162c83a4">More...</a><br /></td></tr>
 <tr class="separator:ga64d791cebaca3e3cde79aaa2162c83a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafaefd937cf68d8fa7c4550eb667ad155"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__reaction.html">gf_reaction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gafaefd937cf68d8fa7c4550eb667ad155">gf_nw_newReaction</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name)</td></tr>
+<tr class="memdesc:gafaefd937cf68d8fa7c4550eb667ad155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new reaction to the network.  <a href="group__C__Internal.html#gafaefd937cf68d8fa7c4550eb667ad155">More...</a><br /></td></tr>
+<tr class="separator:gafaefd937cf68d8fa7c4550eb667ad155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadb19981b2b9d30817c95535fb39857f4"><td class="memItemLeft" align="right" valign="top">_GraphfabExport char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gadb19981b2b9d30817c95535fb39857f4">gf_reaction_getID</a> (<a class="el" href="structgf__reaction.html">gf_reaction</a> *r)</td></tr>
 <tr class="memdesc:gadb19981b2b9d30817c95535fb39857f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id, user frees memory.  <a href="group__C__API.html#gadb19981b2b9d30817c95535fb39857f4">More...</a><br /></td></tr>
 <tr class="separator:gadb19981b2b9d30817c95535fb39857f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -425,6 +446,18 @@ Functions</h2></td></tr>
 <tr class="memitem:gae5798fbc17c708cd7dc8d89d15f95543"><td class="memItemLeft" align="right" valign="top">_GraphfabExport uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae5798fbc17c708cd7dc8d89d15f95543">gf_compartment_getNumElt</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c)</td></tr>
 <tr class="memdesc:gae5798fbc17c708cd7dc8d89d15f95543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of species in the compartment.  <a href="group__C__API.html#gae5798fbc17c708cd7dc8d89d15f95543">More...</a><br /></td></tr>
 <tr class="separator:gae5798fbc17c708cd7dc8d89d15f95543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade0ad1cae2300583225cdce335e26117"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gade0ad1cae2300583225cdce335e26117">gf_compartment_addNode</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:gade0ad1cae2300583225cdce335e26117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a node to the compartment.  <a href="group__C__API.html#gade0ad1cae2300583225cdce335e26117">More...</a><br /></td></tr>
+<tr class="separator:gade0ad1cae2300583225cdce335e26117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c8e0d718c02dc3081fe7cbcf595a4ee"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga2c8e0d718c02dc3081fe7cbcf595a4ee">gf_compartment_removeNode</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga2c8e0d718c02dc3081fe7cbcf595a4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from the compartment.  <a href="group__C__API.html#ga2c8e0d718c02dc3081fe7cbcf595a4ee">More...</a><br /></td></tr>
+<tr class="separator:ga2c8e0d718c02dc3081fe7cbcf595a4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7e61c9f53b6a3ac92a06103f130dcf1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gac7e61c9f53b6a3ac92a06103f130dcf1">gf_compartment_containsNode</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:gac7e61c9f53b6a3ac92a06103f130dcf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the compartment contains this node.  <a href="group__C__API.html#gac7e61c9f53b6a3ac92a06103f130dcf1">More...</a><br /></td></tr>
+<tr class="separator:gac7e61c9f53b6a3ac92a06103f130dcf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78c0a57106bda12aa281a18f59417a0c"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga78c0a57106bda12aa281a18f59417a0c">gf_compartment_containsReaction</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__reaction.html">gf_reaction</a> *r)</td></tr>
+<tr class="memdesc:ga78c0a57106bda12aa281a18f59417a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the compartment contains this node.  <a href="group__C__API.html#ga78c0a57106bda12aa281a18f59417a0c">More...</a><br /></td></tr>
+<tr class="separator:ga78c0a57106bda12aa281a18f59417a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga912310d43f3b3c24a71f14c19f69e1f7"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga912310d43f3b3c24a71f14c19f69e1f7">gf_fit_to_window</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l, double left, double top, double right, double bottom)</td></tr>
 <tr class="memdesc:ga912310d43f3b3c24a71f14c19f69e1f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fit to the specified window.  <a href="group__C__API.html#ga912310d43f3b3c24a71f14c19f69e1f7">More...</a><br /></td></tr>
 <tr class="separator:ga912310d43f3b3c24a71f14c19f69e1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -660,7 +693,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 15 2016 16:58:44 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 26 2016 15:32:46 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

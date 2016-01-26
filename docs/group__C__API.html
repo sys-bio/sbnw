@@ -88,9 +88,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html">__fr_options</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options passed to the Fruchterman-Reingold algorithm.  <a href="struct____fr__options.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgf__network.html">gf_network</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reaction network.  <a href="structgf__network.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +117,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgf__curveCP.html">gf_curveCP</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A curve control points.  <a href="structgf__curveCP.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____fr__options.html">__fr_options</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options passed to the Fruchterman-Reingold algorithm.  <a href="struct____fr__options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -162,27 +162,6 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga6a297983f8c30b795d4a31c44699fa15"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga6a297983f8c30b795d4a31c44699fa15">gf_renderTikZFile</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l, const char *filename)</td></tr>
 <tr class="memdesc:ga6a297983f8c30b795d4a31c44699fa15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the model as a TikZ image.  <a href="#ga6a297983f8c30b795d4a31c44699fa15">More...</a><br /></td></tr>
 <tr class="separator:ga6a297983f8c30b795d4a31c44699fa15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0c80b36838feabb1a6ad4acfb7769310"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga0c80b36838feabb1a6ad4acfb7769310">gf_doLayoutAlgorithm</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> opt, <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l)</td></tr>
-<tr class="memdesc:ga0c80b36838feabb1a6ad4acfb7769310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the autolayout (Fruchterman-Reingold) algorithm on a given layout structure.  <a href="#ga0c80b36838feabb1a6ad4acfb7769310">More...</a><br /></td></tr>
-<tr class="separator:ga0c80b36838feabb1a6ad4acfb7769310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3cc9491e7186128a54ec44fd68268c2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae3cc9491e7186128a54ec44fd68268c2">gf_doLayoutAlgorithm2</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> opt, <a class="el" href="structgf__network.html">gf_network</a> *n, <a class="el" href="structgf__canvas.html">gf_canvas</a> *c)</td></tr>
-<tr class="memdesc:gae3cc9491e7186128a54ec44fd68268c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the autolayout (Fruchterman-Reingold) algorithm on a a network and optional canvas.  <a href="#gae3cc9491e7186128a54ec44fd68268c2">More...</a><br /></td></tr>
-<tr class="separator:gae3cc9491e7186128a54ec44fd68268c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae866ef8d86c8d9d2ce4cb0b4ab5cd584"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae866ef8d86c8d9d2ce4cb0b4ab5cd584">gf_getLayoutOptDefaults</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> *opt)</td></tr>
-<tr class="memdesc:gae866ef8d86c8d9d2ce4cb0b4ab5cd584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate default values for the layout options.  <a href="#gae866ef8d86c8d9d2ce4cb0b4ab5cd584">More...</a><br /></td></tr>
-<tr class="separator:gae866ef8d86c8d9d2ce4cb0b4ab5cd584"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4b4c0f096c3f5c12bff3c86c96edb1fe"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga4b4c0f096c3f5c12bff3c86c96edb1fe">gf_layout_setStiffness</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> *opt, double k)</td></tr>
-<tr class="memdesc:ga4b4c0f096c3f5c12bff3c86c96edb1fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stiffness for the FR algorithm.  <a href="#ga4b4c0f096c3f5c12bff3c86c96edb1fe">More...</a><br /></td></tr>
-<tr class="separator:ga4b4c0f096c3f5c12bff3c86c96edb1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e6378a749b7997aab99c3a2ab37f076"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga1e6378a749b7997aab99c3a2ab37f076">gf_freeSBMLModel</a> (<a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *lo)</td></tr>
-<tr class="memdesc:ga1e6378a749b7997aab99c3a2ab37f076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for gf_SBMLModel.  <a href="#ga1e6378a749b7997aab99c3a2ab37f076">More...</a><br /></td></tr>
-<tr class="separator:ga1e6378a749b7997aab99c3a2ab37f076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga445c68fe35db7822b8d60d52770078b9"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga445c68fe35db7822b8d60d52770078b9">gf_loadSBMLbuf</a> (const char *buf)</td></tr>
-<tr class="memdesc:ga445c68fe35db7822b8d60d52770078b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load SBML from memory buffer. Struct contains a pointer to the document.  <a href="#ga445c68fe35db7822b8d60d52770078b9">More...</a><br /></td></tr>
-<tr class="separator:ga445c68fe35db7822b8d60d52770078b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5583664bac4e290e6b64771bfe8f78d5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga5583664bac4e290e6b64771bfe8f78d5">gf_loadSBMLfile</a> (const char *file)</td></tr>
-<tr class="memdesc:ga5583664bac4e290e6b64771bfe8f78d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load SBML from memory buffer. Struct contains a pointer to the document.  <a href="#ga5583664bac4e290e6b64771bfe8f78d5">More...</a><br /></td></tr>
-<tr class="separator:ga5583664bac4e290e6b64771bfe8f78d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga075fd03fc1e1615e6b21943f2561c044"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga075fd03fc1e1615e6b21943f2561c044">gf_freeLayoutInfo</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l)</td></tr>
 <tr class="memdesc:ga075fd03fc1e1615e6b21943f2561c044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call to clean up an instance of <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> when it is no longer needed.  <a href="#ga075fd03fc1e1615e6b21943f2561c044">More...</a><br /></td></tr>
 <tr class="separator:ga075fd03fc1e1615e6b21943f2561c044"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,6 +171,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:gad2fbf2096e94a2b86df4319f46b43437"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gad2fbf2096e94a2b86df4319f46b43437">gf_freeModelAndLayout</a> (<a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *mod, <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l)</td></tr>
 <tr class="memdesc:gad2fbf2096e94a2b86df4319f46b43437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call to clean up an instance of <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> and gf_SBMLModel when they are no longer needed.  <a href="#gad2fbf2096e94a2b86df4319f46b43437">More...</a><br /></td></tr>
 <tr class="separator:gad2fbf2096e94a2b86df4319f46b43437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ff3c28187a7b27e70e0a9b57389d895"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga0ff3c28187a7b27e70e0a9b57389d895">gf_SBMLModel_new</a> ()</td></tr>
+<tr class="memdesc:ga0ff3c28187a7b27e70e0a9b57389d895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new SBML model.  <a href="#ga0ff3c28187a7b27e70e0a9b57389d895">More...</a><br /></td></tr>
+<tr class="separator:ga0ff3c28187a7b27e70e0a9b57389d895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec9b04569c37124819d97535dd2ca0bb"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaec9b04569c37124819d97535dd2ca0bb">gf_layoutInfo_new</a> (uint64_t level, uint64_t version, uint64_t width, uint64_t height)</td></tr>
+<tr class="memdesc:gaec9b04569c37124819d97535dd2ca0bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new layout info object.  <a href="#gaec9b04569c37124819d97535dd2ca0bb">More...</a><br /></td></tr>
+<tr class="separator:gaec9b04569c37124819d97535dd2ca0bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf7382ee65d098d96f7ec6eb2ea7895fc"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaf7382ee65d098d96f7ec6eb2ea7895fc">gf_processLayout</a> (<a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *lo)</td></tr>
 <tr class="memdesc:gaf7382ee65d098d96f7ec6eb2ea7895fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the layout info from a document.  <a href="#gaf7382ee65d098d96f7ec6eb2ea7895fc">More...</a><br /></td></tr>
 <tr class="separator:gaf7382ee65d098d96f7ec6eb2ea7895fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -261,6 +246,12 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga50dbf71954af5831e1bf83d9c8ab7fcc">gf_nw_removeNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node)</td></tr>
 <tr class="memdesc:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from the network.  <a href="#ga50dbf71954af5831e1bf83d9c8ab7fcc">More...</a><br /></td></tr>
 <tr class="separator:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gac50a2c91c966fb2d1ea73189ef9f1dba">gf_nw_connectNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node, <a class="el" href="structgf__reaction.html">gf_reaction</a> *reaction, <a class="el" href="group__C__API.html#ga6b16f3291a3b6ce49109acf2f3a4a74b">gf_specRole</a> role)</td></tr>
+<tr class="memdesc:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a node to a reaction.  <a href="#gac50a2c91c966fb2d1ea73189ef9f1dba">More...</a><br /></td></tr>
+<tr class="separator:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaf7de6867dcda48a5d6ec5eac45bc10c5">gf_nw_isNodeConnected</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node, <a class="el" href="structgf__reaction.html">gf_reaction</a> *reaction)</td></tr>
+<tr class="memdesc:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the given node is connected to the given reaction.  <a href="#gaf7de6867dcda48a5d6ec5eac45bc10c5">More...</a><br /></td></tr>
+<tr class="separator:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga44d27a60bb98ba04aac5aeb7c8fd571e">gf_nw_isLayoutSpecified</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw)</td></tr>
 <tr class="memdesc:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Did the SBML model include layout?  <a href="#ga44d27a60bb98ba04aac5aeb7c8fd571e">More...</a><br /></td></tr>
 <tr class="separator:ga44d27a60bb98ba04aac5aeb7c8fd571e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -408,6 +399,18 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:gae5798fbc17c708cd7dc8d89d15f95543"><td class="memItemLeft" align="right" valign="top">_GraphfabExport uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae5798fbc17c708cd7dc8d89d15f95543">gf_compartment_getNumElt</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c)</td></tr>
 <tr class="memdesc:gae5798fbc17c708cd7dc8d89d15f95543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of species in the compartment.  <a href="#gae5798fbc17c708cd7dc8d89d15f95543">More...</a><br /></td></tr>
 <tr class="separator:gae5798fbc17c708cd7dc8d89d15f95543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade0ad1cae2300583225cdce335e26117"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gade0ad1cae2300583225cdce335e26117">gf_compartment_addNode</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:gade0ad1cae2300583225cdce335e26117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a node to the compartment.  <a href="#gade0ad1cae2300583225cdce335e26117">More...</a><br /></td></tr>
+<tr class="separator:gade0ad1cae2300583225cdce335e26117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2c8e0d718c02dc3081fe7cbcf595a4ee"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga2c8e0d718c02dc3081fe7cbcf595a4ee">gf_compartment_removeNode</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:ga2c8e0d718c02dc3081fe7cbcf595a4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from the compartment.  <a href="#ga2c8e0d718c02dc3081fe7cbcf595a4ee">More...</a><br /></td></tr>
+<tr class="separator:ga2c8e0d718c02dc3081fe7cbcf595a4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7e61c9f53b6a3ac92a06103f130dcf1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gac7e61c9f53b6a3ac92a06103f130dcf1">gf_compartment_containsNode</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
+<tr class="memdesc:gac7e61c9f53b6a3ac92a06103f130dcf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the compartment contains this node.  <a href="#gac7e61c9f53b6a3ac92a06103f130dcf1">More...</a><br /></td></tr>
+<tr class="separator:gac7e61c9f53b6a3ac92a06103f130dcf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78c0a57106bda12aa281a18f59417a0c"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga78c0a57106bda12aa281a18f59417a0c">gf_compartment_containsReaction</a> (<a class="el" href="structgf__compartment.html">gf_compartment</a> *c, <a class="el" href="structgf__reaction.html">gf_reaction</a> *r)</td></tr>
+<tr class="memdesc:ga78c0a57106bda12aa281a18f59417a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the compartment contains this node.  <a href="#ga78c0a57106bda12aa281a18f59417a0c">More...</a><br /></td></tr>
+<tr class="separator:ga78c0a57106bda12aa281a18f59417a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga912310d43f3b3c24a71f14c19f69e1f7"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga912310d43f3b3c24a71f14c19f69e1f7">gf_fit_to_window</a> (<a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l, double left, double top, double right, double bottom)</td></tr>
 <tr class="memdesc:ga912310d43f3b3c24a71f14c19f69e1f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fit to the specified window.  <a href="#ga912310d43f3b3c24a71f14c19f69e1f7">More...</a><br /></td></tr>
 <tr class="separator:ga912310d43f3b3c24a71f14c19f69e1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -504,6 +507,27 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga14e8aacd9e261c8b3dd6a1f2ee59e281"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga14e8aacd9e261c8b3dd6a1f2ee59e281">gf_arrowheadGetStyle</a> (<a class="el" href="group__C__API.html#ga6b16f3291a3b6ce49109acf2f3a4a74b">gf_specRole</a> role)</td></tr>
 <tr class="memdesc:ga14e8aacd9e261c8b3dd6a1f2ee59e281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the style for the role type.  <a href="#ga14e8aacd9e261c8b3dd6a1f2ee59e281">More...</a><br /></td></tr>
 <tr class="separator:ga14e8aacd9e261c8b3dd6a1f2ee59e281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0c80b36838feabb1a6ad4acfb7769310"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga0c80b36838feabb1a6ad4acfb7769310">gf_doLayoutAlgorithm</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> opt, <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> *l)</td></tr>
+<tr class="memdesc:ga0c80b36838feabb1a6ad4acfb7769310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the autolayout (Fruchterman-Reingold) algorithm on a given layout structure.  <a href="#ga0c80b36838feabb1a6ad4acfb7769310">More...</a><br /></td></tr>
+<tr class="separator:ga0c80b36838feabb1a6ad4acfb7769310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae3cc9491e7186128a54ec44fd68268c2"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae3cc9491e7186128a54ec44fd68268c2">gf_doLayoutAlgorithm2</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> opt, <a class="el" href="structgf__network.html">gf_network</a> *n, <a class="el" href="structgf__canvas.html">gf_canvas</a> *c)</td></tr>
+<tr class="memdesc:gae3cc9491e7186128a54ec44fd68268c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the autolayout (Fruchterman-Reingold) algorithm on a a network and optional canvas.  <a href="#gae3cc9491e7186128a54ec44fd68268c2">More...</a><br /></td></tr>
+<tr class="separator:gae3cc9491e7186128a54ec44fd68268c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae866ef8d86c8d9d2ce4cb0b4ab5cd584"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae866ef8d86c8d9d2ce4cb0b4ab5cd584">gf_getLayoutOptDefaults</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> *opt)</td></tr>
+<tr class="memdesc:gae866ef8d86c8d9d2ce4cb0b4ab5cd584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate default values for the layout options.  <a href="#gae866ef8d86c8d9d2ce4cb0b4ab5cd584">More...</a><br /></td></tr>
+<tr class="separator:gae866ef8d86c8d9d2ce4cb0b4ab5cd584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b4c0f096c3f5c12bff3c86c96edb1fe"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga4b4c0f096c3f5c12bff3c86c96edb1fe">gf_layout_setStiffness</a> (<a class="el" href="group__C__API.html#gaf032a64b44f9bd00107cffd9c505ec51">fr_options</a> *opt, double k)</td></tr>
+<tr class="memdesc:ga4b4c0f096c3f5c12bff3c86c96edb1fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the stiffness for the FR algorithm.  <a href="#ga4b4c0f096c3f5c12bff3c86c96edb1fe">More...</a><br /></td></tr>
+<tr class="separator:ga4b4c0f096c3f5c12bff3c86c96edb1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e6378a749b7997aab99c3a2ab37f076"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga1e6378a749b7997aab99c3a2ab37f076">gf_freeSBMLModel</a> (<a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *lo)</td></tr>
+<tr class="memdesc:ga1e6378a749b7997aab99c3a2ab37f076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for gf_SBMLModel.  <a href="#ga1e6378a749b7997aab99c3a2ab37f076">More...</a><br /></td></tr>
+<tr class="separator:ga1e6378a749b7997aab99c3a2ab37f076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga445c68fe35db7822b8d60d52770078b9"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga445c68fe35db7822b8d60d52770078b9">gf_loadSBMLbuf</a> (const char *buf)</td></tr>
+<tr class="memdesc:ga445c68fe35db7822b8d60d52770078b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load SBML from memory buffer. Struct contains a pointer to the document.  <a href="#ga445c68fe35db7822b8d60d52770078b9">More...</a><br /></td></tr>
+<tr class="separator:ga445c68fe35db7822b8d60d52770078b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5583664bac4e290e6b64771bfe8f78d5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga5583664bac4e290e6b64771bfe8f78d5">gf_loadSBMLfile</a> (const char *file)</td></tr>
+<tr class="memdesc:ga5583664bac4e290e6b64771bfe8f78d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load SBML from memory buffer. Struct contains a pointer to the document.  <a href="#ga5583664bac4e290e6b64771bfe8f78d5">More...</a><br /></td></tr>
+<tr class="separator:ga5583664bac4e290e6b64771bfe8f78d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad972a64ecd3d968c9dc1f5db4ce53b47"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gad972a64ecd3d968c9dc1f5db4ce53b47">gf_strfree</a> (char *str)</td></tr>
 <tr class="memdesc:gad972a64ecd3d968c9dc1f5db4ce53b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a C string (char*)  <a href="#gad972a64ecd3d968c9dc1f5db4ce53b47">More...</a><br /></td></tr>
 <tr class="separator:gad972a64ecd3d968c9dc1f5db4ce53b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -908,6 +932,114 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="gade0ad1cae2300583225cdce335e26117"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_compartment_addNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a node to the compartment. </p>
+<p>The node must already exist in the network </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The compartment object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to add </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero for success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac7e61c9f53b6a3ac92a06103f130dcf1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_compartment_containsNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return whether the compartment contains this node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The compartment object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero if true </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga78c0a57106bda12aa281a18f59417a0c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_compartment_containsReaction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__reaction.html">gf_reaction</a> *&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return whether the compartment contains this node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The compartment object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>The reaction </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nonzero if true </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gaaced3176dee50aa0263715a300389eda"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1049,6 +1181,42 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2c8e0d718c02dc3081fe7cbcf595a4ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_compartment_removeNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a node from the compartment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The compartment object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to remove </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero for success </dd></dl>
 
 </div>
 </div>
@@ -1792,6 +1960,47 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="gaec9b04569c37124819d97535dd2ca0bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__layoutInfo.html">gf_layoutInfo</a> gf_layoutInfo_new </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>version</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new layout info object. </p>
+<dl class="section return"><dt>Returns</dt><dd>The new layout info </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga445c68fe35db7822b8d60d52770078b9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2412,6 +2621,55 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="gac50a2c91c966fb2d1ea73189ef9f1dba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_nw_connectNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__reaction.html">gf_reaction</a> *&#160;</td>
+          <td class="paramname"><em>reaction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__C__API.html#ga6b16f3291a3b6ce49109acf2f3a4a74b">gf_specRole</a>&#160;</td>
+          <td class="paramname"><em>role</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connect a node to a reaction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>The node to connect </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reaction</td><td>The reaction to connect to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">role</td><td>The species role to use </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga7f80ba514a76eeb59993fde2c58a0f54"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2809,6 +3067,49 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf7de6867dcda48a5d6ec5eac45bc10c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_nw_isNodeConnected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__reaction.html">gf_reaction</a> *&#160;</td>
+          <td class="paramname"><em>reaction</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return whether the given node is connected to the given reaction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>The node to connect </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reaction</td><td>The reaction to connect to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if this not is connected </dd></dl>
 
 </div>
 </div>
@@ -3721,6 +4022,24 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="ga0ff3c28187a7b27e70e0a9b57389d895"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="struct____gf__SBMLLayout.html">gf_SBMLModel</a> gf_SBMLModel_new </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new SBML model. </p>
+<dl class="section return"><dt>Returns</dt><dd>The new SBML model </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga1cdf0b35f047296ef88a6d842784fa67"></a>
 <div class="memitem">
 <div class="memproto">
@@ -4081,7 +4400,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 15 2016 16:58:44 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 26 2016 15:32:46 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
