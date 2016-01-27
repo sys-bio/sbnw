@@ -312,9 +312,15 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:ga6af6b4de83643d6e011b29806edd087e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga6af6b4de83643d6e011b29806edd087e">gf_node_getID</a> (<a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
 <tr class="memdesc:ga6af6b4de83643d6e011b29806edd087e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id, user frees memory.  <a href="#ga6af6b4de83643d6e011b29806edd087e">More...</a><br /></td></tr>
 <tr class="separator:ga6af6b4de83643d6e011b29806edd087e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfd44e4f4ff9daa58226c20a53a78f11"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gabfd44e4f4ff9daa58226c20a53a78f11">gf_node_setID</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, const char *id)</td></tr>
+<tr class="memdesc:gabfd44e4f4ff9daa58226c20a53a78f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the id, user frees memory.  <a href="#gabfd44e4f4ff9daa58226c20a53a78f11">More...</a><br /></td></tr>
+<tr class="separator:gabfd44e4f4ff9daa58226c20a53a78f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga420931778e8460a772650ce3a44924c1"><td class="memItemLeft" align="right" valign="top">_GraphfabExport const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga420931778e8460a772650ce3a44924c1">gf_node_getName</a> (<a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
-<tr class="memdesc:ga420931778e8460a772650ce3a44924c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name.  <a href="#ga420931778e8460a772650ce3a44924c1">More...</a><br /></td></tr>
+<tr class="memdesc:ga420931778e8460a772650ce3a44924c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name, client must free memory.  <a href="#ga420931778e8460a772650ce3a44924c1">More...</a><br /></td></tr>
 <tr class="separator:ga420931778e8460a772650ce3a44924c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed9d0ab9d0e0fb018d55c42962878f20"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaed9d0ab9d0e0fb018d55c42962878f20">gf_node_setName</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, const char *name)</td></tr>
+<tr class="memdesc:gaed9d0ab9d0e0fb018d55c42962878f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name of a node.  <a href="#gaed9d0ab9d0e0fb018d55c42962878f20">More...</a><br /></td></tr>
+<tr class="separator:gaed9d0ab9d0e0fb018d55c42962878f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4fff7f840369d3898a497d52b0d582af"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga4fff7f840369d3898a497d52b0d582af">gf_node_getConnectedReactions</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, <a class="el" href="structgf__network.html">gf_network</a> *m, unsigned int *num, <a class="el" href="structgf__reaction.html">gf_reaction</a> **rxns)</td></tr>
 <tr class="memdesc:ga4fff7f840369d3898a497d52b0d582af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of all reactions connected to the node.  <a href="#ga4fff7f840369d3898a497d52b0d582af">More...</a><br /></td></tr>
 <tr class="separator:ga4fff7f840369d3898a497d52b0d582af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2334,7 +2340,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 
-<p>Get the name. </p>
+<p>Get the name, client must free memory. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
@@ -2569,6 +2575,74 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><div class="memdoc">
 
 <p>Set the height of the node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gabfd44e4f4ff9daa58226c20a53a78f11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport void gf_node_setID </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the id, user frees memory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaed9d0ab9d0e0fb018d55c42962878f20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport void gf_node_setName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the name of a node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
@@ -4618,7 +4692,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 27 2016 10:18:23 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 27 2016 10:26:58 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
