@@ -232,8 +232,11 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memdesc:ga6402c2dd4838667a8ab785936fc5f477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the given reaction.  <a href="#ga6402c2dd4838667a8ab785936fc5f477">More...</a><br /></td></tr>
 <tr class="separator:ga6402c2dd4838667a8ab785936fc5f477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga79230fcf6f08dcd81984a3312f745c11"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga79230fcf6f08dcd81984a3312f745c11">gf_nw_getCompartmentp</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, uint64_t i)</td></tr>
-<tr class="memdesc:ga79230fcf6f08dcd81984a3312f745c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node at index i.  <a href="#ga79230fcf6f08dcd81984a3312f745c11">More...</a><br /></td></tr>
+<tr class="memdesc:ga79230fcf6f08dcd81984a3312f745c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compartment at index i.  <a href="#ga79230fcf6f08dcd81984a3312f745c11">More...</a><br /></td></tr>
 <tr class="separator:ga79230fcf6f08dcd81984a3312f745c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa20c7690d7e2f33f57dc588a2f57f3c3"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaa20c7690d7e2f33f57dc588a2f57f3c3">gf_nw_findCompartmentById</a> (<a class="el" href="structgf__network.html">gf_network</a> *n, const char *id)</td></tr>
+<tr class="memdesc:gaa20c7690d7e2f33f57dc588a2f57f3c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find a compartment by id.  <a href="#gaa20c7690d7e2f33f57dc588a2f57f3c3">More...</a><br /></td></tr>
+<tr class="separator:gaa20c7690d7e2f33f57dc588a2f57f3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae76c51bc7c0003b8bda9f9f437c519fa"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gae76c51bc7c0003b8bda9f9f437c519fa">gf_nw_rebuildCurves</a> (<a class="el" href="structgf__network.html">gf_network</a> *n)</td></tr>
 <tr class="memdesc:gae76c51bc7c0003b8bda9f9f437c519fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rebuild all curves in the network.  <a href="#gae76c51bc7c0003b8bda9f9f437c519fa">More...</a><br /></td></tr>
 <tr class="separator:gae76c51bc7c0003b8bda9f9f437c519fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2759,6 +2762,41 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="gaa20c7690d7e2f33f57dc588a2f57f3c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a>* gf_nw_findCompartmentById </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find a compartment by id. </p>
+<p>Returns NULL if no such compartment exists </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The compartment ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga7f80ba514a76eeb59993fde2c58a0f54"></a>
 <div class="memitem">
 <div class="memproto">
@@ -2824,7 +2862,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 
-<p>Get the node at index i. </p>
+<p>Get the compartment at index i. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The network object </td></tr>
@@ -4680,7 +4718,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 27 2016 10:30:31 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 27 2016 14:12:41 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
