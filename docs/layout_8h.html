@@ -275,6 +275,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga23202f3595fa9de5ce3ff05a224ec5cd"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga23202f3595fa9de5ce3ff05a224ec5cd">gf_nw_newNodep</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name, <a class="el" href="structgf__compartment.html">gf_compartment</a> *compartment)</td></tr>
 <tr class="memdesc:ga23202f3595fa9de5ce3ff05a224ec5cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new node to the network.  <a href="group__C__API.html#ga23202f3595fa9de5ce3ff05a224ec5cd">More...</a><br /></td></tr>
 <tr class="separator:ga23202f3595fa9de5ce3ff05a224ec5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ec9ed45f369602f3db1f45a2595db6d"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__node.html">gf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga3ec9ed45f369602f3db1f45a2595db6d">gf_nw_newAliasNodep</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, const char *id, const char *name, <a class="el" href="structgf__node.html">gf_node</a> *source)</td></tr>
+<tr class="memdesc:ga3ec9ed45f369602f3db1f45a2595db6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new node to the network.  <a href="group__C__API.html#ga3ec9ed45f369602f3db1f45a2595db6d">More...</a><br /></td></tr>
+<tr class="separator:ga3ec9ed45f369602f3db1f45a2595db6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga50dbf71954af5831e1bf83d9c8ab7fcc">gf_nw_removeNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node)</td></tr>
 <tr class="memdesc:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a node from the network.  <a href="group__C__API.html#ga50dbf71954af5831e1bf83d9c8ab7fcc">More...</a><br /></td></tr>
 <tr class="separator:ga50dbf71954af5831e1bf83d9c8ab7fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,6 +332,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gab884ff3558215e2734fbae0485070b11"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gab884ff3558215e2734fbae0485070b11">gf_node_isAliased</a> (<a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
 <tr class="memdesc:gab884ff3558215e2734fbae0485070b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the node aliased?  <a href="group__C__API.html#gab884ff3558215e2734fbae0485070b11">More...</a><br /></td></tr>
 <tr class="separator:gab884ff3558215e2734fbae0485070b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac4f81011cb241ca0a5f94108348cd5c7"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gac4f81011cb241ca0a5f94108348cd5c7">gf_node_setIsAlias</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, int isAlias)</td></tr>
+<tr class="memdesc:gac4f81011cb241ca0a5f94108348cd5c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether the node is an alias node or not.  <a href="group__C__Internal.html#gac4f81011cb241ca0a5f94108348cd5c7">More...</a><br /></td></tr>
+<tr class="separator:gac4f81011cb241ca0a5f94108348cd5c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga24381284881a40a2e8a694f29521924f"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__point.html">gf_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga24381284881a40a2e8a694f29521924f">gf_node_getCentroid</a> (<a class="el" href="structgf__node.html">gf_node</a> *n)</td></tr>
 <tr class="memdesc:ga24381284881a40a2e8a694f29521924f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the centroid of the node.  <a href="group__C__API.html#ga24381284881a40a2e8a694f29521924f">More...</a><br /></td></tr>
 <tr class="separator:ga24381284881a40a2e8a694f29521924f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -365,6 +371,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gaf202609d8cf00940cf3fee5ba8ae8250">gf_node_isIdentical</a> (<a class="el" href="structgf__node.html">gf_node</a> *u, <a class="el" href="structgf__node.html">gf_node</a> *v)</td></tr>
 <tr class="memdesc:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether two nodes are identical.  <a href="group__C__Internal.html#gaf202609d8cf00940cf3fee5ba8ae8250">More...</a><br /></td></tr>
 <tr class="separator:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa21c355eac3444ea05433c0192013491"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaa21c355eac3444ea05433c0192013491">gf_nw_nodeHasCompartment</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *x)</td></tr>
+<tr class="memdesc:gaa21c355eac3444ea05433c0192013491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the node has a compartment assigned.  <a href="group__C__API.html#gaa21c355eac3444ea05433c0192013491">More...</a><br /></td></tr>
+<tr class="separator:gaa21c355eac3444ea05433c0192013491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab968f5bd7577239ad35a5c24a2fc87b0"><td class="memItemLeft" align="right" valign="top">_GraphfabExport <a class="el" href="structgf__compartment.html">gf_compartment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gab968f5bd7577239ad35a5c24a2fc87b0">gf_nw_nodeGetCompartment</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *x)</td></tr>
+<tr class="memdesc:gab968f5bd7577239ad35a5c24a2fc87b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the node has a compartment assigned.  <a href="group__C__API.html#gab968f5bd7577239ad35a5c24a2fc87b0">More...</a><br /></td></tr>
+<tr class="separator:gab968f5bd7577239ad35a5c24a2fc87b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga64d791cebaca3e3cde79aaa2162c83a4"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga64d791cebaca3e3cde79aaa2162c83a4">gf_releaseRxn</a> (const <a class="el" href="structgf__reaction.html">gf_reaction</a> *r)</td></tr>
 <tr class="memdesc:ga64d791cebaca3e3cde79aaa2162c83a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release the reaction.  <a href="group__C__API.html#ga64d791cebaca3e3cde79aaa2162c83a4">More...</a><br /></td></tr>
 <tr class="separator:ga64d791cebaca3e3cde79aaa2162c83a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -705,7 +717,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 26 2016 16:35:23 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 26 2016 17:22:55 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

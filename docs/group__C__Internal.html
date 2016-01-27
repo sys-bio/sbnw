@@ -140,6 +140,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa8422af6953396548aaabaa4b10b0885"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gaa8422af6953396548aaabaa4b10b0885">gf_node_alias</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, <a class="el" href="structgf__network.html">gf_network</a> *m)</td></tr>
 <tr class="memdesc:gaa8422af6953396548aaabaa4b10b0885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias the node.  <a href="#gaa8422af6953396548aaabaa4b10b0885">More...</a><br /></td></tr>
 <tr class="separator:gaa8422af6953396548aaabaa4b10b0885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac4f81011cb241ca0a5f94108348cd5c7"><td class="memItemLeft" align="right" valign="top">_GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gac4f81011cb241ca0a5f94108348cd5c7">gf_node_setIsAlias</a> (<a class="el" href="structgf__node.html">gf_node</a> *n, int isAlias)</td></tr>
+<tr class="memdesc:gac4f81011cb241ca0a5f94108348cd5c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether the node is an alias node or not.  <a href="#gac4f81011cb241ca0a5f94108348cd5c7">More...</a><br /></td></tr>
+<tr class="separator:gac4f81011cb241ca0a5f94108348cd5c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__Internal.html#gaf202609d8cf00940cf3fee5ba8ae8250">gf_node_isIdentical</a> (<a class="el" href="structgf__node.html">gf_node</a> *u, <a class="el" href="structgf__node.html">gf_node</a> *v)</td></tr>
 <tr class="memdesc:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether two nodes are identical.  <a href="#gaf202609d8cf00940cf3fee5ba8ae8250">More...</a><br /></td></tr>
 <tr class="separator:gaf202609d8cf00940cf3fee5ba8ae8250"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -440,6 +443,40 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">u</td><td>A node object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>A node object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac4f81011cb241ca0a5f94108348cd5c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport void gf_node_setIsAlias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>isAlias</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set whether the node is an alias node or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node object </td></tr>
   </table>
   </dd>
 </dl>
@@ -927,7 +964,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jan 26 2016 16:35:23 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jan 26 2016 17:22:55 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
