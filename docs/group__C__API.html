@@ -258,6 +258,9 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memitem:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gac50a2c91c966fb2d1ea73189ef9f1dba">gf_nw_connectNode</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node, <a class="el" href="structgf__reaction.html">gf_reaction</a> *reaction, <a class="el" href="group__C__API.html#ga6b16f3291a3b6ce49109acf2f3a4a74b">gf_specRole</a> role)</td></tr>
 <tr class="memdesc:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a node to a reaction.  <a href="#gac50a2c91c966fb2d1ea73189ef9f1dba">More...</a><br /></td></tr>
 <tr class="separator:gac50a2c91c966fb2d1ea73189ef9f1dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d23cbab967f6064ad31a0b428e0b27e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga8d23cbab967f6064ad31a0b428e0b27e">gf_nw_connectNodeRoleStr</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *n, <a class="el" href="structgf__reaction.html">gf_reaction</a> *r, const char *role_str)</td></tr>
+<tr class="memdesc:ga8d23cbab967f6064ad31a0b428e0b27e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a node to a reaction.  <a href="#ga8d23cbab967f6064ad31a0b428e0b27e">More...</a><br /></td></tr>
+<tr class="separator:ga8d23cbab967f6064ad31a0b428e0b27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="memItemLeft" align="right" valign="top">_GraphfabExport int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gaf7de6867dcda48a5d6ec5eac45bc10c5">gf_nw_isNodeConnected</a> (<a class="el" href="structgf__network.html">gf_network</a> *nw, <a class="el" href="structgf__node.html">gf_node</a> *node, <a class="el" href="structgf__reaction.html">gf_reaction</a> *reaction)</td></tr>
 <tr class="memdesc:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the given node is connected to the given reaction.  <a href="#gaf7de6867dcda48a5d6ec5eac45bc10c5">More...</a><br /></td></tr>
 <tr class="separator:gaf7de6867dcda48a5d6ec5eac45bc10c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -367,7 +370,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 <tr class="memdesc:gad669799c7f5bf4c0022181e673141e37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert string to role.  <a href="#gad669799c7f5bf4c0022181e673141e37">More...</a><br /></td></tr>
 <tr class="separator:gad669799c7f5bf4c0022181e673141e37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabccfedd35fb858de8184d9130015a132"><td class="memItemLeft" align="right" valign="top">_GraphfabExport uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#gabccfedd35fb858de8184d9130015a132">gf_reaction_specGeti</a> (const <a class="el" href="structgf__reaction.html">gf_reaction</a> *r, uint64_t i)</td></tr>
-<tr class="memdesc:gabccfedd35fb858de8184d9130015a132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the species in the network.  <a href="#gabccfedd35fb858de8184d9130015a132">More...</a><br /></td></tr>
+<tr class="memdesc:gabccfedd35fb858de8184d9130015a132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the global index of a reactant/product/participant given its local index in a reaction.  <a href="#gabccfedd35fb858de8184d9130015a132">More...</a><br /></td></tr>
 <tr class="separator:gabccfedd35fb858de8184d9130015a132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2e75f429915085a4222590e94c54fc8e"><td class="memItemLeft" align="right" valign="top">_GraphfabExport uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__C__API.html#ga2e75f429915085a4222590e94c54fc8e">gf_reaction_getNumCurves</a> (const <a class="el" href="structgf__reaction.html">gf_reaction</a> *r)</td></tr>
 <tr class="memdesc:ga2e75f429915085a4222590e94c54fc8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of curves in the reaction.  <a href="#ga2e75f429915085a4222590e94c54fc8e">More...</a><br /></td></tr>
@@ -2762,6 +2765,55 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a class="anchor" id="ga8d23cbab967f6064ad31a0b428e0b27e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_GraphfabExport int gf_nw_connectNodeRoleStr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgf__network.html">gf_network</a> *&#160;</td>
+          <td class="paramname"><em>nw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__node.html">gf_node</a> *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgf__reaction.html">gf_reaction</a> *&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>role_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Connect a node to a reaction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>The node to connect </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reaction</td><td>The reaction to connect to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">role</td><td>The species role to use (must be one of SUBSTRATE,PRODUCT,MODIFIER,ACTIVATOR,INHIBITOR) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="gaa20c7690d7e2f33f57dc588a2f57f3c3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -3361,7 +3413,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
     <tr><td class="paramdir">[in]</td><td class="paramname">nw</td><td>The network object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The node's requested ID (or null to determine it automatically) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The node's name </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">compartment</td><td>The compartment to place the node in (may be NULL for no compartment) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">compartment</td><td>The compartment to place the node in (may be NULL for no compartment or NULL for the "default" compartment in SBML parlance) </td></tr>
   </table>
   </dd>
 </dl>
@@ -4079,7 +4131,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 
-<p>Get the index of the species in the network. </p>
+<p>Get the global index of a reactant/product/participant given its local index in a reaction. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>The reaction object </td></tr>
@@ -4718,7 +4770,7 @@ _GraphfabExport void&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 27 2016 14:12:41 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 28 2016 22:33:38 for libSBNW by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
