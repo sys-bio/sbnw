@@ -27,24 +27,23 @@ if '@LINK_WITH_MAGICK@'.lower() == 'on':
 
 sources = []
 #sources = [x.strip() for x in '@SBNW_SOURCES@'.split(';') if len(x.strip())]
-    
+
 print('sources = {}'.format(sources))
 
 defines = [('PYTHON_DIST',),
-                 ('PYTHON_API_VER', str(PYTHON_MAJ_VER)),
                  ('PYTHON_SCREWED_IT_UP', 1)]
- 
+
 if TestCMakeBool('@SBNW_WINDOWS_BUILD@'):
     if TestCMakeBool('@SBNW_MINGW@'):
         libprefix = 'lib'
         defines.append( ('NTDDI_VERSION', '@SBNW_NTDDI_VERSION@') )
     else:
         libprefix = ''
-    
+
     deps = [x.replace('/', '\\') for x in [r'@CMAKE_INSTALL_PREFIX@/bin/{}sbnw.dll'.format(libprefix), r'@CMAKE_INSTALL_PREFIX@/bin/libsbml.dll']]
     print('gf dll: ' + deps[0])
-    
-             
+
+
 if TestCMakeBool('@ENABLE_PYTHON_BINDINGS@'):
     module1 = Extension('sbnw',
                     define_macros = defines,

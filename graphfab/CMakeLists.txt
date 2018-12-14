@@ -1,6 +1,6 @@
 project (SagittariusSrc)
 
-set(SOURCES 
+set(SOURCES
     core/SagittariusAssert.c
     core/SagittariusCommon.cpp
     core/SagittariusException.cpp
@@ -21,7 +21,7 @@ set(SOURCES
     util/string.c
     )
 
-set(HEADERS 
+set(HEADERS
     core/BaseWORDs.h
     core/config.h.in
     core/Debug.hpp
@@ -117,7 +117,7 @@ add_library(sbnw SHARED ${SBNW_SOURCES})
 
 set_target_properties( sbnw PROPERTIES COMPILE_DEFINITIONS SBNW_CLIENT_BUILD=0 )
 # if(SBNW_WINDOWS_BUILD)
-#   set_target_properties( sbnw PROPERTIES OUTPUT_NAME "libsbnw" COMPILE_FLAGS "/DPYTHON_API_VER=3 /DPYTHON_SCREWED_IT_UP=1" PREFIX "" )
+#   set_target_properties( sbnw PROPERTIES OUTPUT_NAME "libsbnw" COMPILE_FLAGS "/DPY_MAJOR_VERSION=3 /DPYTHON_SCREWED_IT_UP=1" PREFIX "" )
 # endif()
 
 #Link in dependencies
@@ -145,7 +145,7 @@ if(BUILD_STATIC_LIB)
   add_library(sbnw_static STATIC ${SBNW_SOURCES})
   set_target_properties( sbnw_static PROPERTIES COMPILE_DEFINITIONS SBNW_CLIENT_BUILD=0 )
   if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    set_target_properties( sbnw_static PROPERTIES OUTPUT_NAME "libsbnw_static" COMPILE_FLAGS "/DPYTHON_API_VER=${PYTHON_VERSION_MAJOR} /DPYTHON_SCREWED_IT_UP=1" PREFIX "" )
+    set_target_properties( sbnw_static PROPERTIES OUTPUT_NAME "libsbnw_static" COMPILE_FLAGS "/DPY_MAJOR_VERSION=${PYTHON_VERSION_MAJOR} /DPYTHON_SCREWED_IT_UP=1" PREFIX "" )
   else()
     set_target_properties( sbnw_static PROPERTIES COMPILE_FLAGS "-fPIC" )
   endif()
@@ -170,7 +170,8 @@ foreach(f ${SBNW_HEADERS})
     add_custom_command(TARGET headers COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/${f} ${CMAKE_CURRENT_BINARY_DIR}/../include/sbnw/${f})
 endforeach()
 
-if(PYTHONINTERP_FOUND)
+message(STATUS "PYTHON_VERSION_MAJOR ${PYTHON_VERSION_MAJOR}")
+if(PYTHON_EXECUTABLE)
   add_library(sbnw_pythonmod SHARED python/sbnwmodule.c)
   if(BUILD_STATIC_LIB)
     target_link_libraries(sbnw_pythonmod sbnw_static)
@@ -184,7 +185,7 @@ if(PYTHONINTERP_FOUND)
     set_target_properties(sbnw_pythonmod PROPERTIES LINK_FLAGS "-undefined dynamic_lookup")
   endif()
 
-  set_target_properties(sbnw_pythonmod PROPERTIES OUTPUT_NAME "sbnw" COMPILE_FLAGS "${FPIC_FLAG} -DPYTHON_API_VER=${PYTHON_VERSION_MAJOR} -DPYTHON_SCREWED_IT_UP=1" PREFIX "" RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/sbnw_pythonmod_bin" LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/sbnw_pythonmod_libn")
+  set_target_properties(sbnw_pythonmod PROPERTIES OUTPUT_NAME "sbnw" COMPILE_FLAGS "${FPIC_FLAG} -DPYTHON_SCREWED_IT_UP=1" PREFIX "" RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/sbnw_pythonmod_bin" LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/sbnw_pythonmod_libn")
   set_property(TARGET sbnw_pythonmod PROPERTY INCLUDE_DIRECTORIES "${PYTHON_INCLUDE_DIR}" APPEND)
 
   if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")

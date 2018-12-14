@@ -50,8 +50,8 @@ static PyObject *SBNWError;
 
 static char* gfPyString_getString(PyObject* uni) {
     char* str = NULL;
-//     #pragma message "PYTHON_API_VER = " EXPAND_AND_STRINGIFY(PYTHON_API_VER)
-#if PYTHON_API_VER == 3
+//     #pragma message "PY_MAJOR_VERSION = " EXPAND_AND_STRINGIFY(PY_MAJOR_VERSION)
+#if PY_MAJOR_VERSION == 3
     PyObject* bytes = PyUnicode_AsUTF8String(uni);
     str = gf_strclone(PyBytes_AsString(bytes));
     Py_XDECREF(bytes);
@@ -80,7 +80,7 @@ static int PyCompareString(PyObject* uni, const char* str) {
 }
 
 PyObject* gfp_PyString_FromString(const char* s) {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     return PyUnicode_FromString(s);
 #else
     return PyString_FromString(s);
@@ -230,7 +230,7 @@ static PySequenceMethods gfp_PointSeqMethods = {
 };
 
 static PyTypeObject gfp_PointType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -423,7 +423,7 @@ static PyGetSetDef gfp_Transform_getseters[] = {
 };
 
 static PyTypeObject gfp_TransformType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -658,7 +658,7 @@ static PyMethodDef gfp_Compartment_methods[] = {
 };
 
 static PyTypeObject gfp_CompartmentType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -934,7 +934,7 @@ static PyMethodDef gfp_Rxn_methods[] = {
 };
 
 static PyTypeObject gfp_RxnType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -1107,7 +1107,7 @@ static int gfp_Node_setHeight(gfp_Node *self, PyObject *value, void *closure) {
 
 // node.name
 static PyObject *gfp_Node_getName(gfp_Node *self, void *closure) {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     return PyUnicode_FromString(gf_node_getName(&self->n));
 #else
     return PyString_FromString(gf_node_getName(&self->n));
@@ -1121,7 +1121,7 @@ static int gfp_Node_setName(gfp_Node *self, PyObject *value, void *closure) {
 
 // node.id
 static PyObject *gfp_Node_getId(gfp_Node *self, void *closure) {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     return PyUnicode_FromString(gf_node_getID(&self->n));
 #else
     return PyString_FromString(gf_node_getID(&self->n));
@@ -1186,7 +1186,7 @@ static PyMemberDef gfp_Node_members[] = {
 };
 
 static PyTypeObject gfp_NodeType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -1321,7 +1321,7 @@ static PyMemberDef gfp_Canvas_members[] = {
 };
 
 static PyTypeObject gfp_CanvasType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -2064,7 +2064,7 @@ static PyMemberDef gfp_Network_members[] = {
 };
 
 static PyTypeObject gfp_NetworkType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -2263,7 +2263,7 @@ static PyMethodDef gfp_Cubicintersec_methods[] = {
 };
 
 static PyTypeObject gfp_CubicintersecType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -2493,7 +2493,7 @@ static PyMemberDef gfp_Layout_members[] = {
 };
 
 static PyTypeObject gfp_LayoutType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -2859,7 +2859,7 @@ static PyMemberDef SBMLModel_members[] = {
 };
 
 static PyTypeObject gfp_SBMLModelType = {
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
     PyObject_HEAD_INIT(NULL)
@@ -3074,7 +3074,7 @@ static PyMethodDef SBNWMethods[] = {
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     // Module def
     static struct PyModuleDef sbnwmodule = {
     PyModuleDef_HEAD_INIT,
@@ -3086,7 +3086,7 @@ static PyMethodDef SBNWMethods[] = {
     };
 #endif
     
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     #define MODINIT_ABORT return NULL;
     #define MODINIT_SUCCESS(mod) return mod;
 #else
@@ -3099,7 +3099,7 @@ static PyMethodDef SBNWMethods[] = {
 
 // Module init
 PyMODINIT_FUNC
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
 PyInit_sbnw(void)
 #else
 initsbnw(void)
@@ -3148,7 +3148,7 @@ initsbnw(void)
     if (PyType_Ready(&gfp_SBMLModelType) < 0)
         MODINIT_ABORT
 
-#if PYTHON_API_VER == 3
+#if PY_MAJOR_VERSION == 3
     m = PyModule_Create(&sbnwmodule);
 #else
     m = Py_InitModule("sbnw", SBNWMethods);

@@ -55,6 +55,7 @@ message(STATUS "Using Python include directory ${PYTHON_INCLUDE_DIR}")
 find_library(LIBSBML_LIBRARY sbml libsbml HINTS ${LIBSBML_PREFIX}/lib)
 find_library(LIBSBML_STATIC_LIBRARY sbml-static REQUIRED libsbml-static HINTS ${LIBSBML_PREFIX}/lib)
 find_path(LIBSBML_INCLUDE_DIR sbml/SBMLTypes.h HINTS ${LIBSBML_PREFIX}/include)
+message(STATUS "LIBSBML_INCLUDE_DIR ${LIBSBML_INCLUDE_DIR}")
 include_directories(${LIBSBML_INCLUDE_DIR})
 
 #Image Magick
