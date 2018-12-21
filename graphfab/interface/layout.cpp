@@ -414,7 +414,7 @@ void gf_aliasNodebyDegree(gf_layoutInfo* l, int minDegree) {
 
 SBMLDocument* populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
 //     SBMLDocument* doc = (SBMLDocument*)m->pdoc;
-    SBMLNamespaces sbmlns(l->level ? l->level : 3, l->version ? l->version : 1, "layout", 1);
+    SBMLNamespaces sbmlns(l ? (l->level ? l->level : 3) : 3, l ? (l->version ? l->version : 1) : 1, "layout", 1);
     SBMLDocument* doc = new SBMLDocument(&sbmlns);
     AN(doc, "No SBML document");
     AT(doc->isPkgEnabled("layout"), "Layout package not enabled");
@@ -433,7 +433,7 @@ SBMLDocument* populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
     doc->setModel(model);
 
     // layout plugin
-    LayoutPkgNamespaces layoutns(l->level ? l->level : 3, l->version ? l->version : 1, 1);
+    LayoutPkgNamespaces layoutns(l ? (l->level ? l->level : 3) : 3, l ? (l->version ? l->version : 1) : 1, 1);
 //     if (doc->getLevel() == 2)
 //       doc->enablePackage(LayoutExtension::getXmlnsL2(),"layout", true);
 //     else if (doc->getLevel() == 3)
