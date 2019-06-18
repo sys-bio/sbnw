@@ -171,7 +171,7 @@ foreach(f ${SBNW_HEADERS})
 endforeach()
 
 message(STATUS "PYTHON_VERSION_MAJOR ${PYTHON_VERSION_MAJOR}")
-if(PYTHON_EXECUTABLE)
+if(TRUE)
   add_library(sbnw_pythonmod SHARED python/sbnwmodule.c)
   if(BUILD_STATIC_LIB)
     target_link_libraries(sbnw_pythonmod sbnw_static)

@@ -753,9 +753,10 @@ namespace Graphfab {
         if (!filterRxn(this))
           std::cerr << "ctrlCent first value: " << ctrlCent << "\n";
 #endif
+        Real scalar=20.;
 
         if(looped) {
-            const Real d = -25.;
+            const Real d = -scalar;
             ctrlCent = _p + (_p - loopPt);
 
             ctrlCent = new2ndPos(loopPt, _p, 0., d, false);
@@ -812,7 +813,7 @@ namespace Graphfab {
 #endif
 
         // keep dir, subtract 25 from length
-        ctrlCent = new2ndPos(ctrlCent, _p, 0., -25., false);
+        ctrlCent = new2ndPos(ctrlCent, _p, 0., -scalar, false);
 //         ctrlCent = new2ndPos(ctrlCent, _p, 180., 0., false);
 //         ctrlCent = new2ndPos(ctrlCent, _p, 0., 50., false);
 
@@ -821,14 +822,15 @@ namespace Graphfab {
           std::cerr << "ctrlCent adjust length: " << ctrlCent << "\n";
 #endif
 
+
         // control points
         for(CurveIt i=CurvesBegin(); i!=CurvesEnd(); ++i) {
             RxnBezier* c = *i;
             AN(c);
             RxnCurveType role = c->getRole();
 
-            Box bs(*c->as-Point(30,20), *c->as+Point(30,20));
-            Box be(*c->ae-Point(30,20), *c->ae+Point(30,20));
+            Box bs(*c->as-Point(scalar*3/2,scalar), *c->as+Point(scalar*3/2,scalar));
+            Box be(*c->ae-Point(scalar*3/2,scalar), *c->ae+Point(scalar*3/2,scalar));
 
             switch(role) {
                 case RXN_CURVE_SUBSTRATE:
@@ -836,8 +838,8 @@ namespace Graphfab {
                     if (!filterRxn(this))
                       std::cerr << "SUBSTRATE\n";
 #endif
-                    c->s = calcCurveBackup(ctrlCent, *c->as, c->ns ? c->ns->getBoundingBox() : bs, 10.);
-                    c->c1 = new2ndPos(_p, c->s, 0., -20., false);
+                    c->s = calcCurveBackup(ctrlCent, *c->as, c->ns ? c->ns->getBoundingBox() : bs, scalar/2);
+                    c->c1 = new2ndPos(_p, c->s, 0., -scalar, false);
                     c->e = *c->ae;
 //                     std::cerr << "* Substrate endpoint: " << c->e << "\n";
                     c->c2 = ctrlCent;
@@ -852,8 +854,8 @@ namespace Graphfab {
                     c->s = *c->as;
 //                     std::cerr << "* Product startpoint: " << c->s << "\n";
                     c->c1 = new2ndPos(ctrlCent, _p, 0., 1., true);
-                    c->e = calcCurveBackup(c->c1, *c->ae, c->ne ? c->ne->getBoundingBox() : be, 10.);
-                    c->c2 = new2ndPos(_p, c->e, 0., -20., false);
+                    c->e = calcCurveBackup(c->c1, *c->ae, c->ne ? c->ne->getBoundingBox() : be, scalar/2);
+                    c->c2 = new2ndPos(_p, c->e, 0., -scalar, false);
                     break;
                 case RXN_CURVE_ACTIVATOR:
                 case RXN_CURVE_INHIBITOR:
@@ -862,14 +864,14 @@ namespace Graphfab {
                     if (!filterRxn(this))
                       std::cerr << "MODIFIER\n";
 #endif
-                    c->s  = calcCurveBackup(_p, *c->as, c->ns ? c->ns->getBoundingBox() : bs, 10.);
+                    c->s  = calcCurveBackup(_p, *c->as, c->ns ? c->ns->getBoundingBox() : bs, scalar/2);
                     c->c1 = new2ndPos(*c->as, _p, 0., -15., false);
                     c->e = c->c1;
                     c->c2 = new2ndPos(*c->as, _p, 0., -20., false);
                     break;
                 default:
                     AN(0, "Unrecognized curve type");
-                    c->s = calcCurveBackup(_p, *c->as, c->ns ? c->ns->getBoundingBox() : bs, 10.);
+                    c->s = calcCurveBackup(_p, *c->as, c->ns ? c->ns->getBoundingBox() : bs, scalar/2);
                     c->c1 = c->s;
                     c->e = _p;
                     c->c2 = _p;
@@ -920,11 +922,11 @@ namespace Graphfab {
               }
 #endif
 
-              c1->setNodeSideCP(new2ndPos(c1->getNodeUsed()->getCentroid(), c1->getNodeSideCP(),  20., 10., false));
-              c2->setNodeSideCP(new2ndPos(c2->getNodeUsed()->getCentroid(), c2->getNodeSideCP(), -20., 10., false));
+              c1->setNodeSideCP(new2ndPos(c1->getNodeUsed()->getCentroid(), c1->getNodeSideCP(),  scalar, scalar/2, false));
+              c2->setNodeSideCP(new2ndPos(c2->getNodeUsed()->getCentroid(), c2->getNodeSideCP(), -scalar, scalar/2, false));
 
-              c1->setNodeSide(new2ndPos(c1->getNodeSideCP(), c1->getNodeSide(), -20., 0., false));
-              c2->setNodeSide(new2ndPos(c2->getNodeSideCP(), c2->getNodeSide(),  10., 0., false));
+              c1->setNodeSide(new2ndPos(c1->getNodeSideCP(), c1->getNodeSide(), -scalar, 0., false));
+              c2->setNodeSide(new2ndPos(c2->getNodeSideCP(), c2->getNodeSide(),  scalar, 0., false));
             }
           }
 #if PRINT_CURVE_DIAG
