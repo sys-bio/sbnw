@@ -55,7 +55,7 @@ class PyQtRenderer(pyfab_app.PyfabRenderer):
 
       # outline
       painter.setBrush(pyfab_app.Qt.NoBrush)
-      outlinepen = pyfab_app.QPen(pyfab_app.QBrush(pyfab_app.QColor(00,0,00,255)), 1., pyfab_app.Qt.SolidLine)
+      outlinepen = pyfab_app.QPen(pyfab_app.QBrush(pyfab_app.QColor(255,245,85,255)), 1., pyfab_app.Qt.SolidLine)
       painter.setPen(outlinepen)
 
       radialgradient = pyfab_app.QRadialGradient(pyfab_app.QPoint((x0+width/3,y0+height/2)), 30.*width/50, pyfab_app.QPoint((x0+width/4,y0+height/4)))
