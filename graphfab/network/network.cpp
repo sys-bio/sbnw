@@ -17,7 +17,7 @@
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE
- * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
@@ -47,7 +47,7 @@
 static std::string default_comp_id_ = "";
 
 namespace Graphfab {
-    
+
     std::string eltTypeToStr(const NetworkEltType t) {
         switch(t) {
             case NET_ELT_TYPE_SPEC:
@@ -60,7 +60,7 @@ namespace Graphfab {
                 AN(0, "Unknown type");
         }
     }
-    
+
     void dumpEltType(std::ostream& os, const NetworkEltType t, uint32 ind) {
         os << eltTypeToStr(t);
     }
@@ -148,13 +148,13 @@ namespace Graphfab {
     ArrowheadStyle ModCurve::getArrowheadStyle() const {
       return ArrowheadStyleLookup(this);
     }
-    
+
     //--CLASS NetworkElement--
-    
+
     void NetworkElement::resetActivity() {
         _v = Point(0.,0.);
     }
-    
+
     void NetworkElement::doMotion(const Real scale) {
         if(_lock)
             return;
@@ -163,31 +163,31 @@ namespace Graphfab {
         if (_v.mag2() > 1e-6)
           _p = _p + _v.normed()*scale;
     }
-    
+
     void NetworkElement::addDelta(const Point& d) {
         _v = _v + d;
     }
-    
+
     void NetworkElement::capDelta(const Real cap) {
         _v = _v.capMag(cap);
     }
-    
+
     void NetworkElement::capDelta2(const Real cap2) {
         _v.capMag2_(cap2);
     }
-    
+
     void NetworkElement::setCentroid(const Point& p) {
         _p = p;
         _pset = 1;
         recalcExtents();
     }
-    
+
     void NetworkElement::setGlobalCentroid(const Point& p) {
         _p = itf_*p;
         _pset = 1;
         recalcExtents();
     }
-    
+
     Point NetworkElement::getCentroid(COORD_SYSTEM coord) const {
       if (coord == COORD_SYSTEM_LOCAL)
         return _p;
@@ -198,10 +198,10 @@ namespace Graphfab {
         return _p;
       }
     }
-    
+
     Real NetworkElement::distance(const NetworkElement& e) const {
         NetworkEltShape sp1 = getShape(), sp2 = e.getShape();
-        
+
         if(sp1 == sp2 && sp2 == ELT_SHAPE_ROUND) {
             Real r = euclidean2d(getCentroid(), e.getCentroid()) - radius() - e.radius();
             return max(r, 0.);
@@ -212,14 +212,14 @@ namespace Graphfab {
             return sqrt(u*u + v*v);
         }
     }
-    
+
     bool NetworkElement::overlap(const NetworkElement& e) const {
         return (distance(e) == 0.);
     }
-    
+
     Point NetworkElement::forceVec(const NetworkElement& e) const {
         NetworkEltShape sp1 = getShape(), sp2 = e.getShape();
-        
+
         if(sp1 == sp2 && sp2 == ELT_SHAPE_ROUND) {
             return (getCentroid() - e.getCentroid()).normed();
         } else {
@@ -237,10 +237,10 @@ namespace Graphfab {
     Point NetworkElement::centroidDisplacementFrom(const NetworkElement& e) const {
             return getCentroid() - e.getCentroid();
     }
-    
+
     void NetworkElement::forceVec_(const NetworkElement& e, Point& p) const {
         NetworkEltShape sp1 = getShape(), sp2 = e.getShape();
-        
+
         if(sp1 == sp2 && sp2 == ELT_SHAPE_ROUND) {
             p = (getCentroid() - e.getCentroid()).normed();
         } else {
@@ -257,28 +257,28 @@ namespace Graphfab {
             p.norm_();
         }
     }
-    
+
     //--CLASS Node--
     void Node::setName(const std::string& name) {
         _name = name;
     }
-	
+
 	const std::string& Node::getName() const {
         return _name;
     }
-    
+
     const std::string& Node::getId() const {
         return _id;
     }
-    
+
     void Node::setId(const std::string& id) {
         _id = id;
     }
-    
+
     const std::string& Node::getGlyph() const {
         return _gly;
     }
-    
+
     void Node::setGlyph(const std::string& id) {
         _gly = id;
     }
@@ -362,41 +362,41 @@ namespace Graphfab {
     bool Node::isCommonInstance(const Node* other) const {
         return getId() == other->getId();
     }
-    
+
     Point Node::getUpperLeftCorner() const {
         return _p - Point(40,20);
     }
-    
+
     Point Node::getLowerRightCorner() const {
         return _p + Point(40,20);
     }
-    
+
     void Node::setWidth(Real w) {
         Point d(w/2., getHeight()/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
-    
+
     void Node::setHeight(Real h) {
         Point d(getWidth()/2., h/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
-    
+
     void Node::affectGlobalWidth(Real ww) {
         Real w = ww/tf_.scaleFactor();
         Point d(w/2., getHeight()/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
-    
+
     void Node::affectGlobalHeight(Real hh) {
         Real h = hh/tf_.scaleFactor();
         Point d(getWidth()/2., h/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
-    
+
     void Node::dump(std::ostream& os, uint32 ind) {
         indent(os, ind);
         if(isAlias())
@@ -419,12 +419,12 @@ namespace Graphfab {
         indent(os, ind+2);
         os << "Bounding Box: " << getUpperLeftCorner() << ", " << getLowerRightCorner() << "\n";
     }
-    
+
     void Node::dumpForces(std::ostream& os, uint32 ind) const {
         indent(os, ind);
         os << "Node forces: " << _v << "\n";
     }
-    
+
     std::string rxnRoleToString(RxnRoleType role) {
         switch(role) {
             case RXN_ROLE_SUBSTRATE:
@@ -481,13 +481,13 @@ namespace Graphfab {
                 AN(0, "Unrecognized species type");
         }
     }
-    
+
     //--CLASS Reaction--
-    
+
     void Reaction::hierarchRelease() {
         deleteCurves();
     }
-    
+
     void Reaction::addSpeciesRef(Node* n, RxnRoleType role) {
         _spec.push_back(std::make_pair(n, role));
         // recompute curves
@@ -498,7 +498,7 @@ namespace Graphfab {
         ++n->_deg;
         ++n->_ldeg;
     }
-    
+
     void Reaction::removeNode(Node* n) {
         bool rebuild=false;
         repeat:
@@ -518,7 +518,7 @@ namespace Graphfab {
         if(rebuild)
             rebuildCurves();
     }
-    
+
     Node* Reaction::findSpeciesById(const std::string& id) {
         for(NodeVec::iterator i=_spec.begin(); i!=_spec.end(); ++i) {
             Node* n = i->first;
@@ -528,7 +528,7 @@ namespace Graphfab {
         //not found
         return NULL;
     }
-    
+
     bool Reaction::hasSpecies(const Node* n) const {
         for(ConstNodeIt i=NodesBegin(); i!=NodesEnd(); ++i) {
             const Node* nn = i->first;
@@ -548,7 +548,7 @@ namespace Graphfab {
         }
         return result;
     }
-    
+
     void Reaction::substituteSpeciesById(const std::string& id, Node* spec) {
         for(NodeVec::iterator i=_spec.begin(); i!=_spec.end(); ++i) {
             Node* n = i->first;
@@ -585,7 +585,7 @@ namespace Graphfab {
         }
         SBNW_THROW(InternalCheckFailureException, "No such node", "Reaction::getSpeciesRole");
     }
-    
+
     void Reaction::substituteSpecies(Node* before, Node* after) {
         for(NodeVec::iterator i=_spec.begin(); i!=_spec.end(); ++i) {
             Node* n = i->first;
@@ -596,21 +596,21 @@ namespace Graphfab {
             }
         }
     }
-    
+
     Reaction::CurveVec& Reaction::getCurves() {
         curveGuard();
         return _curv;
     }
 
 #define REBUILD_CURVES_DIAG 0
-    
+
     void Reaction::rebuildCurves() {
         deleteCurves();
 
 # if REBUILD_CURVES_DIAG
         std::cerr << "Rebuild curves\n";
 # endif
-        
+
         for(ConstNodeIt i=NodesBegin(); i!=NodesEnd(); ++i) {
             Node* n = i->first;
             RxnRoleType r = i->second;
@@ -670,14 +670,14 @@ namespace Graphfab {
 # if REBUILD_CURVES_DIAG
             std::cerr << "  Curve type: " << CurveTypeToString(curv->getRole()) << "\n";
 # endif
-            
+
             curv->setTransform(tf_);
             curv->setInverseTransform(itf_);
             _curv.push_back(curv);
         }
-        
+
         recalcCurveCPs();
-        
+
         _cdirty = 0;
 
 //         std::cerr << "Done rebuilding curves\n";
@@ -738,7 +738,7 @@ namespace Graphfab {
             }
 
         }
-        
+
 #if PRINT_CURVE_DIAG
         if (!filterRxn(this)) {
           //  use mock centroid position from C# version
@@ -748,7 +748,7 @@ namespace Graphfab {
 #endif
 
         ctrlCent = (ctrlCent+_p) * (1. / (csub+1));
-        
+
 #if PRINT_CURVE_DIAG
         if (!filterRxn(this))
           std::cerr << "ctrlCent first value: " << ctrlCent << "\n";
@@ -762,7 +762,7 @@ namespace Graphfab {
 
             ctrlCent = new2ndPos(_p, ctrlCent, -90., 0., false);
         }
-        
+
 #if PRINT_CURVE_DIAG
         if (!filterRxn(this))
           std::cerr << "ctrlCent loop correction: " << ctrlCent << "\n";
@@ -805,7 +805,7 @@ namespace Graphfab {
             ctrlCent = _p + (p2 - p1);
             ctrlCent = new2ndPos(ctrlCent, _p, 0, d, false);
         }
-        
+
 #if PRINT_CURVE_DIAG
         if (!filterRxn(this))
           std::cerr << "ctrlCent uni-uni correction: " << ctrlCent << "\n";
@@ -815,7 +815,7 @@ namespace Graphfab {
         ctrlCent = new2ndPos(ctrlCent, _p, 0., -25., false);
 //         ctrlCent = new2ndPos(ctrlCent, _p, 180., 0., false);
 //         ctrlCent = new2ndPos(ctrlCent, _p, 0., 50., false);
-        
+
 #if PRINT_CURVE_DIAG
         if (!filterRxn(this))
           std::cerr << "ctrlCent adjust length: " << ctrlCent << "\n";
@@ -880,7 +880,7 @@ namespace Graphfab {
               std::cout << "curve " << *c << "\n";
 #endif
         }
-        
+
 #if PRINT_CURVE_DIAG
         if (!filterRxn(this))
           std::cerr << "ctrlCent after curves: " << ctrlCent << "\n";
@@ -933,7 +933,37 @@ namespace Graphfab {
 #endif
         }
     }
-    
+
+    void Reaction::clipCurves(const Real padding, const Real clip_cutoff) {
+        // control points
+        for(CurveIt i=CurvesBegin(); i!=CurvesEnd(); ++i) {
+            RxnBezier* c = *i;
+            AN(c);
+            RxnCurveType role = c->getRole();
+
+            switch(role) {
+                case RXN_CURVE_SUBSTRATE:
+                case RXN_CURVE_ACTIVATOR:
+                case RXN_CURVE_INHIBITOR:
+                case RXN_CURVE_MODIFIER:
+                    if (c->ns) {
+                      Box b = c->ns->getBoundingBox().padded(padding);
+                      c->clipReverseToBox(b, clip_cutoff);
+                    }
+                    break;
+                case RXN_CURVE_PRODUCT:
+                    if (c->ne) {
+                      Box b = c->ne->getBoundingBox().padded(padding);
+                      c->clipForwardToBox(b, clip_cutoff);
+                    }
+                    break;
+                default:
+                    AN(0, "Unrecognized curve type");
+                    break;
+            }
+        }
+    }
+
     void Reaction::recenter() {
 //         std::cerr << "RECENTER\n";
         uint32 count=0;
@@ -947,14 +977,14 @@ namespace Graphfab {
         _p = _p*(1./count);
         rebuildCurves();
     }
-    
+
     void Reaction::recompCentroid() {
 //         std::cerr << "RECOMP CENTROID\n";
         if(isCentroidSet())
             return;
         doCentroidCalc();
     }
-    
+
     void Reaction::forceRecalcCentroid() {
 //         std::cerr << "RECALC CENTROID\n";
         doCentroidCalc();
@@ -981,14 +1011,14 @@ namespace Graphfab {
       // normalize
       _p = _p*(1./count);
     }
-    
+
     void Reaction::deleteCurves() {
         for(CurveVec::iterator i=_curv.begin(); i!=_curv.end(); ++i) {
             delete *i;
         }
         _curv.clear();
     }
-    
+
     void Reaction::dump(std::ostream& os, uint32 ind) {
         indent(os, ind);
         os << "Reaction:\n";
@@ -1005,18 +1035,18 @@ namespace Graphfab {
             os << i->first->getId() << "(" << i->first->getGlyph() << "), role: " << rxnRoleToString(i->second) << "\n";
         }
     }
-    
+
     void Reaction::dumpForces(std::ostream& os, uint32 ind) const {
         indent(os, ind);
         os << "Reaction forces: " << _v << "\n";
     }
-    
+
     //--CLASS Compartment--
-    
+
     void Compartment::addElt(NetworkElement* e) {
         _elt.push_back(e);
     }
-    
+
     bool Compartment::containsElt(const NetworkElement* e) const {
         for(ConstEltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             const NetworkElement* x = *i;
@@ -1025,7 +1055,7 @@ namespace Graphfab {
         }
         return false;
     }
-    
+
     void Compartment::removeElt(NetworkElement* e) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             if(*i == e) {
@@ -1035,12 +1065,12 @@ namespace Graphfab {
             }
         }
     }
-    
+
     void Compartment::setRestExtents(const Box& ext) {
         _ext = ext;
         _ra = _ext.area();
     }
-    
+
     void Compartment::resizeEnclose(double padding) {
         Real minx, miny, maxx, maxy;
         EltIt i=EltsBegin();
@@ -1063,7 +1093,7 @@ namespace Graphfab {
         _ext = _ext.padded(padding);
         _ra = _ext.area();
     }
-    
+
     void Compartment::autoSize() {
         uint64 count = _elt.size();
         Real dim = 350*sqrt((Real)count);
@@ -1073,7 +1103,7 @@ namespace Graphfab {
 		//_ext = Box(Point(0, 0), Point(dim, dim));
         _ra = _ext.area();
     }
-    
+
     void Compartment::resetActivity() {
         _v = Point(0,0);
         // now calculate stress due to being stretched beyond rest area
@@ -1087,44 +1117,44 @@ namespace Graphfab {
         _fx2 = -_res*_E*strain*w;
         _fy2 = -_res*_E*strain*h;
     }
-    
+
     void Compartment::applyBoundaryForce(const Real fx1, const Real fy1, const Real fx2, const Real fy2) {
         _fx1 += fx1;
         _fy1 += fy1;
         _fx2 += fx2;
         _fy2 += fy2;
     }
-    
+
     void Compartment::doInternalForce(NetworkElement* e, const Real f, const Real t) {
         Real x1=_ext.getMin().x, y1 = _ext.getMin().y, x2 = _ext.getMax().x, y2 = _ext.getMax().y;
         Real invt = 1./t;
-        
+
         Real eminx = e->getMinX();
         Real eminy = e->getMinY();
         Real emaxx = e->getMaxX();
         Real emaxy = e->getMaxY();
-        
+
         // compute forces
         Real fx1 = f*exp((x1-eminx)*invt);
         Real fx2 = -f*exp((emaxx-x2)*invt);
         Real fy1 = f*exp((y1-eminy)*invt);
         Real fy2 = -f*exp((emaxy-y2)*invt);
-        
+
         // do forces on element
         e->addDelta(Point(fx1+fx2, fy1+fy2));
-        
+
         // do forces on container
         applyBoundaryForce(-fx1, -fx2, -fy1, -fy2);
         addDelta(-Point(fx1+fx2,fy1+fy2));
     }
-    
+
     void Compartment::doInternalForceAll(const Real f, const Real t) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             doInternalForce(e, f, t);
         }
     }
-    
+
     void Compartment::doMotion(const Real scale_) {
         if(_lock)
             return;
@@ -1140,7 +1170,7 @@ namespace Graphfab {
             _ext.setHeight(10.);
         //recalc centroid?
     }
-    
+
     void Compartment::capDelta2(const Real cap2) {
         _v.capMag2_(cap2);
         const Real cap = sqrt(cap2);
@@ -1153,7 +1183,7 @@ namespace Graphfab {
         if(mag(_fy2) > cap)
             _fy2 = sign(_fy2)*cap;
     }
-    
+
     bool Compartment::contains(const NetworkElement* e) const {
         for(ConstEltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             if(*i == e)
@@ -1161,7 +1191,7 @@ namespace Graphfab {
         }
         return false;
     }
-    
+
     void Compartment::dump(std::ostream& os, uint32 ind) {
         indent(os, ind);
         os << "Compartment:\n";
@@ -1172,14 +1202,14 @@ namespace Graphfab {
         indent(os, ind+2);
         os << "Extents: " << _ext << "\n";
     }
-    
+
     void Compartment::dumpForces(std::ostream& os, uint32 ind) const {
         indent(os, ind);
         os << "Compartment forces: " << _fx1 << ", " << _fy1 << ", " << _fx2 << ", " << _fy2 << "), Centroid forces: " << _v << "\n";
     }
-    
+
     //--CLASS Network--
-    
+
     void Network::hierarchRelease() {
         // FIXME: replace with hierarch free
         for(NodeVec::iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
@@ -1195,19 +1225,19 @@ namespace Graphfab {
             delete *i;
         }
     }
-    
+
     void Network::addNode(Node* n) {
         AN(n, "No node to add");
         _nodes.push_back(n);
         addElt(n);
     }
-    
+
     void Network::removeReactionsForNode(Node* n) {
         for(RxnVec::iterator i=_rxn.begin(); i!=_rxn.end(); ++i) {
             (*i)->removeNode(n);
         }
     }
-    
+
     void Network::removeNode(Node* n) {
         AN(n, "No node to remove");
         // remove from element container
@@ -1251,7 +1281,7 @@ namespace Graphfab {
 
         return r->hasSpecies(n);
     }
-    
+
     Node* Network::findNodeById(const std::string& id) {
         for(NodeVec::iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
             Node* n = *i;
@@ -1261,7 +1291,7 @@ namespace Graphfab {
         //not found
         return NULL;
     }
-    
+
     const Node* Network::findNodeById(const std::string& id) const {
         for(NodeVec::const_iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
             const Node* n = *i;
@@ -1271,12 +1301,12 @@ namespace Graphfab {
         //not found
         return NULL;
     }
-    
+
     std::string Network::getUniqueId() const {
         std::size_t k=0;
         std::string id;
         const Node* n=NULL;
-        
+
         do {
             ++k;
             std::stringstream ss;
@@ -1284,9 +1314,9 @@ namespace Graphfab {
             id = ss.str();
             std::cout << "Trying " << id << "\n";
         } while(findNodeById(id));
-        
+
         std::cout << "Unique ID: " << id << "\n";
-        
+
         return id;
     }
 
@@ -1300,11 +1330,11 @@ namespace Graphfab {
 
         return ss.str();
     }
-    
+
     std::size_t Network::getUniqueIndex() const {
 //         std::cout << "getUniqueIndex started\n";
         std::size_t k=0;
-        
+
         repeat:
         for(NodeVec::const_iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
             const Node* node = *i;
@@ -1313,10 +1343,10 @@ namespace Graphfab {
                 goto repeat;
             }
         }
-        
+
         return k;
     }
-    
+
     Node* Network::findNodeByGlyph(const std::string& gly) {
         for(NodeVec::iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
             Node* n = *i;
@@ -1375,7 +1405,7 @@ namespace Graphfab {
             SBNW_THROW(InvalidParameterException, ss.str(), "Network::getInstance");
         }
     }
-    
+
     bool Network::containsNode(const Node* n) const {
         for(NodeVec::const_iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
             const Node* x = *i;
@@ -1462,7 +1492,7 @@ namespace Graphfab {
             x->clearExcludeFromSubgraphEnum();
         }
     }
-    
+
     Reaction* Network::findReactionById(const std::string& id) {
         for(RxnVec::iterator i=_rxn.begin(); i!=_rxn.end(); ++i) {
             Reaction* r = *i;
@@ -1472,7 +1502,7 @@ namespace Graphfab {
         //not found
         return NULL;
     }
-    
+
     Compartment* Network::findCompById(const std::string& id) {
         for(CompVec::iterator i=_comp.begin(); i!=_comp.end(); ++i) {
             Compartment* c = *i;
@@ -1482,7 +1512,7 @@ namespace Graphfab {
         //not found
         return NULL;
     }
-    
+
     Compartment* Network::findCompByGlyph(const std::string& gly) {
         for(CompVec::iterator i=_comp.begin(); i!=_comp.end(); ++i) {
             Compartment* c = *i;
@@ -1492,20 +1522,20 @@ namespace Graphfab {
         //not found
         return NULL;
     }
-    
+
     void Network::resetUsageInfo() {
         for(NodeIt i=NodesBegin(); i!=NodesEnd(); ++i) {
             Node* n = *i;
             n->numUses() = 0;
         }
     }
-    
+
     void Network::addReaction(Reaction* rxn) {
         AN(rxn);
         _rxn.push_back(rxn);
         addElt(rxn);
     }
-    
+
     void Network::removeReaction(Reaction* r) {
         AN(r, "No reaction to remove");
         // remove from element container
@@ -1520,7 +1550,7 @@ namespace Graphfab {
         }
         SBNW_THROW(InvalidParameterException, "No such reaction", "Network::removeReaction");
     }
-    
+
     void Network::elideEmptyComps() {
         // replace in elt vec
         EltVec w;
@@ -1534,7 +1564,7 @@ namespace Graphfab {
                 w.push_back(e);
         }
         _elt.swap(w);
-        
+
         // replace in comp vec & delete empty ones
         CompVec v;
         for(CompIt i=CompsBegin(); i!=CompsEnd(); ++i) {
@@ -1546,7 +1576,7 @@ namespace Graphfab {
         }
         _comp.swap(v);
     }
-    
+
     Compartment* Network::findContainingCompartment(const NetworkElement* e) {
         for(CompIt i=CompsBegin(); i!=CompsEnd(); ++i) {
             Compartment* c = *i;
@@ -1570,7 +1600,7 @@ namespace Graphfab {
         }
         return k;
     }
-    
+
     Box Network::getBoundingBox() const {
         Box b;
         {
@@ -1590,28 +1620,28 @@ namespace Graphfab {
 //         std::cerr << "Network bounding box: " << b << "\n";
         return b;
     }
-    
+
     void Network::fitToWindow(const Box& w) {
         Graphfab::Affine2d tf = Graphfab::Affine2d::FitToWindow(getBoundingBox(), w);
 //         std::cerr << "Applying tf:\n" << tf;
         setTransform(tf);
         setInverseTransform(tf.inv());
     }
-    
+
     void Network::applyTransform(const Affine2d& t) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->applyTransform(t);
         }
     }
-    
+
     void Network::setTransform(const Affine2d& t, bool recurse) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->setTransform(t, recurse);
         }
     }
-    
+
     void Network::setInverseTransform(const Affine2d& it, bool recurse) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
@@ -1625,7 +1655,7 @@ namespace Graphfab {
             e->applyDisplacement(d);
         }
     }
-    
+
     void Network::resetActivity() {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
@@ -1639,35 +1669,35 @@ namespace Graphfab {
             e->doMotion(scale);
         }
     }
-    
+
     void Network::resizeCompsEnclose(double padding) {
         for(CompIt i=CompsBegin(); i!= CompsEnd(); ++i) {
             Compartment* c = *i;
             c->resizeEnclose(padding);
         }
     }
-    
+
     void Network::autosizeComps() {
         for(CompIt i=CompsBegin(); i!= CompsEnd(); ++i) {
             Compartment* c = *i;
             c->autoSize();
         }
     }
-    
+
     void Network::updateExtents() {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->recalcExtents();
         }
     }
-    
+
     void Network::capDeltas(const Real cap) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->capDelta2(cap*cap);
         }
     }
-    
+
     Point Network::pmean() const {
         Point m(0.,0.);
         uint64 c=0;
@@ -1679,15 +1709,15 @@ namespace Graphfab {
         m = m * (1./c);
         return m;
     }
-    
+
     Point Network::center() const {
         return getExtents().getCenter();
     }
-    
+
     Box Network::getExtents() const {
         if(EltsBegin() == EltsEnd()) return Box();
         Box m((*EltsBegin())->getExtents());
-        
+
         for(ConstEltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             if(e->getMinX() < m.getMinX())
@@ -1699,10 +1729,10 @@ namespace Graphfab {
             if(e->getMaxY() > m.getMaxY())
                 m.setMaxY(e->getMaxY());
         }
-        
+
         return m;
     }
-    
+
     void Network::recenter(const Point& p) {
         Point m(pmean());
         Point d = p-m;
@@ -1711,7 +1741,7 @@ namespace Graphfab {
             e->setCentroid(e->getCentroid() + d);
         }
     }
-    
+
     Point Network::pvariance() const {
         Point m(pmean());
         Point d(0.,0.);
@@ -1724,7 +1754,7 @@ namespace Graphfab {
         d = d.sqrtTerms() * (1./c);
         return d;
     }
-    
+
     void Network::randomizePositions(const Box& b) {
         for(NodeVec::iterator i=_nodes.begin(); i!=_nodes.end(); ++i) {
             Node* n = *i;
@@ -1753,12 +1783,13 @@ namespace Graphfab {
         recalcCurveCPs();
         //dump(std::cout, 0);
     }
-    
+
     void Network::rebuildCurves() {
         for(RxnIt i=RxnsBegin(); i!=RxnsEnd(); ++i) {
             Reaction* r = *i;
             r->rebuildCurves();
         }
+        clipCurves();
     }
 
     void Network::recalcCurveCPs() {
@@ -1767,7 +1798,14 @@ namespace Graphfab {
             r->recalcCurveCPs();
         }
     }
-    
+
+    void Network::clipCurves(const Real padding, const Real clip_cutoff) {
+        for(RxnIt i=RxnsBegin(); i!=RxnsEnd(); ++i) {
+            Reaction* r = *i;
+            r->clipCurves(padding, clip_cutoff);
+        }
+    }
+
     void Network::recenterJunctions() {
 //         std::cerr << "Recenter junctions\n";
         for(RxnIt i=RxnsBegin(); i!=RxnsEnd(); ++i) {
@@ -1775,9 +1813,9 @@ namespace Graphfab {
             r->recenter();
         }
     }
-    
+
     // IO/Diagnostics:
-    
+
     void Network::dump(std::ostream& os, uint32 ind) {
         indent(os, ind);
         os << "Network:\n";
@@ -1786,33 +1824,33 @@ namespace Graphfab {
             e->dump(os, ind+2);
         }
     }
-    
+
     void Network::dumpEltForces(std::ostream& os, uint32 ind) const {
         for(ConstEltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->dumpForces(os, ind+2);
         }
     }
-    
+
     //--GLOBAL--
 
     Network* networkFromLayout(const Layout& lay, const Model& mod) {
         Network* net= networkFromModel(mod);
-        
+
         // used to compute aliases
         net->resetUsageInfo();
-        
+
         //add additional information from layout
         // for compartments
         for(int i=0; i<lay.getNumCompartmentGlyphs(); ++i) {
             const CompartmentGlyph* cg = lay.getCompartmentGlyph(i);
-            
+
             Graphfab::Compartment* c = net->findCompById(cg->getCompartmentId());
-            
+
             c->setGlyph(cg->getId());
-            
+
             const BoundingBox* bbox = cg->getBoundingBox();
-            
+
             c->setRestExtents(Box(Point(bbox->x(), bbox->y()), Point(bbox->x()+bbox->width(), bbox->y()+bbox->height())));
         }
 
@@ -1829,16 +1867,16 @@ namespace Graphfab {
           if (c)
             r->setCentroid(c->getCentroid());
         }
-        
+
         // for nodes
         for(int i=0; i<lay.getNumSpeciesGlyphs(); ++i) {
             const SpeciesGlyph* sg = lay.getSpeciesGlyph(i);
-            
+
             Node* n = net->findNodeById(sg->getSpeciesId());
             AN(n, "No such node exists");
-            
+
 //             std::cerr << "Species glyph: " << sg->getSpeciesId() << "(" << sg->getId() << ")\n";
-            
+
             //increment usage counter (used to find aliases)
             if(n->numUses() == 0) {
                 n->numUses()++;
@@ -1852,22 +1890,22 @@ namespace Graphfab {
                 //add alias node to the network
                 net->addNode(n);
             }
-            
+
             const BoundingBox* bb = sg->getBoundingBox();
-            
+
             n->setCentroid(Point(bb->x() + bb->width()/2., bb->y() + bb->height()/2.));
             n->setWidth(bb->width());
             n->setHeight(bb->height());
         }
-        
+
         // for reactions
         for(int i=0; i<lay.getNumReactionGlyphs(); ++i) {
             const ReactionGlyph* rg = lay.getReactionGlyph(i);
 //             std::cerr << "Read ReactionGlyph " << rg->getId() << "\n";
-            
+
             Reaction* r = net->findReactionById(rg->getReactionId());
             AN(r, "No such reaction");
-            
+
             for(int i_spc=0; i_spc<rg->getNumSpeciesReferenceGlyphs(); ++i_spc) {
                 const SpeciesReferenceGlyph* srg = rg->getSpeciesReferenceGlyph(i_spc);
 
@@ -1903,7 +1941,7 @@ namespace Graphfab {
 
             ::Curve const* curve = rg->getCurve();
             ::BoundingBox const* sbml_bb = rg->getBoundingBox();
-            
+
             // calculate the centroid
 //             if (!curve)
 //               std::cerr << rg->getId() << ": no curve\n";
@@ -2016,9 +2054,9 @@ namespace Graphfab {
 //             r->rebuildCurves();
 //             std::cerr << "Reaction centroid: " << r->getCentroid(NetworkElement::COORD_SYSTEM_GLOBAL) << "\n";
         }
-        
+
         net->setLayoutSpecified(true);
-        
+
         return net;
     }
 
@@ -2027,77 +2065,77 @@ namespace Graphfab {
 
         if( mod.isSetId() )
             net->setId(mod.getId());
-        
+
         // add compartments
         for(int i=0; i<mod.getNumCompartments(); ++i) {
             const ::Compartment* comp = mod.getCompartment(i);
-            
+
             // elide "default" compartments based on SBO
             if(comp->isSetSBOTerm() && comp->getSBOTerm() == 410) {
                 continue;
             }
-            
+
             // assume a compartment with the id "default" or "compartment" represents
             // a default, non-visual compartment, so discard it from the model
             if(comp->getId() != "default" && comp->getId() != "compartment" && comp->getId() != "graphfab_default_compartment" && (!haveDefaultCompartmentId() || getDefaultCompartmentId() !=  comp->getId())) {
                 Graphfab::Compartment* c = new Compartment();
-                
+
                 // set id
                 c->setId(comp->getId());
-                
+
                 // add to network
                 net->addCompartment(c);
             }
         }
-        
+
         // add nodes
         //printf("# floating = %d\n", floating);
         for(int i=0; i<mod.getNumSpecies(); ++i) {
             Node* n = new Node();
-            
+
             const Species* s = mod.getSpecies(i);
-            
+
             AN(s, "Failed to get species");
             #if SAGITTARIUS_DEBUG_LEVEL >= 2
 //             std::cout << "Species: name: " << s->getName() << ", id: " << s->getId() << "\n";
             #endif
-            
+
             n->setName(s->getName());
             n->setId(s->getId());
-            
+
             //no alias info
             n->numUses() = 1;
             n->setAlias(false);
-            
+
             // associate compartment (if one exists)
             Graphfab::Compartment* c = net->findCompById(s->getCompartment());
             if(c) {
                 c->addElt(n);
                 n->_comp = c;
             }
-            
+
             // set index
             n->set_i((size_t)i);
-            
+
             // add to network
             net->addNode(n);
         }
-        
+
         // remove empty compartments
         net->elideEmptyComps();
-        
+
         // resize compartments to enclose contents
         //NOTE: nodes do not yet have positions, can't do this
         //net->resizeCompartments();
         net->autosizeComps();
-        
+
         // add connections
         for(int i_rxn=0; i_rxn<mod.getNumReactions(); ++i_rxn) {
             const ::Reaction* rxn = mod.getReaction(i_rxn);
             Reaction* r = new Reaction();
-            
+
             r->setId(rxn->getId());
-            
+
             AN(rxn, "Failed to get reaction");
 
             // associate compartment (if one exists)
@@ -2105,7 +2143,7 @@ namespace Graphfab {
             if(c) {
                 c->addElt(r);
             }
-            
+
             // get reactants
             for(int i_spc=0; i_spc<rxn->getNumReactants(); ++i_spc) {
                 //get the reference
@@ -2114,7 +2152,7 @@ namespace Graphfab {
                 AN(src, "Invalid species reference");
                 r->addSpeciesRef(src, RXN_ROLE_SUBSTRATE);
             }
-            
+
             // get products
             for(int i_spc=0; i_spc<rxn->getNumProducts(); ++i_spc) {
                 //get the reference
@@ -2123,7 +2161,7 @@ namespace Graphfab {
                 AN(src, "Invalid species reference");
                 r->addSpeciesRef(src, RXN_ROLE_PRODUCT);
             }
-            
+
             // get modifiers
             for(int i_spc=0; i_spc<rxn->getNumModifiers(); ++i_spc) {
                 //get the reference
@@ -2132,14 +2170,14 @@ namespace Graphfab {
                 AN(src, "Invalid species reference");
                 r->addSpeciesRef(src, RXN_ROLE_MODIFIER);
             }
-            
+
             net->addReaction(r);
         }
-        
+
         #if SAGITTARIUS_DEBUG_LEVEL >= 3
         net->dump(std::cout, 0);
         #endif
-        
+
         return net;
     }
 
