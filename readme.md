@@ -39,10 +39,10 @@ Online C API documentation (via Doxygen) can be found at http://sys-bio.github.i
    (**VIDEO** showing steps to follow to build from source using CMAKE and Visual Studio: https://www.youtube.com/watch?v=e_Lydwzx-Hg, note that a few steps differ from what is shown in the video:
     specifically, 
     
-    0) you can download the 64-bit versions if you like; in the video the 32-bit versions are used 
-    1) in CMAKE, you want to set the CMAKE_INSTALL_PREFIX to the INSTALL dir you created in your Visual Studio Project directory 
-    2) in CMAKE, you want to check the box for ENABLE_LAYOUT 
-    3) in Visual Studio, in addition to building the ALL_BUILD target as shown in the video, you also want to build the INSTALL target
+    1) you can download the 64-bit versions if you like; in the video the 32-bit versions are used 
+    2) in CMAKE, you want to set the CMAKE_INSTALL_PREFIX to the INSTALL dir you created in your Visual Studio Project directory 
+    3) in CMAKE, you want to check the box for ENABLE_LAYOUT 
+    4) in Visual Studio, in addition to building the ALL_BUILD target as shown in the video, you also want to build the INSTALL target
    )  
  * **NOTE**: If you install a pre-built binary of libSBML then you must compile SBNW with the same version of Visual Studio as used to build libSBML.
 
