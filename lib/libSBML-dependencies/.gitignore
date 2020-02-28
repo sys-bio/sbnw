@@ -1,0 +1,7 @@
+/build32
+/build64
+/build
+/release
+/dist
+/install*
+/vs*

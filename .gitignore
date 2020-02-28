@@ -1,2 +1,7 @@
 graphfab/sphinx/source/generated/
 *.kate-swp
+cmake-*
+build
+.idea
+__pycache__
+*.dll
