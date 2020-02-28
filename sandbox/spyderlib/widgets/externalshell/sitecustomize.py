@@ -196,12 +196,12 @@ if sys.platform == 'darwin':
             # Add a minimal library (with spyderlib) at the end of sys.path to
             # be able to connect our monitor to the external console
             py_ver = '%s.%s' % (sys.version_info[0], sys.version_info[1])
-            app_pythonpath = '%s/Contents/Resources/lib/python%s' (MAC_APP_NAME,
+            app_pythonpath = '%s/Contents/Resources/third_party_libs/python%s' (MAC_APP_NAME,
                                                                    py_ver)
             full_pythonpath = [p for p in sys.path if p.endswith(app_pythonpath)]
             if full_pythonpath:
                 sys.path.remove(full_pythonpath[0])
-                sys.path.append(full_pythonpath[0] + osp.sep + 'minimal-lib')
+                sys.path.append(full_pythonpath[0] + osp.sep + 'minimal-third_party_libs')
         else:
             # Add missing variables and methods to the app's site module
             import site
