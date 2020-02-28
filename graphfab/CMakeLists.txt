@@ -1,5 +1,3 @@
-project(SagittariusSrc)
-
 set(SOURCES
         core/SagittariusAssert.c
         core/SagittariusCommon.cpp
@@ -59,7 +57,11 @@ set(HEADERS
         util/string.h
         )
 
-configure_file(core/config.h.in core/config.h)
+message(STATUS "converting core")
+configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/core/config.h.in
+        ${CMAKE_CURRENT_SOURCE_DIR}/core/config.h
+)
 
 ##Image Magick-related sources
 if (LINK_WITH_MAGICK)
@@ -74,8 +76,6 @@ endif ()
 
 set(SBNW_SOURCES ${SOURCES} ${MAGICK_SOURCES})
 set(SBNW_HEADERS ${HEADERS} ${MAGICK_HEADERS})
-
-# configure_file(math/transform.h math/transform.h COPYONLY)
 
 if (ENABLE_PYTHON_BINDINGS)
     foreach (f ${SOURCES})
@@ -96,14 +96,15 @@ configure_file(sphinx/source/index.rst sphinx/source/index.rst COPYONLY)
 configure_file(sphinx/Makefile sphinx/Makefile COPYONLY)
 
 # ** Shared Library **
-add_library(sbnw SHARED ${SBNW_SOURCES})
+add_library(sbnw SHARED ${SBNW_SOURCES} Fake.cpp Fake.h)
 
-#Link in dependencies
-if (${WIN32})
-    list(APPEND ${LIBSBML_EXTRA_LIBS} Ws2_32.lib)
-endif ()
+#include directories
+target_include_directories(sbnw PUBLIC  ${CMAKE_SOURCE_DIR} ${LIBSBML_INCLUDE_DIR})
+
 ##SBML
-target_link_libraries(sbnw ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS}) # libxml2 libbz2 zdll libiconv Ws2_32
+target_link_libraries(sbnw PRIVATE
+        ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
+#target_link_libraries(sbnw PRIVATE ) # libxml2 libbz2 zdll libiconv Ws2_32
 #target_link_libraries(sbnw ${LIBSBML_LIBRARY} ${LIBSBML_EXTRA_LIBS}) # libxml2 libbz2 zdll libiconv Ws2_32
 ##Image Magick
 if (LINK_WITH_MAGICK)
@@ -113,6 +114,7 @@ endif ()
 # ** Static Library **
 if (BUILD_STATIC_LIB)
     add_library(sbnw_static STATIC ${SBNW_SOURCES})
+    target_include_directories(sbnw_static PUBLIC ${LIBSBML_INCLUDE_DIR} ${CMAKE_SOURCE_DIR})
     if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         set_target_properties(sbnw_static PROPERTIES OUTPUT_NAME "libsbnw_static" COMPILE_FLAGS "/DPY_MAJOR_VERSION=${PYTHON_VERSION_MAJOR} /DPYTHON_SCREWED_IT_UP=1" PREFIX "")
     else ()
@@ -122,7 +124,7 @@ if (BUILD_STATIC_LIB)
     # Link in dependencies
 
     # SBML
-    target_link_libraries(sbnw_static ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS} ws2_32)
+    target_link_libraries(sbnw_static ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
 
     # Image Magick
     if (LINK_WITH_MAGICK)

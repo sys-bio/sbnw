@@ -42,6 +42,7 @@
 #include "graphfab/core/SagittariusPlatform.h"
 #include "graphfab/core/config.h"
 
+
 #ifdef __cplusplus
     #include <string>
     #include <vector>
