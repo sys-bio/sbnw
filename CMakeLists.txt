@@ -52,9 +52,6 @@ if (${WIN32})
     #libSBML
     set(LIBSBML_PREFIX "C:/Program Files (x86)/libSBML" CACHE FILEPATH "libSBML root directory (contains lib, include, etc.)")
 else ()
-    #Important paths
-    set(SAGITTARIUS_BUILD_ROOT ${CMAKE_CURRENT_BINARY_DIR})
-
     #Internal Options
     set(SBNW_WIN_COPY_DEPS_TO_INSTALL OFF CACHE BOOL "Should be off for Linux")
     set(ENABLE_FULL_RPATH 1 CACHE BOOL "Enable full RPath in generated executable code")
@@ -99,6 +96,9 @@ list(APPEND LIBSBML_EXTRA_LIBS
 set(SBNW_SPYDER_DIST OFF CACHE BOOL "Install Spyder plugin files")
 
 set(BUILD_STATIC_LIB ON CACHE BOOL "Build the static version of the library")
+
+#dependencies
+add_subdirectory(lib/libSBML-dependencies)
 
 # GTest
 find_package(GTest)
@@ -152,6 +152,8 @@ if (ENABLE_FULL_RPATH) #http://www.cmake.org/Wiki/CMake_RPATH_handling
         SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
     ENDIF ("${isSystemDir}" STREQUAL "-1")
 endif ()
+
+
 
 #add include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

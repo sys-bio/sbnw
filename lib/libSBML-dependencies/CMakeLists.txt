@@ -19,9 +19,6 @@
 #
 ###############################################################################
 
-cmake_minimum_required(VERSION 2.8)
-project(libsbml_dependencies)
-
 include(CMakeTestCCompiler)
 include(CheckCSourceCompiles)
 include(CheckCXXSourceCompiles)
