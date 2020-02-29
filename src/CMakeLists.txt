@@ -102,19 +102,7 @@ target_include_directories(sbnw PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${SBNW_THIRD
 
 ##SBML
 
-#target_link_libraries(sbnw PRIVATE ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
-#target_link_libraries(sbnw PRIVATE ${LIBSBML_STATIC_LIBRARY})
-target_link_libraries(sbnw PRIVATE
-        "${LIBSBML_STATIC_LIBRARY}"
-        "D:/sbnw/third_party_libs/libsbml/lib/libbz2.lib"
-        "D:/sbnw/third_party_libs/libsbml/lib/libiconv.lib"
-        "D:/sbnw/third_party_libs/libsbml/lib/libxml2.lib"
-        "D:/sbnw/third_party_libs/libsbml/lib/zdll.lib"
-        "D:/sbnw/third_party_libs/libsbml/lib/expat.lib"
-        "D:/sbnw/third_party_libs/libsbml/lib/libcheck.lib"
-        "D:/sbnw/third_party_libs/libsbml/lib/xerces-c_3.lib"
-        "Ws2_32.lib"
-        )
+target_link_libraries(sbnw PRIVATE ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
 
 
 ##Image Magick
