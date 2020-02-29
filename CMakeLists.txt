@@ -1,21 +1,24 @@
+# cmake preliminaries
 cmake_minimum_required(VERSION 3.15)
+
+# set default install prefix
+set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/INSTALL CACHE PATH "Directory for sbnw installation")
+
 project(SBNW)
 
+# for the ExternalProject_Add command
 include(ExternalProject)
 
+# set version information
 set(SBNW_MAJOR_VER 1)
 set(SBNW_MINOR_VER 3)
 set(SBNW_PATCHLEVEL 27)
-
 set(SBNW_VER_STRING "${SBNW_MAJOR_VER}.${SBNW_MINOR_VER}.${SBNW_PATCHLEVEL}")
 
+# set diretory for third party libs
 SET(SBNW_THIRD_PARTY_LIBS ${CMAKE_SOURCE_DIR}/third_party_libs)
 SET(LIBSBML_DEPENDENCIES_PREFIX ${SBNW_THIRD_PARTY_LIBS}/libsbml-dependencies)
 SET(LIBSBML_PREFIX ${SBNW_THIRD_PARTY_LIBS}/libsbml)
-
-message(STATUS "SBNW_THIRD_PARTY_LIBS ${SBNW_THIRD_PARTY_LIBS}")
-message(STATUS "LIBSBML_DEPENDENCIES_PREFIX ${LIBSBML_DEPENDENCIES_PREFIX}")
-message(STATUS "LIBSBML_PREFIX ${LIBSBML_PREFIX}")
 
 # download and build libsbml-dependencies package with options appropriate for sbnw
 ExternalProject_Add(LIBSBML_DEPENDENCIES
@@ -28,7 +31,7 @@ ExternalProject_Add(LIBSBML_DEPENDENCIES
         BINARY_DIR
         "${CMAKE_BINARY_DIR}/libsbml-dependencies-build"
         CMAKE_ARGS
-        -DBUILD_SHARED_LIBS=ON
+        -DBUILD_SHARED_LIBS=OFF
         -DWITH_STATIC_RUNTIME=ON
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_DEPENDENCIES_PREFIX}
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
@@ -45,20 +48,16 @@ ExternalProject_Add(LIBSBML
         BINARY_DIR
         "${CMAKE_BINARY_DIR}/libsbml-build"
         CMAKE_ARGS
+        -DBUILD_SHARED_LIBS=OFF
         -DENABLE_LAYOUT=ON
+        -DWITH_STATIC_RUNTIME=OFF
+        -DWITH_CPP_NAMESPACES=OFF
         -DCMAKE_INSTALL_PREFIX=${LIBSBML_PREFIX}
         -DLIBSBML_DEPENDENCY_DIR=${LIBSBML_DEPENDENCIES_PREFIX}
-        -DWITH_STATIC_RUNTIME=ON
-        -DWITH_CPP_NAMESPACES=OFF
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         DEPENDS
         LIBSBML_DEPENDENCIES
         )
-
-# fail if something went wrong with lisbml download
-if (NOT EXISTS "${LIBSBML_DEPENDENCIES_PREFIX}")
-    message(FATAL_ERROR "Directory given for LIBSBML_PREFIX variable (\"${LIBSBML_PREFIX}\") does not exist")
-endif ()
 
 # set libsbml directories and dependency variables based on LIBSBML_PREFIX
 set(LIBSBML_INCLUDE ${LIBSBML_PREFIX}/include)
@@ -75,7 +74,6 @@ list(APPEND LIBSBML_EXTRA_LIBS
         ${LIBSBML2_LIB}
         ${ZDLL}
         )
-
 
 #MagickWand
 set(LINK_WITH_MAGICK OFF CACHE BOOL "Link with Image Magick?")
@@ -140,7 +138,7 @@ message(STATUS "Using Python include directory ${PYTHON_INCLUDE_DIR}")
 
 # Find libsbml libraries/paths
 find_library(LIBSBML_LIBRARY sbml libsbml HINTS ${LIBSBML_PREFIX}/lib)
-find_library(LIBSBML_STATIC_LIBRARY sbml-static REQUIRED libsbml-static HINTS ${LIBSBML_PREFIX}/lib)
+find_library(LIBSBML_STATIC_LIBRARY sbml-static libsbml-static HINTS ${LIBSBML_PREFIX}/lib)
 find_path(LIBSBML_INCLUDE_DIR sbml/SBMLTypes.h PATHS ${LIBSBML_PREFIX}/include)
 
 #Image Magick (not used, remove? )
@@ -167,25 +165,35 @@ if (ENABLE_FULL_RPATH) #http://www.cmake.org/Wiki/CMake_RPATH_handling
     ENDIF ("${isSystemDir}" STREQUAL "-1")
 endif ()
 
+# only allow building of sbnw targets after we have dependencies
+if (EXISTS ${LIBSBML_PREFIX})
+    add_subdirectory(src)
+    #add_subdirectory(sandbox)
+    #
+    #add_subdirectory(icons)
 
-add_subdirectory(graphfab)
+    #add_subdirectory(testcases)
 
-#add_subdirectory(sandbox)
-#
-#add_subdirectory(icons)
-
-#add_subdirectory(testcases)
-
-if (WITH_GTEST)
-    add_subdirectory(test)
+#    if (WITH_GTEST)
+#        add_subdirectory(test)
+#    endif ()
+else ()
+    message(WARNING
+            "SBNW dependencies have not been found. CMake has been \
+            configured to only build sbnw when these dependencies are found. If they are not, however, CMake will\
+            dynamically download and build them for you. Therefore, this is how you should proceed:
+            1) Build all targets. CMake will go and get googletest, libsbml and its dependencies
+            2) Build all targets again. This time around you will have the dependencies and the sbnw targets \
+            will be available to build.")
 endif ()
 
 
 message(STATUS "
 CMAKE Variables
     CMAKE_SOURCE_DIR                        ${CMAKE_SOURCE_DIR}
-    CMAKE_CURRENT_SOURCE_DIR                ${CMAKE_CURRENT_SOURCE_DIR}
-    CMAKE_CURRENT_BINARY_DIR                ${CMAKE_CURRENT_BINARY_DIR}
+    CMAKE_BINARY_DIR                        ${CMAKE_CURRENT_BINARY_DIR}
+    CMAKE_INSTALL_PREFIX                    ${CMAKE_INSTALL_PREFIX}
+    CMAKE_BUILD_TYPE                        ${CMAKE_BUILD_TYPE}
 
 Libsbml Variables
     LIBSBML_PREFIX                          ${LIBSBML_PREFIX}
@@ -196,6 +204,6 @@ Libsbml Variables
 
 Other options
     SBNW_USE_MAGICK                         ${SBNW_USE_MAGICK}
-    PYTHON_INCLUDE_DIR                      ${PYTHON_INCLUDE_DIR})
+    PYTHON_INCLUDE_DIR                      ${PYTHON_INCLUDE_DIR}
 ")
 

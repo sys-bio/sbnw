@@ -1,4 +1,4 @@
-graphfab/sphinx/source/generated/
+src/graphfab/sphinx/source/generated/
 *.kate-swp
 cmake-*
 build
