@@ -25,46 +25,62 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+//== FILEDOC =========================================================================
+
+/** @file canvas.h
+ * @brief Canvas for drawing diagram, dimensions
+  */
+
 //== BEGINNING OF CODE ===============================================================
+
+#ifndef __SBNW_LAYOUT_CANVAS_H_
+#define __SBNW_LAYOUT_CANVAS_H_
 
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/interface/layout.h"
-#include "error.h"
-#include "graphfab/util/string.h"
+#include "graphfab/autolayoutSBML.h"
+#include "box.h"
 
-#include "sbml/SBMLTypes.h"
-#include "sbml/packages/layout/common/LayoutExtensionTypes.h"
+//-- C++ code --
+#ifdef __cplusplus
 
-#include <exception>
+namespace Graphfab {
 
-static std::string lastError_;
+    /** @brief Drawing canvas
+     */
+    class Canvas {
+        public:
+            Canvas() : _w(0), _h(0) {}
 
-void gf_emitError(const char* str) {
-    lastError_ = str;
-    fprintf(stderr, "%s",  str);
+            Canvas(Real width, Real height) : _w(width), _h(height) {}
+
+            /// Get the canvas width
+            Real getWidth() const;
+            
+            /// Get the canvas height
+            Real getHeight() const;
+            
+            /// Get the canvas width
+            void setWidth(Real w);
+            
+            /// Get the canvas height
+            void setHeight(Real h);
+            
+            /// Get canvas as a box
+            Box getBox() const { return Box(Point(0,0), Point(getWidth(),getHeight())); }
+            
+        protected:
+            // member vars
+            /// Width
+            Real _w;
+            
+            /// Height
+            Real _h;
+    };
+    
 }
 
-void gf_emitWarn(const char* str) {
-    fprintf(stderr, "%s", str);
-}
+#endif
 
-char* gf_getLastError() {
-  if (lastError_.size())
-    return gf_strclone(lastError_.c_str());
-  else
-    return gf_strclone("");
-}
-
-int gf_haveError() {
-  return lastError_.size();
-}
-
-void gf_clearError() {
-  lastError_ = "";
-}
-
-void gf_setError(const char* msg) {
-  lastError_ = msg;
-}
+#endif

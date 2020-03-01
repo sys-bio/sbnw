@@ -71,6 +71,8 @@ ExternalProject_Add(googletest
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
 
+set(BUILD_TESTS "ON" CACHE BOOL "Build sbnw tests")
+
 # set libsbml directories and dependency variables based on LIBSBML_PREFIX
 set(LIBSBML_INCLUDE ${LIBSBML_PREFIX}/include)
 set(LIBSBML_LIBDIR ${LIBSBML_PREFIX}/lib)
@@ -187,7 +189,9 @@ if (EXISTS ${LIBSBML_PREFIX})
 
     #add_subdirectory(testcases)
 
-    add_subdirectory(test)
+    if (${BUILD_TESTS})
+        add_subdirectory(test)
+    endif ()
 else ()
     message(WARNING
             "SBNW dependencies have not been found. CMake has been \
@@ -195,8 +199,9 @@ else ()
             dynamically download and build them for you. Therefore, this is how you should proceed:
             1) Build all targets. CMake will go and get googletest, libsbml and its dependencies
             2) Build all targets again. This time around you will have the dependencies and the sbnw targets \
-            will be available to build.")
+            will be available building.")
 endif ()
+
 
 
 message(STATUS "
@@ -216,5 +221,6 @@ Libsbml Variables
 Other options
     SBNW_USE_MAGICK                         ${SBNW_USE_MAGICK}
     PYTHON_INCLUDE_DIR                      ${PYTHON_INCLUDE_DIR}
+    BUILD_TESTS                             ${BUILD_TESTS}
 ")
 

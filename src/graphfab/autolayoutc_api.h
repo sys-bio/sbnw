@@ -39,9 +39,9 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/sbml/autolayoutSBML.h"
-#include "graphfab/sbml/layout.h"
-#include "graphfab/layout/fr.h"
+#include "autolayoutSBML.h"
+#include "layout.h"
+#include "fr.h"
 
 #endif
 

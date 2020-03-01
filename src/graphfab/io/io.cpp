@@ -30,8 +30,8 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/diag/error.h"
-#include "graphfab/network/network.h"
+#include "graphfab/error.h"
+#include "graphfab/network.h"
 
 #include <exception>
 #include <typeinfo>

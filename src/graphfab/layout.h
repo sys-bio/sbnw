@@ -39,10 +39,10 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/sbml/autolayoutSBML.h"
-#include "graphfab/diag/error.h"
+#include "autolayoutSBML.h"
+#include "graphfab/error.h"
 
-#include <stdint.h>
+#include <cstdint>
 
 //-- C methods --
 

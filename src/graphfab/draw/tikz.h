@@ -43,10 +43,10 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/layout/box.h"
-#include "graphfab/layout/canvas.h"
-#include "graphfab/network/network.h"
-#include "graphfab/interface/layout.h"
+#include "graphfab/box.h"
+#include "graphfab/canvas.h"
+#include "graphfab/network.h"
+#include "graphfab/layout.h"
 
 #ifdef __cplusplus
 extern "C" {

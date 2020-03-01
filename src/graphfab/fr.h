@@ -40,8 +40,8 @@
 
 #include "graphfab/core/SagittariusCore.h"
 #include "canvas.h"
-#include "graphfab/network/network.h"
-#include "graphfab/interface/layout.h"
+#include "graphfab/network.h"
+#include "graphfab/layout.h"
 
 //-- C code --
 

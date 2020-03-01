@@ -44,7 +44,7 @@
 //-- C++ code --
 #ifdef __cplusplus
 
-#include "graphfab/layout/point.h"
+#include "point.h"
 
 // #include <string>
 

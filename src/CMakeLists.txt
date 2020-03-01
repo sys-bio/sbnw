@@ -2,21 +2,21 @@ set(SOURCES
         graphfab/core/SagittariusAssert.c
         graphfab/core/SagittariusCommon.cpp
         graphfab/core/SagittariusException.cpp
-        graphfab/diag/error.cpp
+        graphfab/error.cpp
         graphfab/draw/tikz.cpp
         graphfab/io/io.cpp
-        graphfab/interface/layout.cpp
-        graphfab/layout/arrowhead.cpp
-        graphfab/layout/box.cpp
-        graphfab/layout/canvas.cpp
-        graphfab/layout/fr.cpp
-        graphfab/layout/point.cpp
+        graphfab/layout.cpp
+        graphfab/arrowhead.cpp
+        graphfab/box.cpp
+        graphfab/canvas.cpp
+        graphfab/fr.cpp
+        graphfab/point.cpp
         graphfab/math/cubic.cpp
         graphfab/math/geom.cpp
         graphfab/math/transform.cpp
-        graphfab/network/network.cpp
-        graphfab/sbml/autolayoutSBML.cpp
-        graphfab/util/string.c
+        graphfab/network.cpp
+        graphfab/autolayoutSBML.cpp
+        graphfab/string.c
         )
 
 set(HEADERS
@@ -32,17 +32,17 @@ set(HEADERS
         graphfab/core/SagittariusPlatform.h
         graphfab/core/SagittariusPlatformWin.h
         graphfab/core/SagittariusPrefetch.h
-        graphfab/diag/error.h
+        graphfab/error.h
         graphfab/draw/magick.h
         graphfab/io/io.h
-        graphfab/interface/layout.h
-        graphfab/layout/arrowhead.h
-        graphfab/layout/box.h
-        graphfab/layout/canvas.h
-        graphfab/layout/curve.h
-        graphfab/layout/fr.h
-        graphfab/layout/layoutall.h
-        graphfab/layout/point.h
+        graphfab/layout.h
+        graphfab/arrowhead.h
+        graphfab/box.h
+        graphfab/canvas.h
+        graphfab/curve.h
+        graphfab/fr.h
+        graphfab/layoutall.h
+        graphfab/point.h
         graphfab/math/allen.h
         graphfab/math/dist.h
         graphfab/math/geom.h
@@ -52,9 +52,9 @@ set(HEADERS
         graphfab/math/sig.h
         graphfab/math/sign_mag.h
         graphfab/math/transform.h
-        graphfab/network/network.h
-        graphfab/sbml/autolayoutSBML.h
-        graphfab/util/string.h
+        graphfab/network.h
+        graphfab/autolayoutSBML.h
+        graphfab/string.h
         )
 
 configure_file(
@@ -98,7 +98,12 @@ configure_file(graphfab/sphinx/Makefile graphfab/sphinx/Makefile COPYONLY)
 add_library(sbnw SHARED ${SBNW_SOURCES})
 
 #include directories
-target_include_directories(sbnw PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${SBNW_THIRD_PARTY_LIBS}/libsbml/include)
+target_include_directories(sbnw PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${SBNW_THIRD_PARTY_LIBS}/libsbml/include
+        ${SBNW_THIRD_PARTY_LIBS}/libsbml/include/sbml
+        ${LIBSBML_INCLUDE_DIR}
+        )
 
 ##SBML
 
@@ -116,7 +121,12 @@ add_dependencies(sbnw LIBSBML)
 # ** Static Library **
 if (BUILD_STATIC_LIB)
     add_library(sbnw_static STATIC ${SBNW_SOURCES})
-    target_include_directories(sbnw_static PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${LIBSBML_INCLUDE_DIR})
+    target_include_directories(sbnw_static PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}
+            ${SBNW_THIRD_PARTY_LIBS}/libsbml/include
+            ${SBNW_THIRD_PARTY_LIBS}/libsbml/include/sbml
+            ${LIBSBML_INCLUDE_DIR}
+            )
     target_link_libraries(sbnw_static ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
 
     # tell cmake that libsbml is a dependency
@@ -180,3 +190,12 @@ foreach (f ${HEADERS} ${DOXYGEN_OTHER_FILES})
 endforeach ()
 configure_file(../doxy/doxy.cfg ../doxy/doxy.cfg)
 add_custom_target(docs COMMAND doxygen ../doxy/doxy.cfg)
+
+
+# copy lib to test directory
+if (${BUILD_TESTS})
+    add_custom_command(TARGET sbnw POST_BUILD        # Adds a post-build event to MyTest
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+            "$<TARGET_FILE:sbnw>"      # <--this is in-file
+            $<TARGET_FILE_DIR:sbnw_tests>)                 # <--this is out-file path
+endif ()

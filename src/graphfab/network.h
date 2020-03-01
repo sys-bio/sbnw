@@ -39,15 +39,15 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/layout/point.h"
-#include "graphfab/layout/curve.h"
-#include "graphfab/layout/box.h"
+#include "point.h"
+#include "curve.h"
+#include "box.h"
 #include "graphfab/math/transform.h"
 
 //-- C++ code --
 #ifdef __cplusplus
 
-#include "graphfab/sbml/autolayoutSBML.h"
+#include "graphfab/autolayoutSBML.h"
 
 #include "sbml/SBMLTypes.h"
 #include "sbml/packages/layout/common/LayoutExtensionTypes.h"

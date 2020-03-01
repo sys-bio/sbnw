@@ -30,7 +30,7 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/diag/error.h"
+#include "graphfab/error.h"
 #include "network.h"
 #include "graphfab/io/io.h"
 #include "graphfab/math/rand_unif.h"

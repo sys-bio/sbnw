@@ -31,7 +31,7 @@
 
 #include "graphfab/core/SagittariusCore.h"
 #include "autolayoutSBML.h"
-#include "graphfab/diag/error.h"
+#include "graphfab/error.h"
 
 #include "sbml/SBMLTypes.h"
 #include <sstream>

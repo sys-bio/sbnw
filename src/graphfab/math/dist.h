@@ -39,7 +39,7 @@
 //== INCLUDES ========================================================================
 
 #include "graphfab/core/SagittariusCore.h"
-#include "graphfab/layout/point.h"
+#include "graphfab/point.h"
 
 //-- C++ code --
 #ifdef __cplusplus

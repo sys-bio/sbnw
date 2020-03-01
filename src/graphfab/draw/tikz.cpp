@@ -31,7 +31,7 @@
 
 #include "graphfab/core/SagittariusCore.h"
 #include "tikz.h"
-#include "graphfab/util/string.h"
+#include "graphfab/string.h"
 
 #include <sstream>
 

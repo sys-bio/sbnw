@@ -31,8 +31,8 @@
 
 #include "graphfab/core/SagittariusCore.h"
 #include "magick.h"
-#include "graphfab/network/network.h"
-#include "graphfab/layout/layoutall.h"
+#include "graphfab/network.h"
+#include "graphfab/layoutall.h"
 #include "graphfab/math/transform.h"
 
 #include <wand/MagickWand.h>
