@@ -9,7 +9,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set_property(TARGET libsbml-static APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(libsbml-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C;CXX"
-  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "D:/sbnw/third_party_libs/libsbml-dependencies/lib/libbz2.lib;D:/sbnw/third_party_libs/libsbml-dependencies/lib/zdll.lib;D:/sbnw/third_party_libs/libsbml/lib/libxml2.lib;WS2_32.lib;D:/sbnw/third_party_libs/libsbml/lib/libiconv.lib;D:/sbnw/third_party_libs/libsbml-dependencies/lib/zdll.lib"
+  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "D:/sbnw/third_party_libs/libsbml-dependencies/lib/libbz2.lib;D:/sbnw/third_party_libs/libsbml-dependencies/lib/zdll.lib;D:/sbnw/third_party_libs/libsbml-dependencies/lib/libxml2.lib;WS2_32.lib;D:/sbnw/third_party_libs/libsbml-dependencies/lib/libiconv.lib;D:/sbnw/third_party_libs/libsbml-dependencies/lib/zdll.lib"
   IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libsbml-static.lib"
   )
 

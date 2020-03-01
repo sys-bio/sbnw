@@ -19,6 +19,7 @@ set(SBNW_VER_STRING "${SBNW_MAJOR_VER}.${SBNW_MINOR_VER}.${SBNW_PATCHLEVEL}")
 SET(SBNW_THIRD_PARTY_LIBS ${CMAKE_SOURCE_DIR}/third_party_libs)
 SET(LIBSBML_DEPENDENCIES_PREFIX ${SBNW_THIRD_PARTY_LIBS}/libsbml-dependencies)
 SET(LIBSBML_PREFIX ${SBNW_THIRD_PARTY_LIBS}/libsbml)
+SET(GOOGLETEST_PREFIX ${SBNW_THIRD_PARTY_LIBS}/googletest)
 
 # download and build libsbml-dependencies package with options appropriate for sbnw
 ExternalProject_Add(LIBSBML_DEPENDENCIES
@@ -57,6 +58,17 @@ ExternalProject_Add(LIBSBML
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         DEPENDS
         LIBSBML_DEPENDENCIES
+        )
+
+# download and build googletest
+ExternalProject_Add(googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG master
+        SOURCE_DIR "${CMAKE_BINARY_DIR}/googletest-src"
+        BINARY_DIR "${CMAKE_BINARY_DIR}/googletest-build"
+        CMAKE_ARGS
+        -DCMAKE_INSTALL_PREFIX=${GOOGLETEST_PREFIX}
+        -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
 
 # set libsbml directories and dependency variables based on LIBSBML_PREFIX
@@ -167,6 +179,7 @@ endif ()
 
 # only allow building of sbnw targets after we have dependencies
 if (EXISTS ${LIBSBML_PREFIX})
+    message(STATUS "building src")
     add_subdirectory(src)
     #add_subdirectory(sandbox)
     #
@@ -174,9 +187,7 @@ if (EXISTS ${LIBSBML_PREFIX})
 
     #add_subdirectory(testcases)
 
-#    if (WITH_GTEST)
-#        add_subdirectory(test)
-#    endif ()
+    add_subdirectory(test)
 else ()
     message(WARNING
             "SBNW dependencies have not been found. CMake has been \
