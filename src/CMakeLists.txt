@@ -109,6 +109,7 @@ target_include_directories(sbnw PRIVATE
 
 target_link_libraries(sbnw PRIVATE ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
 
+set_property(TARGET sbnw PROPERTY POSITION_INDEPENDENT_CODE TRUE)
 
 ##Image Magick
 if (LINK_WITH_MAGICK)
@@ -124,19 +125,22 @@ if (BUILD_STATIC_LIB)
     target_include_directories(sbnw_static PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}
             ${SBNW_THIRD_PARTY_LIBS}/libsbml/include
-            ${SBNW_THIRD_PARTY_LIBS}/libsbml/include/sbml
             ${LIBSBML_INCLUDE_DIR}
             )
     target_link_libraries(sbnw_static ${LIBSBML_STATIC_LIBRARY} ${LIBSBML_EXTRA_LIBS})
 
+
+
     # tell cmake that libsbml is a dependency
     add_dependencies(sbnw_static LIBSBML)
 
-    if (${WIN32})
-        set_target_properties(sbnw_static PROPERTIES OUTPUT_NAME "libsbnw_static" COMPILE_FLAGS "/DPY_MAJOR_VERSION=${PYTHON_VERSION_MAJOR} /DPYTHON_SCREWED_IT_UP=1" PREFIX "")
-    else ()
-        set_target_properties(sbnw_static PROPERTIES COMPILE_FLAGS "-fPIC")
-    endif ()
+
+
+#    if (${WIN32})
+#        set_target_properties(sbnw_static PROPERTIES OUTPUT_NAME "libsbnw_static" COMPILE_FLAGS "/DPY_MAJOR_VERSION=${PYTHON_VERSION_MAJOR} /DPYTHON_SCREWED_IT_UP=1" PREFIX "")
+#    else ()
+#        set_target_properties(sbnw_static PROPERTIES COMPILE_FLAGS "-fPIC")
+#    endif ()
 
     # Image Magick
     if (LINK_WITH_MAGICK)

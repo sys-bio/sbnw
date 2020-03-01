@@ -71,7 +71,7 @@ ExternalProject_Add(googletest
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
         )
 
-set(BUILD_TESTS "ON" CACHE BOOL "Build sbnw tests")
+set(BUILD_TESTS "OFF" CACHE BOOL "Build sbnw tests")
 
 # set libsbml directories and dependency variables based on LIBSBML_PREFIX
 set(LIBSBML_INCLUDE ${LIBSBML_PREFIX}/include)
@@ -198,8 +198,7 @@ else ()
             configured to only build sbnw when these dependencies are found. If they are not, however, CMake will\
             dynamically download and build them for you. Therefore, this is how you should proceed:
             1) Build all targets. CMake will go and get googletest, libsbml and its dependencies
-            2) Build all targets again. This time around you will have the dependencies and the sbnw targets \
-            will be available building.")
+            2) Build all targets again. This time around you will have the dependencies and the sbnw targets will be available building.")
 endif ()
 
 
