@@ -1,5 +1,3 @@
-enable_testing()
-
 add_executable(sbnw_tests sbnwTests.cpp)
 
 # set target to statically link
@@ -20,7 +18,7 @@ target_include_directories(sbnw_tests PRIVATE
 
 message(STATUS "CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR}")
 target_link_libraries(sbnw_tests PRIVATE
-        $<TARGET_FILE:sbnw_static>
+#        $<TARGET_FILE:sbnw>
         ${GOOGLETEST_PREFIX}/lib/gtest.lib
         ${GOOGLETEST_PREFIX}/lib/gtest_main.lib
         )

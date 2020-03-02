@@ -131,6 +131,7 @@ if (BUILD_STATIC_LIB)
 
 
 
+
     # tell cmake that libsbml is a dependency
     add_dependencies(sbnw_static LIBSBML)
 
@@ -201,5 +202,5 @@ if (${BUILD_TESTS})
     add_custom_command(TARGET sbnw POST_BUILD        # Adds a post-build event to MyTest
             COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
             "$<TARGET_FILE:sbnw>"      # <--this is in-file
-            $<TARGET_FILE_DIR:sbnw_tests>)                 # <--this is out-file path
+            $<TARGET_FILE_DIR:sbnw_tests>/$<TARGET_FILE_NAME:sbnw>)                 # <--this is out-file path
 endif ()
