@@ -53,19 +53,19 @@ namespace Graphfab {
         public:
             Canvas() : _w(0), _h(0) {}
 
-            Canvas(Real width, Real height) : _w(width), _h(height) {}
+            Canvas(double width, double height) : _w(width), _h(height) {}
 
             /// Get the canvas width
-            Real getWidth() const;
+            double getWidth() const;
             
             /// Get the canvas height
-            Real getHeight() const;
+            double getHeight() const;
             
             /// Get the canvas width
-            void setWidth(Real w);
+            void setWidth(double w);
             
             /// Get the canvas height
-            void setHeight(Real h);
+            void setHeight(double h);
             
             /// Get canvas as a box
             Box getBox() const { return Box(Point(0,0), Point(getWidth(),getHeight())); }
@@ -73,10 +73,10 @@ namespace Graphfab {
         protected:
             // member vars
             /// Width
-            Real _w;
+            double _w;
             
             /// Height
-            Real _h;
+            double _h;
     };
     
 }

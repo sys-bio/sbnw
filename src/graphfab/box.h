@@ -62,7 +62,7 @@ namespace Graphfab {
                 : _min(min), _max(max) { AT(_min.x <= _max.x && _min.y <= _max.y, "Min/max mismatch"); }
 
             /// Construct from upper-left & lower-right extents directly
-            Box(Real x1, Real y1, Real x2, Real y2)
+            Box(double x1, double y1, double x2, double y2)
                 : _min(x1,y1), _max(x2,y2) {
                     if(!(_min.x <= _max.x && _min.y <= _max.y)) {
                         dump(std::cerr);
@@ -73,23 +73,23 @@ namespace Graphfab {
 
             /// Upper-left
             const Point& getMin() const { return _min; }
-            Real getMinX() const { return getMin().x; }
-            Real getMinY() const { return getMin().y; }
+            double getMinX() const { return getMin().x; }
+            double getMinY() const { return getMin().y; }
 
             void setMin(const Point& p) { _min = p; }
 
-            void setMinX(const Real x) { _min.x = x; }
-            void setMinY(const Real y) { _min.y = y; }
+            void setMinX(const double x) { _min.x = x; }
+            void setMinY(const double y) { _min.y = y; }
 
             /// Lower-right
             const Point& getMax() const { return _max; }
-            Real getMaxX() const { return getMax().x; }
-            Real getMaxY() const { return getMax().y; }
+            double getMaxX() const { return getMax().x; }
+            double getMaxY() const { return getMax().y; }
 
             void setMax(const Point& p) { _max = p; }
 
-            void setMaxX(const Real x) { _max.x = x; }
-            void setMaxY(const Real y) { _max.y = y; }
+            void setMaxX(const double x) { _max.x = x; }
+            void setMaxY(const double y) { _max.y = y; }
 
             Point getCenter() const { return (getMax() + getMin())/2.; }
 
@@ -102,16 +102,16 @@ namespace Graphfab {
             Point getDiag() const { return getMax() - getMin(); }
 
             /// Return the maximum of {width, height}
-            Real maxDim() const {
-                Real w = _max.x - _min.x;
-                Real h = _max.y - _min.y;
+            double maxDim() const {
+                double w = _max.x - _min.x;
+                double h = _max.y - _min.y;
                 return max(w,h);
             }
 
             /// Return the minimum of {width, height}
-            Real minDim() const {
-                Real w = _max.x - _min.x;
-                Real h = _max.y - _min.y;
+            double minDim() const {
+                double w = _max.x - _min.x;
+                double h = _max.y - _min.y;
                 return min(w,h);
             }
 
@@ -120,26 +120,26 @@ namespace Graphfab {
             Point getBottomLeftCorner() const { return Point(_min.x, _max.y); }
 
             /// Get the width
-            Real width() const { return _max.x - _min.x; }
+            double width() const { return _max.x - _min.x; }
 
             /// Alters the extents such that the width is set to spec. value; method undefined
-            void setWidth(const Real w) { _max.x = _min.x+w; }
+            void setWidth(const double w) { _max.x = _min.x+w; }
 
             /// Get the height
-            Real height() const { return _max.y - _min.y; }
+            double height() const { return _max.y - _min.y; }
 
             /// Alters the extents such that the height is set to spec. value; method undefined
-            void setHeight(const Real w) { _max.y = _min.y+w; }
+            void setHeight(const double w) { _max.y = _min.y+w; }
 
             /// Get the area
-            Real area() const {
-                Real w = _max.x - _min.x;
-                Real h = _max.y - _min.y;
+            double area() const {
+                double w = _max.x - _min.x;
+                double h = _max.y - _min.y;
                 return w*h;
             }
 
             /// Determine if box can be shrunk by specified amt
-            bool canShrink(const Real v) const {
+            bool canShrink(const double v) const {
                 if(_min.x + 2*v <= _max.x && _min.y+2*v <= _max.y)
                     return true;
                 else
@@ -147,12 +147,12 @@ namespace Graphfab {
             }
 
             /// Shrink all sides by specified amount (safe)
-            Box shrink(const Real v) const {
+            Box shrink(const double v) const {
                 return Box(_min+Point(v,v), _max-Point(v,v));
             }
 
             /// Shrink all sides by specified amount (not safe)
-            void shrink_(const Real v) {
+            void shrink_(const double v) {
                 _min.x += v;
                 _min.y += v;
                 _max.x -= v;
@@ -160,7 +160,7 @@ namespace Graphfab {
             }
 
             /// Pad all sides by specified amount (safe)
-            Box padded(const Real v) const {
+            Box padded(const double v) const {
                 return Box(_min-Point(v,v), _max+Point(v,v));
             }
 

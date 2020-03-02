@@ -64,15 +64,15 @@ typedef struct {
 //DEPRECATED: rename to gf_point
 typedef struct {
     /// @privatesection
-    Real x;
-    Real y;
+    double x;
+    double y;
 } CPoint;
 
 typedef struct {
     /// x coordinate
-    Real x;
+    double x;
     /// y coordinate
-    Real y;
+    double y;
 } gf_point;
 
 typedef struct {
@@ -126,7 +126,7 @@ public:
         if (handle == nullptr) {
             GetLastError();
             throw std::invalid_argument("sbnw library not found");
-        };
+        }
 #elif defined(__linux__)
         void* handle;
         handle = dlopen("sbnw.so", RTLD_LAZY);
@@ -445,11 +445,11 @@ public:
 
     typedef const char *gf_getSBMLwithLayoutStr(gf_SBMLModel *, gf_layoutInfo *);
 
-    typedef const char *gf_getCurrentLibraryVersion(void);
+    typedef const char *gf_getCurrentLibraryVersion();
 
     typedef void gf_free(void *);
 
-    typedef gf_point gf_computeCubicBezierPoint(gf_curveCP *, Real);
+    typedef gf_point gf_computeCubicBezierPoint(gf_curveCP *, double);
 
     typedef gf_point *gf_computeCubicBezierLineIntersec(gf_curveCP *, gf_point *, gf_point *);
 

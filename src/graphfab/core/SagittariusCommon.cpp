@@ -38,5 +38,5 @@
 namespace Graphfab
 {
   // ALL HAIL THE GOOGUL
-  const Real pi = 3.14159265359;
+  const double pi = 3.14159265359;
 } //namespace Sagittarius

@@ -115,21 +115,21 @@ namespace Graphfab {
         return true;
     }
     
-    Real calc_fr(const Real k, const Real d) {
+    double calc_fr(const double k, const double d) {
         return k*k/d;
     }
     
-    Real calc_fa(const Real k, const Real d) {
+    double calc_fa(const double k, const double d) {
         return d*d/k;
     }
     
     // compute the internal force between a compartment & its node
-    void do_internalForce(NetworkElement* u, Compartment& c, Real k) {
+    void do_internalForce(NetworkElement* u, Compartment& c, double k) {
         c.doInternalForce(u, k*k, 10.);
     }
     
     // compute the repulsion force between two elements & apply it
-    void do_repulForce(NetworkElement& u, NetworkElement& v, Real k, uint64 num) {
+    void do_repulForce(NetworkElement& u, NetworkElement& v, double k, uint64 num) {
 //         if(typeMatchEither(u.getType(),v.getType(),NET_ELT_TYPE_RXN))
           // reaction centroids to not repel
 //           return;
@@ -142,17 +142,17 @@ namespace Graphfab {
         
         // needs to be large because force is no longer calculated on the
         // basis of centroids
-        Real ep = 1e-6;
+        double ep = 1e-6;
         
-        Real d = max(u.centroidDisplacementFrom(v).mag(), 0.1);
+        double d = max(u.centroidDisplacementFrom(v).mag(), 0.1);
         
         if(u.centroidDisplacementFrom(v).mag2() < ep) {
             // repel nodes very close together with a large force of unspecified magnitude
-            Real extreme = 100.*sqrt((Real)num);
+            double extreme = 100.*sqrt((double)num);
             f = Point(rand_range(-extreme, extreme), rand_range(-extreme, extreme));
             
         } else {
-            Real adjk = (k*log((Real)u.degree()+v.degree()+2) + (max(v.getWidth(), v.getHeight()) + max(u.getWidth(), u.getHeight()))/4);
+            double adjk = (k*log((double)u.degree()+v.degree()+2) + (max(v.getWidth(), v.getHeight()) + max(u.getWidth(), u.getHeight()))/4);
 //             std::cerr << "max(v.getWidth(), v.getHeight()) = " << max(v.getWidth(), v.getHeight()) << ", max(u.getWidth(), u.getHeight()) = " << max(u.getWidth(), u.getHeight()) << "\n";
             f = Point(delta * calc_fr(adjk, d));
 
@@ -173,21 +173,21 @@ namespace Graphfab {
     }
     
     // apply the attraction force
-    void do_attForce(NetworkElement& u, NetworkElement& v, Real k) {
+    void do_attForce(NetworkElement& u, NetworkElement& v, double k) {
         Point delta(u.centroidDisplacementFrom(v).normed());
         //std::cout << "delta: " << delta << "\n";
 
 //         std::cerr << "attr bet " << eltTypeToStr(u.getType()) << " & " << eltTypeToStr(v.getType()) << "\n";
 
-        Real ep = 1.e-6;
+        double ep = 1.e-6;
         
-        Real d = u.centroidDisplacementFrom(v).mag();
+        double d = u.centroidDisplacementFrom(v).mag();
         
         if(d > ep) {
-            //Real invd = 1./d;
+            //double invd = 1./d;
             
-            //Real adjk = k*log((Real)u.degree()+v.degree()+2);
-            Real adjk = (k*log((Real)u.degree()+v.degree()+2) + (max(v.getWidth(), v.getHeight()) + max(u.getWidth(), u.getHeight()))/4);
+            //double adjk = k*log((double)u.degree()+v.degree()+2);
+            double adjk = (k*log((double)u.degree()+v.degree()+2) + (max(v.getWidth(), v.getHeight()) + max(u.getWidth(), u.getHeight()))/4);
             u.addDelta(-delta * calc_fa(u.getType() == NET_ELT_TYPE_RXN ? k : adjk, d));
             if (dumpForces_)
               std::cerr << "attr force bet "<< eltTypeToStr(u.getType()) << " & " << eltTypeToStr(v.getType()) << ": " << (delta * calc_fa(u.getType() == NET_ELT_TYPE_RXN ? k : adjk, d)).mag()/d << "\n";
@@ -197,18 +197,18 @@ namespace Graphfab {
     }
 
     // apply "gravitational" force
-    void do_gravity(NetworkElement& u, Point bary, Real strength, Real k) {
+    void do_gravity(NetworkElement& u, Point bary, double strength, double k) {
       Point delta = u.getCentroid() - bary;
 
       if (delta.mag() < 1e-2)
         return;
 
-      Real adjk = strength / k;
+      double adjk = strength / k;
       u.addDelta( -delta * adjk );
     }
     
     // single interation
-    void FRSingle(fr_options& opt, Network& net, Box bound, Real T, Real k, uint64 num) {
+    void FRSingle(fr_options& opt, Network& net, Box bound, double T, double k, uint64 num) {
         net.resetActivity();
         
         net.updateExtents();
@@ -303,25 +303,25 @@ namespace Graphfab {
         }
         
         uint64 num = net.getTotalNumPts();
-        uint64 m = 100.*log((Real)num+2);
+        uint64 m = 100.*log((double)num+2);
         
 //         std::cerr << "m = " << m << "\n";
         
-        Real k = opt.k;
+        double k = opt.k;
         
         // initial temperature
-        Real Ti = 1000.*log((Real)num+2);
+        double Ti = 1000.*log((double)num+2);
         // Current temp
-        Real T;
+        double T;
         
         // time
-        Real t = 0.;
+        double t = 0.;
         // delta time
-        Real dt = 1./m;
+        double dt = 1./m;
         
-        Real alpha = log(Ti/0.25);
+        double alpha = log(Ti/0.25);
         
-        Real ep = 1.e-6;
+        double ep = 1.e-6;
         
         dumpForces_ = false;
 
@@ -350,7 +350,7 @@ namespace Graphfab {
                 net.rebuildCurves();
                 std::stringstream ss;
                 ss << "/tmp/tmpfs/pic" << z/10 << ".png";
-                Real w,h;
+                double w,h;
                 if(can) {
                     w = can->getWidth();
                     h = can->getHeight();

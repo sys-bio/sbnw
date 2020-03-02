@@ -2245,7 +2245,7 @@ void gf_free(void* x) {
   free(x);
 }
 
-gf_point gf_computeCubicBezierPoint(gf_curveCP* c, Graphfab::Real t) {
+gf_point gf_computeCubicBezierPoint(gf_curveCP* c, Graphfab::double t) {
   CubicBezier2Desc b(gf_point2Point(c->s), gf_point2Point(c->c1), gf_point2Point(c->c2), gf_point2Point(c->e));
   return Point2gf_point(b.p(t));
 }

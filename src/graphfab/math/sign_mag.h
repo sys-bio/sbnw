@@ -45,7 +45,7 @@
 
 namespace Graphfab {
 
-    inline Real sign(const Real x) {
+    inline double sign(const double x) {
         //the easy way: return x == 0 ? 0 : x / mag(x);
         if(x > 0.)
             return 1.;
@@ -55,7 +55,7 @@ namespace Graphfab {
             return -1.;
     }
     
-    inline Real mag(const Real x) {
+    inline double mag(const double x) {
         return (x < 0.) ? -x : x;
     }
     

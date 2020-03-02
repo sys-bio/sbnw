@@ -45,11 +45,11 @@
 
 namespace Graphfab {
 
-    inline Real min(const Real x, const Real y) {
+    inline double min(const double x, const double y) {
         return x < y ? x : y;
     }
 
-    inline Real max(const Real x, const Real y) {
+    inline double max(const double x, const double y) {
         return x > y ? x : y;
     }
     

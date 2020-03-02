@@ -158,8 +158,8 @@ typedef struct {
 //DEPRECATED: rename to gf_point
 typedef struct {
     /// @privatesection
-    Real x;
-    Real y;
+    double x;
+    double y;
 } CPoint;
 
 /**
@@ -171,9 +171,9 @@ typedef struct {
  */
 typedef struct {
     /// x coordinate
-    Real x;
+    double x;
     /// y coordinate
-    Real y;
+    double y;
 } gf_point;
 
 /**
@@ -1309,7 +1309,7 @@ _GraphfabExport void gf_free(void* x);
  *  @param[in] t Cubic Bezier parameter
  *  \ingroup C_API
  */
-_GraphfabExport gf_point gf_computeCubicBezierPoint(gf_curveCP* c, Real t);
+_GraphfabExport gf_point gf_computeCubicBezierPoint(gf_curveCP* c, double t);
 
 /** @brief Compute the intersection between a cubic Bezier and a line
  *  @param[in] c Cubic Bezier control points

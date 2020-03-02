@@ -56,11 +56,11 @@ namespace Graphfab {
     Point operator+ (const Point& p, const Point& q);
 
     /// Scalar multiplication
-    Point operator* (const Point& p, const Real s);
-    Point operator* (const Real s, const Point& p);
+    Point operator* (const Point& p, const double s);
+    Point operator* (const double s, const Point& p);
 
     /// Scalar division
-    Point operator/ (const Point& p, const Real s);
+    Point operator/ (const Point& p, const double s);
 
     /// Dump to stream
     std::ostream& operator<< (std::ostream&, const Point& p);
@@ -70,10 +70,10 @@ namespace Graphfab {
         Point() {x = y = 0;}
 
         /// Initialilzing constructor
-        Point(Real x_, Real y_)
+        Point(double x_, double y_)
             : x(x_), y(y_) {}
 
-        static Point polar(Real mag, Real theta);
+        static Point polar(double mag, double theta);
 
         /// Unary minus
         Point operator-() const {
@@ -81,18 +81,18 @@ namespace Graphfab {
         }
 
         /// Return the magitude of this point as if it were a vector
-        Real mag() const {
+        double mag() const {
             return sqrt(x*x + y*y);
         }
 
         /// Return the magitude squared
-        Real mag2() const {
+        double mag2() const {
             return x*x + y*y;
         }
 
         /// Return angle of vector
-        Real theta() const {
-          const Real ep = 1e-4;
+        double theta() const {
+          const double ep = 1e-4;
           if (std::abs(x) < ep) {
             if (std::abs(y) < ep)
               return 0;
@@ -102,7 +102,7 @@ namespace Graphfab {
               return -pi/2.;
           }
 
-          Real t = atan(y/x);
+          double t = atan(y/x);
 
           if (x > 0)
             return t;
@@ -122,9 +122,9 @@ namespace Graphfab {
         }
 
         /// Scales the vector so that its magnitude is not greater than @a cap (safe)
-        Point capMag(const Real cap) const {
-            Real m = mag2();
-            Real xx = x, yy = y;
+        Point capMag(const double cap) const {
+            double m = mag2();
+            double xx = x, yy = y;
             if(m > cap*cap) {
                 m = sqrt(m);
                 xx *= cap/m;
@@ -136,8 +136,8 @@ namespace Graphfab {
         /** Scales the vector so that its magnitude is not greater than @a cap (unsafe)
          * @details Overwrite
          */
-        void capMag2_(const Real cap2) {
-            Real m = mag2();
+        void capMag2_(const double cap2) {
+            double m = mag2();
             if(m > cap2) {
                 m = sqrt(cap2/m);
                 x *= m;
@@ -147,7 +147,7 @@ namespace Graphfab {
 
         /// Normalize (safe)
         Point normed() const {
-            Real o = mag();
+            double o = mag();
             if(o < 1e-6)
                 return *this;
             return (*this)*(1./o);
@@ -155,7 +155,7 @@ namespace Graphfab {
 
         /// Normalize (unsafe)
         void norm_() {
-            Real o = mag();
+            double o = mag();
             if(o < 1e-6)
                 return;
             x /= o;
@@ -168,8 +168,8 @@ namespace Graphfab {
 
         Point operator-= (const Point& p) { x-=p.x; y-=p.y; return *this; }
 
-        static Real min(Real x, Real y) { return x < y ? x : y; }
-        static Real max(Real x, Real y) { return x < y ? y : x; }
+        static double min(double x, double y) { return x < y ? x : y; }
+        static double max(double x, double y) { return x < y ? y : x; }
 
         // element-wise min
         static Point emin(const Point& u, const Point& v) {
@@ -203,12 +203,12 @@ namespace Graphfab {
         }
 
         /// Interpolate between this point and the other using the given t value
-        Point interpolate(const Point& u, Real t) {
+        Point interpolate(const Point& u, double t) {
           return (1.-t)*(*this) + t*u;
         }
 
-        Real x;
-        Real y;
+        double x;
+        double y;
     };
 
 }

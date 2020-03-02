@@ -34,11 +34,11 @@
 
 namespace Graphfab {
     
-    /*Point makePoint(const Real x, const Real y) {
+    /*Point makePoint(const double x, const double y) {
         return Point(x,y);
     }*/
 
-    Point Point::polar(Real mag, Real theta) {
+    Point Point::polar(double mag, double theta) {
       return Point(mag*cos(theta), mag*sin(theta));
     }
     
@@ -50,15 +50,15 @@ namespace Graphfab {
         return Point(p.x+q.x, p.y+q.y);
     }
     
-    Point operator* (const Point& p, const Real s) {
+    Point operator* (const Point& p, const double s) {
         return Point(p.x*s, p.y*s);
     }
     
-    Point operator* (const Real s, const Point& p) {
+    Point operator* (const double s, const Point& p) {
         return Point(p.x*s, p.y*s);
     }
     
-    Point operator/ (const Point& p, const Real s) {
+    Point operator/ (const Point& p, const double s) {
         return (1/s)*p;
     }
 
