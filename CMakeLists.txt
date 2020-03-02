@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.15)
 # set default install prefix
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/INSTALL CACHE PATH "Directory for sbnw installation")
 
+
 project(SBNW)
 
 # for the ExternalProject_Add command
@@ -200,6 +201,7 @@ else ()
             1) Build all targets. CMake will go and get googletest, libsbml and its dependencies
             2) Build all targets again. This time around you will have the dependencies and the sbnw targets will be available building.")
 endif ()
+
 
 
 

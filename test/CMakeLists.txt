@@ -23,6 +23,7 @@ target_link_libraries(sbnw_tests PRIVATE
         ${GOOGLETEST_PREFIX}/lib/gtest_main.lib
         )
 
+add_definitions(-DTEST_DIRECTORY=${CMAKE_CURRENT_SOURCE_DIR})
 
 
 
