@@ -39,7 +39,7 @@
 #include "graphfab/math/round.h"
 #include "graphfab/math/geom.h"
 #include "graphfab/math/transform.h"
-#include "string.h"
+#include <cstring>
 
 #include "sbml/SBMLTypes.h"
 #include "sbml/packages/layout/common/LayoutExtensionTypes.h"
@@ -47,7 +47,7 @@
 #include <exception>
 #include <typeinfo>
 
-#include <stdlib.h> // free SBML strings
+#include <cstdlib> // free SBML strings
 
 using namespace Graphfab;
 
@@ -937,7 +937,7 @@ char* gf_nw_getId(gf_network* n) {
     Network* net = CastToNetwork(n->n);
     AN(net, "No network");
 
-    return gf_strclone(net->getId().c_str());
+    return const_cast<char *>(net->getId().c_str());
 }
 
 void gf_nw_setId(gf_network* n, const char* id) {
@@ -1480,7 +1480,7 @@ char* gf_node_getID(gf_node* n) {
     Node* node = CastToNode(n->n);
     AN(node && node->doByteCheck(), "Not a node");
 
-    return gf_strclone(node->getId().c_str());
+    return const_cast<char *>(node->getId().c_str());
 }
 
 void gf_node_setID(gf_node* n, const char* id) {
@@ -1499,10 +1499,10 @@ const char* gf_node_getName(gf_node* n) {
     AN(node && node->doByteCheck(), "Not a node");
 
     if (node->getName().size())
-        return gf_strclone(node->getName().c_str());
+        return node->getName().c_str();
     else
         // missing name happens quite often: some researchers just want to watch the world burn...
-        return gf_strclone(node->getId().c_str());
+        return node->getId().c_str();
 }
 
 void gf_node_setName(gf_node* n, const char* name) {
@@ -1644,7 +1644,7 @@ char* gf_reaction_getID(gf_reaction* r) {
     AN(rxn, "No rxn");
     AT(rxn->doByteCheck(), "Type verification failed");
 
-    return gf_strclone(rxn->getId().c_str());
+    return const_cast<char *>(rxn->getId().c_str());
 }
 
 // reaction.centroid
@@ -1907,7 +1907,7 @@ char* gf_compartment_getID(gf_compartment* c) {
       return NULL;
     }
 
-    return gf_strclone(comp->getId().c_str());
+    return const_cast<char *>(comp->getId().c_str());
 }
 
 gf_point gf_compartment_getMinCorner(gf_compartment* c) {
@@ -2206,7 +2206,7 @@ const char* gf_getSBMLwithLayoutStr(gf_SBMLModel* m, gf_layoutInfo* l) {
         free(l->cont);
     l->cont = writer.writeSBMLToString(doc);
 
-    return gf_strclone(l->cont);
+    return l->cont;
 }
 
 void gf_randomizeLayout(gf_layoutInfo* m) {
@@ -2245,7 +2245,7 @@ void gf_free(void* x) {
   free(x);
 }
 
-gf_point gf_computeCubicBezierPoint(gf_curveCP* c, Graphfab::double t) {
+gf_point gf_computeCubicBezierPoint(gf_curveCP* c, double t) {
   CubicBezier2Desc b(gf_point2Point(c->s), gf_point2Point(c->c1), gf_point2Point(c->c2), gf_point2Point(c->e));
   return Point2gf_point(b.p(t));
 }

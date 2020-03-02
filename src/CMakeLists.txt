@@ -16,7 +16,6 @@ set(SOURCES
         graphfab/math/transform.cpp
         graphfab/network.cpp
         graphfab/autolayoutSBML.cpp
-        graphfab/string.c
         )
 
 set(HEADERS
@@ -54,7 +53,6 @@ set(HEADERS
         graphfab/math/transform.h
         graphfab/network.h
         graphfab/autolayoutSBML.h
-        graphfab/string.h
         )
 
 configure_file(

@@ -52,9 +52,9 @@ void gf_emitWarn(const char* str) {
 
 char* gf_getLastError() {
   if (lastError_.size())
-    return gf_strclone(lastError_.c_str());
+    return const_cast<char *>(lastError_.c_str());
   else
-    return gf_strclone("");
+    return "";
 }
 
 int gf_haveError() {

@@ -1,4 +1,4 @@
-add_executable(sbnw_tests sbnwTests.cpp)
+add_executable(sbnw_tests sbnwTests.cpp SBNWClientAPI.h)
 
 # set target to statically link
 set_property(TARGET sbnw_tests PROPERTY
