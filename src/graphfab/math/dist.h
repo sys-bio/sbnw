@@ -47,7 +47,7 @@
 namespace Graphfab {
     
     /// 2d Euclidean distance
-    inline Real euclidean2d(const Point& x, const Point& y) {
+    inline double euclidean2d(const Point& x, const Point& y) {
         Point d = x - y;
         return sqrt(d.x*d.x + d.y*d.y);
     }

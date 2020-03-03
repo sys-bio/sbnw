@@ -47,9 +47,9 @@
 
 namespace Graphfab {
 
-    inline Real rand_range(const Real l, const Real u) {
+    inline double rand_range(const double l, const double u) {
         AT(u >= l, "Bounds reversed");
-        return l + (Real)rand()*(u-l)/RAND_MAX;
+        return l + (double)rand()*(u-l)/RAND_MAX;
     }
     
 }

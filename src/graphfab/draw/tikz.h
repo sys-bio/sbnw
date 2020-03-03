@@ -77,7 +77,7 @@ namespace Graphfab {
     
 	class _GraphfabExport TikZRenderer {
     public:
-      TikZRenderer(Box extents, Real widthcm, Real heightcm);
+      TikZRenderer(Box extents, double widthcm, double heightcm);
 
       std::string str(Network* net, Canvas* can);
 
@@ -87,7 +87,7 @@ namespace Graphfab {
 
     protected:
       Box extents_;
-      Real widthcm_, heightcm_;
+      double widthcm_, heightcm_;
   };
 
     _GraphfabExport std::ostream& operator<<(std::ostream& o, const TikZRenderer& r);

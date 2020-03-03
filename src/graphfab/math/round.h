@@ -45,7 +45,7 @@
 
 namespace Graphfab {
 
-    inline int64 sround(const Real x) {
+    inline int64 sround(const double x) {
         return x + 0.5;
     }
     

@@ -162,7 +162,7 @@ namespace Graphfab {
       case 7:
         // semicircle
         {
-          Real t = (Real)n/(Real)n_semicirc_segments;
+          double t = (double)n/(double)n_semicirc_segments;
           return Point(cos(t*pi), -sin(t*pi)+1.);
         }
       default:

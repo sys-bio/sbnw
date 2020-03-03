@@ -57,7 +57,7 @@ extern "C" {
  */
 typedef struct __fr_options {
     /// Stiffness
-    Real k;
+    double k;
     /**
      * @brief Constrain network elements to boundary (i.e. the drawing canvas?
      * @note It should never be necessary to use this option, as @ref gf_tf_fitToWindow or
@@ -71,9 +71,9 @@ typedef struct __fr_options {
      */
     int mag;
     /// Strength of gravity (must be greater than 5 to have an effect)
-    Real grav;
+    double grav;
     /// Center of gravitational force
-    Real baryx, baryy;
+    double baryx, baryy;
     /// Should the barycenter be set automatically from layout info?
     int autobary;
     /// Enable compartment-compartment and compartment-node interaction?
@@ -81,7 +81,7 @@ typedef struct __fr_options {
     /// Randomize node positions before doing layout algo (library code DOES NOT call srand for reproducibility reasons)
     int prerandomize;
     /// Padding on compartments
-    Real padding;
+    double padding;
 } fr_options;
 
 /**

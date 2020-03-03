@@ -31,7 +31,6 @@
 
 #include "graphfab/core/SagittariusCore.h"
 #include "tikz.h"
-#include "graphfab/string.h"
 
 #include <sstream>
 
@@ -46,9 +45,9 @@ const char* gf_renderTikZ(gf_layoutInfo* l) {
     if (!can)
       SBNW_THROW(InternalCheckFailureException, "No canvas set", "gf_renderTikZ");
 
-    Graphfab::Real cmscale = 50.;
+    double cmscale = 50.;
     TikZRenderer renderer(can->getBox(), can->getWidth()/cmscale, can->getHeight()/cmscale);
-    return gf_strclone(renderer.str(net, can).c_str());
+    return renderer.str(net, can).c_str();
   } catch (const Exception& e) {
     gf_setError( e.getReport().c_str() );
     return NULL;
@@ -94,7 +93,7 @@ namespace Graphfab {
     return result;
   }
 
-  TikZRenderer::TikZRenderer(Box extents, Real widthcm, Real heightcm)
+  TikZRenderer::TikZRenderer(Box extents, double widthcm, double heightcm)
     : extents_(extents), widthcm_(widthcm), heightcm_(heightcm) {}
 
   std::string TikZRenderer::process(Point p) const {

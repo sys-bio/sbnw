@@ -35,23 +35,23 @@
 namespace Graphfab {
     
     //--CLASS Canvas--
-    Real Canvas::getWidth() const {
+    double Canvas::getWidth() const {
         return _w;
     }
     
     
-    Real Canvas::getHeight() const {
+    double Canvas::getHeight() const {
         return _h;
     }
     
-    void Canvas::setWidth(Real w) {
+    void Canvas::setWidth(double w) {
         if(w < 0.)
             SBNW_THROW(InvalidParameterException, "Width cannot be negative", "Canvas::setWidth");
         _w = w;
     }
     
     
-    void Canvas::setHeight(Real h) {
+    void Canvas::setHeight(double h) {
         if(h < 0.)
             SBNW_THROW(InvalidParameterException, "Height cannot be negative", "Canvas::setWidth");
         _h = h;

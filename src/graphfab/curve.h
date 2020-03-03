@@ -205,7 +205,7 @@ namespace Graphfab {
             /** Clips the last point at the specified interpolation value
               * and adjusts the control point to match
             */
-            std::pair<Point,Point> clipForward(Real t) const {
+            std::pair<Point,Point> clipForward(double t) const {
               Point p1(s), p2(c1), p3(c2), p4(e);
               Point q1(p1.interpolate(p2, t)),
                     q2(p2.interpolate(p3, t)),
@@ -217,11 +217,11 @@ namespace Graphfab {
               return std::make_pair(s1,r2);
             }
 
-            void clipForwardToBox(const Box& b, const Real cutoff=0.1) {
-              Real t = 0.75;
-              Real delta=0.125;
+            void clipForwardToBox(const Box& b, const double cutoff=0.1) {
+              double t = 0.75;
+              double delta=0.125;
               Point ep=e, c2p;
-              Real distance; // distance this iteration
+              double distance; // distance this iteration
               do {
                 std::pair<Point,Point> r = clipForward(t);
                 distance = (ep-r.first).mag2();
@@ -244,7 +244,7 @@ namespace Graphfab {
             /** Clips the last point at the specified interpolation value
               * and adjusts the control point to match
             */
-            std::pair<Point,Point> clipReverse(Real t) const {
+            std::pair<Point,Point> clipReverse(double t) const {
               Point p1(s), p2(c1), p3(c2), p4(e);
               Point q1(p1.interpolate(p2, t)),
                     q2(p2.interpolate(p3, t)),
@@ -256,11 +256,11 @@ namespace Graphfab {
               return std::make_pair(s1,r1);
             }
 
-            void clipReverseToBox(const Box& b, const Real cutoff=0.1) {
-              Real t = 0.25;
-              Real delta=0.125;
+            void clipReverseToBox(const Box& b, const double cutoff=0.1) {
+              double t = 0.25;
+              double delta=0.125;
               Point sp=s, c1p;
-              Real distance; // distance this iteration
+              double distance; // distance this iteration
               do {
                 std::pair<Point,Point> r = clipForward(t);
                 distance = (sp-r.first).mag2();

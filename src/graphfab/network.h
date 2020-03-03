@@ -278,18 +278,18 @@ namespace Graphfab {
             void addDelta(const Point& d);
 
             /// Cap the velocity
-            void capDelta(const Real cap);
+            void capDelta(const double cap);
 
             /// Cap the velocity (faster)
-            virtual void capDelta2(const Real cap2);
+            virtual void capDelta2(const double cap2);
 
             /// Update the position
-            virtual void doMotion(const Real scale);
+            virtual void doMotion(const double scale);
 
             /// Set the centroid of the node
             virtual void setCentroid(const Point& p);
             virtual void setGlobalCentroid(const Point& p);
-            void setCentroid(Real x, Real y) { setCentroid(Point(x,y)); }
+            void setCentroid(double x, double y) { setCentroid(Point(x,y)); }
 
             virtual bool isCentroidSet() const { return _pset; }
 
@@ -302,18 +302,18 @@ namespace Graphfab {
             Point getMin(COORD_SYSTEM coord = COORD_SYSTEM_LOCAL) const { return getExtents(coord).getMin(); }
             Point getMax(COORD_SYSTEM coord = COORD_SYSTEM_LOCAL) const { return getExtents(coord).getMax(); }
 
-            Real getMinX() const { return getExtents().getMin().x; }
-            Real getMaxX() const { return getExtents().getMax().x; }
-            Real getMinY() const { return getExtents().getMin().y; }
-            Real getMaxY() const { return getExtents().getMax().y; }
+            double getMinX() const { return getExtents().getMin().x; }
+            double getMaxX() const { return getExtents().getMax().x; }
+            double getMinY() const { return getExtents().getMin().y; }
+            double getMaxY() const { return getExtents().getMax().y; }
 
             /// With/height derived from extents
-            Real getWidth() const { AT(getMaxX() >= getMinX()); return getMaxX() - getMinX(); }
-            Real getHeight() const { AT(getMaxY() >= getMinY()); return getMaxY() - getMinY(); }
+            double getWidth() const { AT(getMaxX() >= getMinX()); return getMaxX() - getMinX(); }
+            double getHeight() const { AT(getMaxY() >= getMinY()); return getMaxY() - getMinY(); }
 
             /// With/height derived from extents
-            Real getGlobalWidth() const { AT(getMaxX() >= getMinX()); return (getMaxX() - getMinX())*tf_.scaleFactor(); }
-            Real getGlobalHeight() const { AT(getMaxY() >= getMinY()); return (getMaxY() - getMinY())*tf_.scaleFactor(); }
+            double getGlobalWidth() const { AT(getMaxX() >= getMinX()); return (getMaxX() - getMinX())*tf_.scaleFactor(); }
+            double getGlobalHeight() const { AT(getMaxY() >= getMinY()); return (getMaxY() - getMinY())*tf_.scaleFactor(); }
 
             /** @brief Get bounding box
              */
@@ -373,10 +373,10 @@ namespace Graphfab {
             virtual bool isContainer() const = 0;
 
             /// Get the radius (approx. for non-round)
-            Real radius() const { return _r; }
+            double radius() const { return _r; }
 
             /// Get the distance to another element
-            Real distance(const NetworkElement& e) const;
+            double distance(const NetworkElement& e) const;
 
             /// Does this element overlap with e?
             bool overlap(const NetworkElement& e) const;
@@ -418,7 +418,7 @@ namespace Graphfab {
             /// Extents (should be updated by derived classes)
             Box _ext;
             /// Radius
-            Real _r;
+            double _r;
             /// Shape
             NetworkEltShape _shape;
             /// Type
@@ -514,8 +514,8 @@ namespace Graphfab {
             Point getLowerRightCorner() const;
 
             void recalcExtents() {
-                Real width = _ext.width();
-                Real height = _ext.height();
+                double width = _ext.width();
+                double height = _ext.height();
                 Point del(0.5*width, 0.5*height);
 
                 _ext = Box(_p - del, _p + del);
@@ -523,16 +523,16 @@ namespace Graphfab {
             }
 
             /// Set width
-            void setWidth(Real w);
+            void setWidth(double w);
 
             /// Set height
-            void setHeight(Real h);
+            void setHeight(double h);
 
             /// Set width
-            void affectGlobalWidth(Real w);
+            void affectGlobalWidth(double w);
 
             /// Set height
-            void affectGlobalHeight(Real h);
+            void affectGlobalHeight(double h);
 
             void set_i(size_t i) { i_ = i; }
             size_t get_i() const { return i_; }
@@ -564,7 +564,7 @@ namespace Graphfab {
             bool _isAlias;
             // rendering:
             /// Half the width and height, resp
-//             Real _hemiw, _hemih;
+//             double _hemiw, _hemih;
 
             // index in network
             size_t i_;
@@ -729,7 +729,7 @@ namespace Graphfab {
              * @param padding     Amount to pad bounding boxes
              * @param clip_cutoff Numeric tolerance for clipping algorithm
              */
-            void clipCurves(const Real padding=0, const Real clip_cutoff=0.1);
+            void clipCurves(const double padding=0, const double clip_cutoff=0.1);
 
             /** @brief Recenter at the mean centroid of connected nodes
              */
@@ -924,7 +924,7 @@ namespace Graphfab {
             void autoSize();
 
             /// Rest area
-            Real restArea() const { return _ra; }
+            double restArea() const { return _ra; }
 
             void setMin(const Point& p) { _ext.setMin(p); }
             void setMax(const Point& p) { _ext.setMax(p); }
@@ -942,22 +942,22 @@ namespace Graphfab {
              * @param[in] fx2 Force on rightmost vertical edge
              * @param[in] fy2 Force on rightmost horizontal edge
              */
-            void applyBoundaryForce(const Real fx1, const Real fy1, const Real fx2, const Real fy2);
+            void applyBoundaryForce(const double fx1, const double fy1, const double fx2, const double fy2);
 
             /** @brief Apply contact force for a particular element
              * @param[in] e The internal element
              * @param[in] f The magnitude of the force
              * @param[in] t The falloff
              */
-            void doInternalForce(NetworkElement* e, const Real f, const Real t);
+            void doInternalForce(NetworkElement* e, const double f, const double t);
 
             /// Apply contact force for all internal elements
-            void doInternalForceAll(const Real f, const Real t);
+            void doInternalForceAll(const double f, const double t);
 
             /// Update the dynamics
-            void doMotion(const Real scale);
+            void doMotion(const double scale);
 
-            void capDelta2(const Real cap2);
+            void capDelta2(const double cap2);
 
             bool isContainer() const { return true; }
 
@@ -985,15 +985,15 @@ namespace Graphfab {
             /// Elements
             EltVec _elt;
             /// Rest area
-            Real _ra;
+            double _ra;
             /// Young's modulus
-            Real _E;
+            double _E;
             /// Poisson's ratio
-            //Real _nu;
+            //double _nu;
             /// Forces
-            Real _fx1, _fy1, _fx2, _fy2;
+            double _fx1, _fy1, _fx2, _fy2;
             /// Restoring force multiplier
-            Real _res;
+            double _res;
 
             uint64_t bytepattern;
     };
@@ -1189,7 +1189,7 @@ namespace Graphfab {
              * @param padding     Amount to pad bounding boxes
              * @param clip_cutoff Numeric tolerance for clipping algorithm
              */
-            void clipCurves(const Real padding=0, const Real clip_cutoff=0.1);
+            void clipCurves(const double padding=0, const double clip_cutoff=0.1);
 
             /// Reposition the junctions at the mean centroid of connected nodes
             void recenterJunctions();
@@ -1202,17 +1202,17 @@ namespace Graphfab {
              * @param[in] f The force
              * @param[in] t The edge tolerance (distance at which force starts kicking in)
              */
-            //void doNodeBoxContactForce(const Box& b, const Real f, const Real t);
+            //void doNodeBoxContactForce(const Box& b, const double f, const double t);
 
             /** @brief Limits the maximum displacement
              * @param[in] cap Magnitude of maximum displacement
              */
-            void capDeltas(const Real cap);
+            void capDeltas(const double cap);
 
             /** @brief Apply the deltas to positions
              * @param[in] scale Scaling factor
              */
-            void updatePositions(const Real scale);
+            void updatePositions(const double scale);
 
             /// Update extents on all elements
             void updateExtents();
@@ -1242,7 +1242,7 @@ namespace Graphfab {
 
             /** @brief Compute the diameter
              */
-            //Real diam(const Point& p);
+            //double diam(const Point& p);
 
             /** @brief Compute the variance in positions of nodes
              */

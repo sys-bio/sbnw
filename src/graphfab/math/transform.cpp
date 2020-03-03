@@ -46,7 +46,7 @@ namespace Graphfab {
         return t/det();
     }
     
-    Real Affine2d::det() const {
+    double Affine2d::det() const {
         return rc(0,0)*(rc(1,1)*rc(2,2)-rc(2,1)*rc(1,2)) -
                rc(0,1)*(rc(1,0)*rc(2,2)-rc(2,0)*rc(1,2)) +
                rc(0,2)*(rc(1,0)*rc(2,1)-rc(2,0)*rc(1,1));
@@ -73,7 +73,7 @@ namespace Graphfab {
         return t;
     }
     
-    Real Affine2d::cofactor(int i, int j) const {
+    double Affine2d::cofactor(int i, int j) const {
         AT(0 <= i && i < 3, "col out of range");
         AT(0 <= j && j < 3, "row out of range");
         
@@ -110,7 +110,7 @@ namespace Graphfab {
 
     Affine2d Affine2d::FitToWindow(const Box& src, const Box& dst) {
 //         std::cerr << "  Affine2d::FitToWindow: src " << src << " -> dst " << dst << "\n";
-        Real factor = min(dst.width() / src.width(), dst.height() / src.height());
+        double factor = min(dst.width() / src.width(), dst.height() / src.height());
         // centering:
         Point offset((dst.width() - factor*src.width())/2., (dst.height() - factor*src.height())/2.);
         return fromPoints(Point(factor,0),
@@ -126,7 +126,7 @@ namespace Graphfab {
         return xformBox(x, *this);
     }
     
-    Affine2d Affine2d::operator*(const Real& k) const {
+    Affine2d Affine2d::operator*(const double& k) const {
         return Affine2d(k*rc(0,0), k*rc(0,1), k*rc(0,2), 
                         k*rc(1,0), k*rc(1,1), k*rc(1,2), 
                         k*rc(2,0), k*rc(2,1), k*rc(2,2));

@@ -34,7 +34,6 @@
 
 #include "SagittariusCommon.h"
 #include "SagittariusException.hpp"
-#include "graphfab/string.h"
 #include <exception>
 
 namespace Graphfab
@@ -88,7 +87,7 @@ namespace Graphfab
             //Override std::exception::what
             const char* what() const throw() {
               // leak
-              return gf_strclone(getReport().c_str());
+              return getReport().c_str();
             }
             
         protected:

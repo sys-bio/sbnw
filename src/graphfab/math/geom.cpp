@@ -35,7 +35,7 @@
 
 namespace Graphfab {
 
-    Point calcCurveBackup(const Point& src, const Point& cent, const Box& ext, Real dist) {
+    Point calcCurveBackup(const Point& src, const Point& cent, const Box& ext, double dist) {
 
       // left side
       {
@@ -98,10 +98,10 @@ namespace Graphfab {
       P3_ = end;
     }
 
-    Point CubicBezier2Desc::p(Real t) const {
+    Point CubicBezier2Desc::p(double t) const {
       if (t < 0. || t > 1.)
         std::cerr << "Warning: t is out of bounds\n";
-      Real u = 1.-t;
+      double u = 1.-t;
       return P0_*u*u*u + 3*u*u*t*P1_ + 3*u*t*t*P2_ + t*t*t*P3_;
     }
 
@@ -126,9 +126,9 @@ namespace Graphfab {
     }
 
     CubicBezierIntersection::CubicBezierIntersection(const Line2Desc& l, const CubicBezier2Desc& c) {
-      Real A = l.getA();
-      Real B = l.getB();
-      Real C = l.getC();
+      double A = l.getA();
+      double B = l.getB();
+      double C = l.getC();
 
       Point P0 = c.getCP(0);
       Point P1 = c.getCP(1);
@@ -146,9 +146,9 @@ namespace Graphfab {
         << ", " << computeCubic(alpha, beta, gamma, delta, 0.5)
         << ", " << computeCubic(alpha, beta, gamma, delta, 1.) << "\n";
 
-      Real a2 = (A*beta.x + B*beta.y) / (A*alpha.x + B*alpha.y);
-      Real a1 = (A*gamma.x + B*gamma.y) / (A*alpha.x + B*alpha.y);
-      Real a0 = (C + A*delta.x + B*delta.y) / (A*alpha.x + B*alpha.y);
+      double a2 = (A*beta.x + B*beta.y) / (A*alpha.x + B*alpha.y);
+      double a1 = (A*gamma.x + B*gamma.y) / (A*alpha.x + B*alpha.y);
+      double a0 = (C + A*delta.x + B*delta.y) / (A*alpha.x + B*alpha.y);
 
       CubicRoots r(a2, a1, a0);
 
@@ -164,11 +164,11 @@ namespace Graphfab {
     }
 
     LinearIntersection::LinearIntersection(const Point& p1, const Point& p2, const Point& q1, const Point& q2) {
-      Real denom = ((q2.y - q1.y) * (p2.x - p1.x)) - ((q2.x - q1.x) * (p2.y - p1.y));
+      double denom = ((q2.y - q1.y) * (p2.x - p1.x)) - ((q2.x - q1.x) * (p2.y - p1.y));
       if (std::abs(denom) < 1e-3)
         v_ = false;
 
-      Real ua, ub;
+      double ua, ub;
       ua = (((q2.x - q1.x) * (p1.y - q1.y)) - ((q2.y - q1.y) * (p1.x - q1.x))) / denom;
       ub = (((p2.x - p1.x) * (p1.y - q1.y)) - ((p2.y - p1.y) * (p1.x - q1.x))) / denom;
 

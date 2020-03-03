@@ -42,21 +42,21 @@ namespace Graphfab {
     }
     
     // intersection of a ray emating from the origin (in direction v) & a horizontal line
-    Point intersectRayHLine(const Point& v, const Real c) {
+    Point intersectRayHLine(const Point& v, const double c) {
         AT(mag(v.y) > 1e-6, "No intersection");
-        Real s = c / v.y;
+        double s = c / v.y;
         return Point(s*v.x, c);
     }
     
     // intersection of a ray emating from the origin (in direction v) & a vertical line
-    Point intersectRayVLine(const Point& v, const Real c) {
+    Point intersectRayVLine(const Point& v, const double c) {
         AT(mag(v.x) > 1e-6, "No intersection");
-        Real s = c / v.x;
+        double s = c / v.x;
         return Point(c, s*v.y);
     }
     
     // intersection of line segment origin->v & horizontal line y = c
-    std::pair<bool, Point> intersectVecHLineBounded(const Point& v, const Real c, const Real min, const Real max) {
+    std::pair<bool, Point> intersectVecHLineBounded(const Point& v, const double c, const double min, const double max) {
         if(pointInInterval(c, Interval(0, v.y))) {
             Point p = intersectRayHLine(v,c);
             // check that it fits in the bounds of the box
@@ -68,7 +68,7 @@ namespace Graphfab {
     }
     
     // intersection of line segment origin->v & vertical line x = c
-    std::pair<bool, Point> intersectVecVLineBounded(const Point& v, const Real c, const Real min, const Real max) {
+    std::pair<bool, Point> intersectVecVLineBounded(const Point& v, const double c, const double min, const double max) {
         if(pointInInterval(c, Interval(0, v.x))) {
             Point p = intersectRayVLine(v,c);
             // check that it fits in the bounds of the box
@@ -82,7 +82,7 @@ namespace Graphfab {
     std::pair<bool, Point> intersectBoxLine(const Box& b_, const Point& u, const Point& v_) {
         // make relative to a:
         Box b(b_.getMin()-u, b_.getMax()-u);
-        Real bx1 = b.getMin().x, bx2 = b.getMax().x, by1 = b.getMin().y, by2 = b.getMax().y;
+        double bx1 = b.getMin().x, bx2 = b.getMax().x, by1 = b.getMin().y, by2 = b.getMax().y;
         Point v(v_-u);
         std::pair<bool, Point> r;
         // try top edge

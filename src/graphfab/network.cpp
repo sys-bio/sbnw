@@ -155,7 +155,7 @@ namespace Graphfab {
         _v = Point(0.,0.);
     }
 
-    void NetworkElement::doMotion(const Real scale) {
+    void NetworkElement::doMotion(const double scale) {
         if(_lock)
             return;
         AT(_type != NET_ELT_TYPE_COMP);
@@ -168,11 +168,11 @@ namespace Graphfab {
         _v = _v + d;
     }
 
-    void NetworkElement::capDelta(const Real cap) {
+    void NetworkElement::capDelta(const double cap) {
         _v = _v.capMag(cap);
     }
 
-    void NetworkElement::capDelta2(const Real cap2) {
+    void NetworkElement::capDelta2(const double cap2) {
         _v.capMag2_(cap2);
     }
 
@@ -199,16 +199,16 @@ namespace Graphfab {
       }
     }
 
-    Real NetworkElement::distance(const NetworkElement& e) const {
+    double NetworkElement::distance(const NetworkElement& e) const {
         NetworkEltShape sp1 = getShape(), sp2 = e.getShape();
 
         if(sp1 == sp2 && sp2 == ELT_SHAPE_ROUND) {
-            Real r = euclidean2d(getCentroid(), e.getCentroid()) - radius() - e.radius();
+            double r = euclidean2d(getCentroid(), e.getCentroid()) - radius() - e.radius();
             return max(r, 0.);
         } else {
             // works for boxes & mixed (well enough)
-            Real u = allenDist(getMinX(), getMaxX(), e.getMinX(), e.getMaxX());
-            Real v = allenDist(getMinY(), getMaxY(), e.getMinY(), e.getMaxY());
+            double u = allenDist(getMinX(), getMaxX(), e.getMinX(), e.getMaxX());
+            double v = allenDist(getMinY(), getMaxY(), e.getMinY(), e.getMaxY());
             return sqrt(u*u + v*v);
         }
     }
@@ -228,8 +228,8 @@ namespace Graphfab {
                 return (getCentroid() - e.getCentroid()).normed();
             }
             // works for boxes & mixed (well enough)
-            Real u = -allenOrdered(getMinX(), getMaxX(), e.getMinX(), e.getMaxX());
-            Real v = -allenOrdered(getMinY(), getMaxY(), e.getMinY(), e.getMaxY());
+            double u = -allenOrdered(getMinX(), getMaxX(), e.getMinX(), e.getMaxX());
+            double v = -allenOrdered(getMinY(), getMaxY(), e.getMinY(), e.getMaxY());
             return Point(u,v).normed();
         }
     }
@@ -250,8 +250,8 @@ namespace Graphfab {
                 return;
             }
             // works for boxes & mixed (well enough)
-            Real u = -allenOrdered(getMinX(), getMaxX(), e.getMinX(), e.getMaxX());
-            Real v = -allenOrdered(getMinY(), getMaxY(), e.getMinY(), e.getMaxY());
+            double u = -allenOrdered(getMinX(), getMaxX(), e.getMinX(), e.getMaxX());
+            double v = -allenOrdered(getMinY(), getMaxY(), e.getMinY(), e.getMaxY());
             p.x = u;
             p.y = v;
             p.norm_();
@@ -371,27 +371,27 @@ namespace Graphfab {
         return _p + Point(40,20);
     }
 
-    void Node::setWidth(Real w) {
+    void Node::setWidth(double w) {
         Point d(w/2., getHeight()/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
 
-    void Node::setHeight(Real h) {
+    void Node::setHeight(double h) {
         Point d(getWidth()/2., h/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
 
-    void Node::affectGlobalWidth(Real ww) {
-        Real w = ww/tf_.scaleFactor();
+    void Node::affectGlobalWidth(double ww) {
+        double w = ww/tf_.scaleFactor();
         Point d(w/2., getHeight()/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
     }
 
-    void Node::affectGlobalHeight(Real hh) {
-        Real h = hh/tf_.scaleFactor();
+    void Node::affectGlobalHeight(double hh) {
+        double h = hh/tf_.scaleFactor();
         Point d(getWidth()/2., h/2.);
         _ext.setMin(getCentroid() - d);
         _ext.setMax(getCentroid() + d);
@@ -753,10 +753,10 @@ namespace Graphfab {
         if (!filterRxn(this))
           std::cerr << "ctrlCent first value: " << ctrlCent << "\n";
 #endif
-        Real scalar=20.;
+        double scalar=20.;
 
         if(looped) {
-            const Real d = -scalar;
+            const double d = -scalar;
             ctrlCent = _p + (_p - loopPt);
 
             ctrlCent = new2ndPos(loopPt, _p, 0., d, false);
@@ -936,7 +936,7 @@ namespace Graphfab {
         }
     }
 
-    void Reaction::clipCurves(const Real padding, const Real clip_cutoff) {
+    void Reaction::clipCurves(const double padding, const double clip_cutoff) {
         // control points
         for(CurveIt i=CurvesBegin(); i!=CurvesEnd(); ++i) {
             RxnBezier* c = *i;
@@ -1074,7 +1074,7 @@ namespace Graphfab {
     }
 
     void Compartment::resizeEnclose(double padding) {
-        Real minx, miny, maxx, maxy;
+        double minx, miny, maxx, maxy;
         EltIt i=EltsBegin();
         if(i != EltsEnd()) {
             NetworkElement* e = *i;
@@ -1098,7 +1098,7 @@ namespace Graphfab {
 
     void Compartment::autoSize() {
         uint64 count = _elt.size();
-        Real dim = 350*sqrt((Real)count);
+        double dim = 350*sqrt((double)count);
         // avoid singularities in layout algo
         Point shake((rand()%1000)/100.,(rand()%1000)/100.);
         _ext = Box(Point(0,0) + shake, Point(dim,dim) + shake);
@@ -1110,37 +1110,37 @@ namespace Graphfab {
         _v = Point(0,0);
         // now calculate stress due to being stretched beyond rest area
         // this stress always acts to shrink the comp
-        Real w = _ext.width(), h = _ext.height();
-        Real d2 = _ext.area()-_ra;
+        double w = _ext.width(), h = _ext.height();
+        double d2 = _ext.area()-_ra;
         // strain (liberally speaking), evenly distributed along all axes
-        Real strain = sign(d2)*sqrt(mag(d2) / _ra);
+        double strain = sign(d2)*sqrt(mag(d2) / _ra);
         _fx1 = _res*_E*strain*w;
         _fy1 = _res*_E*strain*h;
         _fx2 = -_res*_E*strain*w;
         _fy2 = -_res*_E*strain*h;
     }
 
-    void Compartment::applyBoundaryForce(const Real fx1, const Real fy1, const Real fx2, const Real fy2) {
+    void Compartment::applyBoundaryForce(const double fx1, const double fy1, const double fx2, const double fy2) {
         _fx1 += fx1;
         _fy1 += fy1;
         _fx2 += fx2;
         _fy2 += fy2;
     }
 
-    void Compartment::doInternalForce(NetworkElement* e, const Real f, const Real t) {
-        Real x1=_ext.getMin().x, y1 = _ext.getMin().y, x2 = _ext.getMax().x, y2 = _ext.getMax().y;
-        Real invt = 1./t;
+    void Compartment::doInternalForce(NetworkElement* e, const double f, const double t) {
+        double x1=_ext.getMin().x, y1 = _ext.getMin().y, x2 = _ext.getMax().x, y2 = _ext.getMax().y;
+        double invt = 1./t;
 
-        Real eminx = e->getMinX();
-        Real eminy = e->getMinY();
-        Real emaxx = e->getMaxX();
-        Real emaxy = e->getMaxY();
+        double eminx = e->getMinX();
+        double eminy = e->getMinY();
+        double emaxx = e->getMaxX();
+        double emaxy = e->getMaxY();
 
         // compute forces
-        Real fx1 = f*exp((x1-eminx)*invt);
-        Real fx2 = -f*exp((emaxx-x2)*invt);
-        Real fy1 = f*exp((y1-eminy)*invt);
-        Real fy2 = -f*exp((emaxy-y2)*invt);
+        double fx1 = f*exp((x1-eminx)*invt);
+        double fx2 = -f*exp((emaxx-x2)*invt);
+        double fy1 = f*exp((y1-eminy)*invt);
+        double fy2 = -f*exp((emaxy-y2)*invt);
 
         // do forces on element
         e->addDelta(Point(fx1+fx2, fy1+fy2));
@@ -1150,18 +1150,18 @@ namespace Graphfab {
         addDelta(-Point(fx1+fx2,fy1+fy2));
     }
 
-    void Compartment::doInternalForceAll(const Real f, const Real t) {
+    void Compartment::doInternalForceAll(const double f, const double t) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             doInternalForce(e, f, t);
         }
     }
 
-    void Compartment::doMotion(const Real scale_) {
+    void Compartment::doMotion(const double scale_) {
         if(_lock)
             return;
-        const Real scale = 0.2*scale_;
-        Real w = _ext.width(), h = _ext.height();
+        const double scale = 0.2*scale_;
+        double w = _ext.width(), h = _ext.height();
         // adjust the extents based on Hooke's law of elasticity
         // forces -> stress -> strain -> displacement
         _ext.setMin(_ext.getMin() + (scale/_E)*Point(_fx1*w/h, _fy1*h/w) + scale*_v);
@@ -1173,9 +1173,9 @@ namespace Graphfab {
         //recalc centroid?
     }
 
-    void Compartment::capDelta2(const Real cap2) {
+    void Compartment::capDelta2(const double cap2) {
         _v.capMag2_(cap2);
-        const Real cap = sqrt(cap2);
+        const double cap = sqrt(cap2);
         if(mag(_fx1) > cap)
             _fx1 = sign(_fx1)*cap;
         if(mag(_fy1) > cap)
@@ -1665,7 +1665,7 @@ namespace Graphfab {
         }
     }
 
-    void Network::updatePositions(const Real scale) {
+    void Network::updatePositions(const double scale) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->doMotion(scale);
@@ -1693,7 +1693,7 @@ namespace Graphfab {
         }
     }
 
-    void Network::capDeltas(const Real cap) {
+    void Network::capDeltas(const double cap) {
         for(EltIt i=EltsBegin(); i!=EltsEnd(); ++i) {
             NetworkElement* e = *i;
             e->capDelta2(cap*cap);
@@ -1776,7 +1776,7 @@ namespace Graphfab {
             Graphfab::Compartment* c = *i;
             if(c->isLocked())
                 break;
-            Real d = sqrt(c->restArea());
+            double d = sqrt(c->restArea());
             Point p(rand_range(b.getMin().x, b.getMax().x),
                     rand_range(b.getMin().y, b.getMax().y));
             Point dim(d, d);
@@ -1801,7 +1801,7 @@ namespace Graphfab {
         }
     }
 
-    void Network::clipCurves(const Real padding, const Real clip_cutoff) {
+    void Network::clipCurves(const double padding, const double clip_cutoff) {
         for(RxnIt i=RxnsBegin(); i!=RxnsEnd(); ++i) {
             Reaction* r = *i;
             r->clipCurves(padding, clip_cutoff);
@@ -1955,7 +1955,7 @@ namespace Graphfab {
              !(sbml_bb->getPosition()->x() == 0 && sbml_bb->getPosition()->y() == 0 &&
              sbml_bb->getDimensions() && sbml_bb->getDimensions()->getWidth() == 0 && sbml_bb->getDimensions()->getHeight() == 0) ) {
 
-                Real x_offset = 0, y_offset = 0;
+                double x_offset = 0, y_offset = 0;
                 if (sbml_bb->getDimensions())
                   x_offset = sbml_bb->getDimensions()->getWidth() * 0.5, y_offset = sbml_bb->getDimensions()->getHeight() * 0.5;
                 r->setCentroid(sbml_bb->getPosition()->x(), sbml_bb->getPosition()->y());

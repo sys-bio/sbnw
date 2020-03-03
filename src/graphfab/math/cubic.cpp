@@ -36,7 +36,7 @@ namespace Graphfab {
     
     // CLASS CubicRoots:
     
-    CubicRoots::CubicRoots(Real a2, Real a1, Real a0) {
+    CubicRoots::CubicRoots(double a2, double a1, double a0) {
       Complex p1 = a2*a2*a1*a1 +18.*a2*a1*a0 - 4.*a1*a1*a1 - 27.*a0*a0 - 4.*a2*a2*a2*a0;
       Complex p2 = 9.*a2*a1 - 27.*a0 - 2.*a2*a2*a2;
 
@@ -71,12 +71,12 @@ namespace Graphfab {
 
     bool CubicRoots::isRootReal(int i) const {
       Complex t = getRoot(i);
-      Real r = std::real(t);
-      const Real ep = 1e-3;
+      double r = std::real(t);
+      const double ep = 1e-3;
       return std::abs(std::abs(r) - std::abs(t)) < ep;
     }
 
-    Real CubicRoots::getRealRoot(int i) const {
+    double CubicRoots::getRealRoot(int i) const {
       if (!isRootReal(i))
         SBNW_THROW(RedundancyCheckFailureException, "Root is not real", "CubicRoots::getRealRoot");
       return std::real(getRoot(i));
@@ -87,8 +87,8 @@ namespace Graphfab {
     }
 
     Complex CubicRoots::curtConventional(Complex x) {
-      Real r = std::pow(std::abs(x), 1/3.);
-      Real a = std::arg(x);
+      double r = std::pow(std::abs(x), 1/3.);
+      double a = std::arg(x);
       if (-pi < a && a < -pi/2)
         return std::polar(r, -(1./3.*a - 2./3.*pi));
       else if (a == -pi/2.)

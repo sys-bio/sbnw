@@ -50,17 +50,17 @@
 namespace Graphfab {
     
     struct cutout {
-        cutout(Real a, Real b, Real c, Real d)
+        cutout(double a, double b, double c, double d)
             : u(a), v(b), x(c), y(d) {}
-        Real u, v;
-        Real x, y;
+        double u, v;
+        double x, y;
         
-        Real det() const { return u*y - v*x; }
+        double det() const { return u*y - v*x; }
     };
 
     class _GraphfabExport Affine2d {
         protected:
-            static Real min(Real x, Real y) {
+            static double min(double x, double y) {
                 if(x < y)
                     return x;
                 else
@@ -73,9 +73,9 @@ namespace Graphfab {
                 _e[6] = 0.; _e[7] = 0.; _e[8] = 1.;
             }
             
-            Affine2d(Real a, Real b, Real c,
-                     Real u, Real v, Real w,
-                     Real x, Real y, Real z) {
+            Affine2d(double a, double b, double c,
+                     double u, double v, double w,
+                     double x, double y, double z) {
                 _e[0] = a; _e[1] = b; _e[2] = c;
                 _e[3] = u; _e[4] = v; _e[5] = w;
                 _e[6] = x; _e[7] = y; _e[8] = z;
@@ -85,32 +85,32 @@ namespace Graphfab {
             Affine2d inv() const;
             
             /// Det
-            Real det() const;
+            double det() const;
             
             /// Access the specified row/column
-            Real rc(int r, int c) const {
+            double rc(int r, int c) const {
                 AT(0 <= r && r < 3, "Row out of range");
                 AT(0 <= c && c < 3, "Column out of range");
                 return _e[c+r*3];
             }
             
             /// Access the specified row/column as reference
-            Real& rcref(int r, int c) {
+            double& rcref(int r, int c) {
                 AT(0 <= r && r < 3, "Row out of range");
                 AT(0 <= c && c < 3, "Column out of range");
                 return _e[c+r*3];
             }
             
             // Hacky
-            Real scaleFactor() const {
+            double scaleFactor() const {
                 return rc(0,0);
             }
             
-            void set(int i, int j, Real val) { rcref(i,j) = val; }
+            void set(int i, int j, double val) { rcref(i,j) = val; }
             
             // Creators:
             
-            static Affine2d makeXlate(Real x, Real y) {
+            static Affine2d makeXlate(double x, double y) {
                 Affine2d a;
                 a.rcref(0,2) = x;
                 a.rcref(1,2) = y;
@@ -119,7 +119,7 @@ namespace Graphfab {
             
             static Affine2d makeXlate(const Point& p) { return makeXlate(p.x, p.y); }
             
-            static Affine2d makeScale(Real x, Real y) {
+            static Affine2d makeScale(double x, double y) {
                 Affine2d a;
                 a.rcref(0,0) = x;
                 a.rcref(1,1) = y;
@@ -161,9 +161,9 @@ namespace Graphfab {
             
             Box operator*(const Box& x) const;
             
-            Affine2d operator*(const Real& k) const;
+            Affine2d operator*(const double& k) const;
             
-            Affine2d operator/(const Real& k) const { return (*this)*(1./k); }
+            Affine2d operator/(const double& k) const { return (*this)*(1./k); }
             
             // Composition:
             
@@ -187,12 +187,12 @@ namespace Graphfab {
             
             Affine2d cofactors() const;
             
-            Real cofactor(int i, int j) const;
+            double cofactor(int i, int j) const;
             
             // minor for row, col
             cutout getCutout(int r, int c) const;
             
-            Real _e[9];
+            double _e[9];
     };
     
     Point xformPoint(const Point& p, const Affine2d& t);

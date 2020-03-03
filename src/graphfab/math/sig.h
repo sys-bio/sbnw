@@ -45,7 +45,7 @@
 
 namespace Graphfab {
 
-    inline Real sig(const Real t) {
+    inline double sig(const double t) {
         return 1./(1. + exp(-t));
     }
     

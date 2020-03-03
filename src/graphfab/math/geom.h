@@ -51,19 +51,19 @@
 namespace Graphfab {
     
     /// Degrees 2 radians
-    inline Real deg2r(const Real deg) {
-        const Real pi = 3.14159;
+    inline double deg2r(const double deg) {
+        const double pi = 3.14159;
         return deg*pi/180.;
     }
 
     /// Return alpha*t^3 + beta*t^2 + gamma*t + delta
-    inline Point computeCubic(const Point& alpha, const Point& beta, const Point& gamma, const Point& delta, Real t) {
+    inline Point computeCubic(const Point& alpha, const Point& beta, const Point& gamma, const Point& delta, double t) {
       return alpha*t*t*t + beta*t*t + gamma*t + delta;
     }
     
-    inline Point new2ndPos(const Point& first, const Point& second, const Real deg, const Real dist, const bool rel_dist) {
-        Real h, o, a, x;
-        Real hnew, onew, anew;
+    inline Point new2ndPos(const Point& first, const Point& second, const double deg, const double dist, const bool rel_dist) {
+        double h, o, a, x;
+        double hnew, onew, anew;
         
         o = second.y - first.y;
         a = second.x - first.x;
@@ -74,7 +74,7 @@ namespace Graphfab {
         else
             hnew = h + dist;
         
-        const Real ep = 1e-6;
+        const double ep = 1e-6;
         
         if(mag(a) > ep)
             x = atan(o/a);
@@ -91,20 +91,20 @@ namespace Graphfab {
     }
     
     // bounding box-based
-    Point calcCurveBackup(const Point& src, const Point& cent, const Box& ext, Real dist = 20);
+    Point calcCurveBackup(const Point& src, const Point& cent, const Box& ext, double dist = 20);
 
     class Line2Desc {
     public:
       Line2Desc(const Point& start, const Point& end);
 
-      Real getA() const { return A_; }
+      double getA() const { return A_; }
 
-      Real getB() const { return B_; }
+      double getB() const { return B_; }
 
-      Real getC() const { return C_; }
+      double getC() const { return C_; }
 
     protected:
-      Real A_, B_, C_;
+      double A_, B_, C_;
 
 	  _GraphfabExport friend std::ostream& operator<<(std::ostream& o, const Line2Desc& c);
     };
@@ -116,7 +116,7 @@ namespace Graphfab {
       CubicBezier2Desc(const Point& start, const Point& c1, const Point& c2, const Point& end);
 
       /// Computes a point on the parametric curve
-      Point p(Real t) const;
+      Point p(double t) const;
 
       /// Returns the nth control point
       Point getCP(int n) const;
@@ -134,10 +134,10 @@ namespace Graphfab {
     public:
       CubicBezierIntersection(const Line2Desc& l, const CubicBezier2Desc& c);
 
-      const std::vector<Real>& getIntersectionPoints() const { return r_; }
+      const std::vector<double>& getIntersectionPoints() const { return r_; }
 
     protected:
-      std::vector<Real> r_;
+      std::vector<double> r_;
     };
 
 //     class LinearIntersectionResults {

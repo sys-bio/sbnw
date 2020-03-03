@@ -55,13 +55,13 @@ namespace Graphfab {
 	class _GraphfabExport CubicRoots {
         public:
             /// Solve the cubic polynomial x^3 + a2*x^2 + a1*x + a0 = 0
-            CubicRoots(Real a2, Real a1, Real a0);
+            CubicRoots(double a2, double a1, double a0);
 
             Complex getRoot(int i) const;
 
             bool isRootReal(int i) const;
 
-            Real getRealRoot(int i) const;
+            double getRealRoot(int i) const;
 
             /// Square root according to ZWH convention
             static Complex sqrtConventional(Complex x);
