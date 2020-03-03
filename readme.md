@@ -34,57 +34,15 @@ Online C API documentation (via Doxygen) can be found at http://sys-bio.github.i
 * On Windows, extract the contents of http://sourceforge.net/projects/sbnw/files/1.2.7/sbnw-1.2.7-site-packages-win32.zip/download to your site-packages directory.
 
 ## How to compile the library
-
- * Install the latest version of <a href="http://sourceforge.net/projects/sbml/files/libsbml/">libSBML</a> or build it from source (tested with 5.6, 5.8, 5.10, 5.11).
-   (**VIDEO** showing steps to follow to build from source using CMAKE and Visual Studio: https://www.youtube.com/watch?v=e_Lydwzx-Hg, note that a few steps differ from what is shown in the video:
-    specifically, 
-    
-    1) you can download the 64-bit versions if you like; in the video the 32-bit versions are used 
-    2) in CMAKE, you want to set the CMAKE_INSTALL_PREFIX to the INSTALL dir you created in your Visual Studio Project directory 
-    3) in CMAKE, you want to check the box for ENABLE_LAYOUT 
-    4) in Visual Studio, in addition to building the ALL_BUILD target as shown in the video, you also want to build the INSTALL target
-   )  
- * **NOTE**: If you install a pre-built binary of libSBML then you must compile SBNW with the same version of Visual Studio as used to build libSBML.
-
- * Clone the latest revision of the <a href="https://github.com/sys-bio/sbnw">master branch</a> to Documents\Visual Studio 2017\Projects\sbnw via git. 
-   In the Documents\Visual Studio 2017\Projects\ folder, run `git clone https://github.com/sys-bio/sbnw.git`
-
- * Create BUILD and INSTALL directories in Documents\Visual Studio 2017\Projects\ to hold the build and install files that will be created (the names BUILD and INSTALL are suggestions, not requirements)
-
- * Download and install <a href="http://www.cmake.org/">CMake</a> (compatible with major version 2 or 3).
-
- * Open CMake and select Documents\Visual Studio 2017\Projects\sbnw as the source directory.
-
- * Select Documents\Visual Studio 2017\Projects\BUILD as the build directory.
-
- * Click on the Advanced option, in the top right section of the main CMake page.
-
- * Click configure & generate via CMake, choosing a generator that matches the required configuration (32-bit x86 is recommended on Windows; on Linux the default generator is sufficient).
-
- * In CMake, if you don't see LIBSBML_PREFIX on the list, click on the +AddEntry button in the top right corner and add it.
-   Set the `LIBSBML_PREFIX` variable to point to the directory where libSBML is installed/downloaded. 
-
- * If libSBML was compiled with compression support, `LIBSBML_EXTRA_LIBS` needs to be set.  If it is not on the list, click on the +AddEntry button in the top right corner and add it.
-   Set `LIBSBML_EXTRA_LIBS` to include libxml2, libbz2, and libz. 
-   On Linux and Mac, this is `LIBSBML_EXTRA_LIBS='xml2;bz2;z'`. 
-   On Windows, you must specify the full path to each dependency in the libSBML third party install folder,    
-   e.g. `LIBSBML_EXTRA_LIBS="\path\to\Documents\Visual Studio 2017\Projects\libSBML-5.17.0-Source\INSTALL\lib\libbz2.lib;
-        path\to\Documents\Visual Studio 2017\Projects\libSBML-5.17.0-Source\INSTALL\lib\libiconv.lib;
-        path\to\Documents\Visual Studio 2017\Projects\libSBML-5.17.0-Source\INSTALL\lib\libxml2.lib;
-        path\to\Documents\Visual Studio 2017\Projects\libSBML-5.17.0-Source\INSTALL\lib\zdll.lib;
-        ws2_32.lib"'.
-   Click configure & generate again.
-
- * If you are compiling with Python support, set `PYTHON_EXECUTABLE` to your Python executable, `PYTHON_LIBRARY` to your Python library, and `PYTHON_INCLUDE_DIR` to the Python include directory. Use `SBNW_LINK_TO_STATIC_LIBSBML=ON` if compiling with Python.
-
- * **NOTE**: In order to statically link to libSBML, specify `SBNW_LINK_TO_STATIC_LIBSBML=ON`. Otherwise, the libSBML DLLs must be in the PATH to run any compiled code.
-
- * On Windows, open the generated .sln in Visual Studio, and change the configuration to "Release"; on Linux/Mac simply run make -j4 install from the build directory.
-
- * *(This step was previously used to instruct the user to set the MSVC runtime library. It is now set automatically through CMake. This placeholder serves as a reminder in case this solution breaks at some point.)*
-
- * **Windows Specific:** In Visual Studio, right click on the INSTALL target and select build. SBNW will be installed to the location stored in CMAKE_INSTALL_PREFIX (ensure your user has write access).
-
+SBNW uses a CMake build system along with `ExternalProject` for dependency mangement. On windows with 
+visual studio, [cmake-gui](https://cmake.org/download/) is the easiest way to build SBNW. Download cmake-gui and follow the
+standard [cmake-gui instructions](https://cmake.org/runningcmake/).
+This means that the usual cmake commands can be used to compile SBNW. 
+SBNW has been configured to only build sbnw when these dependencies are found. If they are not, however, CMake will\
+dynamically download and build them for you. Therefore, this is how you should proceed:
+1) Build all targets. CMake will go and get googletest, libsbml and its dependencies
+2) Build all targets again. This time around you will have the dependencies and the sbnw targets \
+will be available building.
 ## Using the Tellurium Plugin
 
 The network viewer is available as a plugin for a pre-release of [Tellurium](https://github.com/0u812/sbnw/releases/tag/1.2.5). Simply switch to the network viewer tab, open a model from the [test cases](https://github.com/0u812/sbnw/releases/download/1.2.4/testcases.zip) (e.g. BorisEJB.xml), and enter the following code:

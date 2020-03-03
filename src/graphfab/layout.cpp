@@ -412,7 +412,7 @@ void gf_aliasNodebyDegree(gf_layoutInfo* l, int minDegree) {
 
 
 
-SBMLDocument* populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
+SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
 //     SBMLDocument* doc = (SBMLDocument*)m->pdoc;
     SBMLNamespaces sbmlns(l ? (l->level ? l->level : 3) : 3, l ? (l->version ? l->version : 1) : 1, "layout", 1);
     SBMLDocument* doc = new SBMLDocument(&sbmlns);
