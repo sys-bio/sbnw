@@ -576,12 +576,8 @@ namespace Graphfab {
     inline Node* CastToNode(void* p) {
         NetworkElement* e = (NetworkElement*)p;
         AN(e->hasNetworkElementBase(), "Runtime type check failed");
-//         std::cout << typeid((Node&)*e).name() << std::endl;
         AN(dynamic_cast<Node*>(e), "Runtime type check failed");
         return dynamic_cast<Node*>(e);
-//         Node* x = (Node*)e;
-//         AN(x->doByteCheck(), "Runtime type check failed");
-//         return x;
     }
 
     typedef enum {
@@ -894,14 +890,34 @@ namespace Graphfab {
             /// Set the compartment's glyph (layout element)
             void setGlyph(const std::string& glyph) { _gly = glyph; }
 
-            void setCentroid(const Point& p) {
+            void setCentroid(const Point& p) override {
                 AN(0, "setCentroid should not be called on a compt");
             }
 
             /// Approximate size; used by distance algorithms etc.
-            void recalcExtents() {
-                _r = _ext.maxDim()*0.5;
-                _p = (_ext.getMin() + _ext.getMax())*0.5;
+            void recalcExtents() override {
+//                std::cout << "network.h:903: _ext, " << _ext << std::endl;
+                _r = _ext.maxDim()*0.5; // gets the value of the largest dimension
+                _p = (_ext.getMin() + _ext.getMax())*0.5; // getMin and getMax simply return the _min or _max which are both points
+                std::cout << "network.h:905: _r " << _r << ", _p " << _p << std::endl;
+
+                /*
+                 * The bug
+                 * -------
+                 *                              min point           max point
+                 * network.h: line 903: _ext, [(663.75, 179.516), (1363.75, 879.516)]
+                 * network.h: line 905: _r 350, _p (1013.75, 529.516)
+                 * network.h: line 903: _ext, [(-1396.15, -980.414), (2103.85, 2519.59)]
+                 * network.h: line 905: _r 1750, _p (353.855, 769.586)
+                 * network.h: line 903: _ext, [(926462, 3.04449e+06), (926472, 3.05907e+06)]
+                 * network.h: line 905: _r 7291.5, _p (926467, 3.05178e+06)
+                 * network.h: line 903: _ext, [(-1.16176e+06, -184612), (-1.16175e+06, -184602)]
+                 * network.h: line 905: _r 5, _p (-1.16176e+06, -184607)
+                 * network.h: line 903: _ext, [(-nan(ind), -nan(ind)), (-nan(ind), -nan(ind))]
+                 * network.h: line 905: _r -nan(ind), _p (-nan(ind), -nan(ind))
+                 * network.h: line 903: _ext, [(-nan(ind), -nan(ind)), (-nan(ind), -nan(ind))]
+                 */
+
             }
 
             // Elements

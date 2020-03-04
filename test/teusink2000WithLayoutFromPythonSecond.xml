@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Graphfab on 2020-03-04 14:10 with libSBML version 5.18.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1" level="3" version="1" layout:required="false">
+  <model id="Teusink2000_Glycolysis">
+    <listOfCompartments>
+      <compartment id="extracellular" size="1" constant="false"/>
+      <compartment id="cytosol" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="GLCi" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="G6P" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="F6P" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="F16P" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="TRIO" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="BPG" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="P3G" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="P2G" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PEP" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PYR" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="ACE" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="P" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="NAD" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="NADH" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Glyc" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Trh" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CO2" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SUCC" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="GLCo" compartment="extracellular" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="ETOH" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="GLY" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="ATP" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="ADP" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="SUM_P" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AMP" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="F26BP" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="vGLK" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="GLCi" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="G6P" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="ATP"/>
+          <modifierSpeciesReference species="ADP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vPGI" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G6P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="F6P" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vGLYCO" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G6P" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Glyc" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vTreha" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="G6P" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trh" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vPFK" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="F6P" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="F16P" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="AMP"/>
+          <modifierSpeciesReference species="F26BP"/>
+          <modifierSpeciesReference species="ATP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vALD" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="F16P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="TRIO" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vGAPDH" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="TRIO" stoichiometry="1" constant="false"/>
+          <speciesReference species="NAD" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="BPG" stoichiometry="1" constant="false"/>
+          <speciesReference species="NADH" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vPGK" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="BPG" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="P3G" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="ATP"/>
+          <modifierSpeciesReference species="ADP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vPGM" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="P3G" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="P2G" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vENO" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="P2G" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PEP" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vPYK" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PEP" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PYR" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="ATP"/>
+          <modifierSpeciesReference species="ADP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vPDC" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="PYR" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ACE" stoichiometry="1" constant="false"/>
+          <speciesReference species="CO2" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vSUC" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ACE" stoichiometry="1" constant="false"/>
+          <speciesReference species="NAD" stoichiometry="1" constant="false"/>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADH" stoichiometry="1" constant="false"/>
+          <speciesReference species="SUCC" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vGLT" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="GLCo" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GLCi" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vADH" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="ACE" stoichiometry="1" constant="false"/>
+          <speciesReference species="NADH" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NAD" stoichiometry="1" constant="false"/>
+          <speciesReference species="ETOH" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vG3PDH" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="TRIO" stoichiometry="1" constant="false"/>
+          <speciesReference species="NADH" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NAD" stoichiometry="1" constant="false"/>
+          <speciesReference species="GLY" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vATP" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="P" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="ATP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn type="integer"> 1 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <layout:listOfLayouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1">
+      <layout:layout layout:id="Graphfab_Layout">
+        <layout:dimensions layout:width="1024" layout:height="1024"/>
+        <layout:listOfCompartmentGlyphs>
+          <layout:compartmentGlyph layout:id="extracellular_Glyph" layout:compartment="extracellular">
+            <layout:boundingBox>
+              <layout:position layout:x="948" layout:y="531"/>
+              <layout:dimensions layout:width="80" layout:height="60"/>
+            </layout:boundingBox>
+          </layout:compartmentGlyph>
+          <layout:compartmentGlyph layout:id="cytosol_Glyph" layout:compartment="cytosol">
+            <layout:boundingBox>
+              <layout:position layout:x="64" layout:y="182"/>
+              <layout:dimensions layout:width="799" layout:height="952"/>
+            </layout:boundingBox>
+          </layout:compartmentGlyph>
+        </layout:listOfCompartmentGlyphs>
+        <layout:listOfSpeciesGlyphs>
+          <layout:speciesGlyph layout:id="GLCi_Glyph" layout:species="GLCi">
+            <layout:boundingBox>
+              <layout:position layout:x="803" layout:y="508"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="G6P_Glyph" layout:species="G6P">
+            <layout:boundingBox>
+              <layout:position layout:x="703" layout:y="362"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="F6P_Glyph" layout:species="F6P">
+            <layout:boundingBox>
+              <layout:position layout:x="612" layout:y="233"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="F16P_Glyph" layout:species="F16P">
+            <layout:boundingBox>
+              <layout:position layout:x="404" layout:y="252"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="TRIO_Glyph" layout:species="TRIO">
+            <layout:boundingBox>
+              <layout:position layout:x="230" layout:y="328"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="BPG_Glyph" layout:species="BPG">
+            <layout:boundingBox>
+              <layout:position layout:x="394" layout:y="481"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="P3G_Glyph" layout:species="P3G">
+            <layout:boundingBox>
+              <layout:position layout:x="554" layout:y="681"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="P2G_Glyph" layout:species="P2G">
+            <layout:boundingBox>
+              <layout:position layout:x="636" layout:y="846"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="PEP_Glyph" layout:species="PEP">
+            <layout:boundingBox>
+              <layout:position layout:x="619" layout:y="697"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="PYR_Glyph" layout:species="PYR">
+            <layout:boundingBox>
+              <layout:position layout:x="435" layout:y="664"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="ACE_Glyph" layout:species="ACE">
+            <layout:boundingBox>
+              <layout:position layout:x="254" layout:y="606"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="P_Glyph" layout:species="P">
+            <layout:boundingBox>
+              <layout:position layout:x="529" layout:y="447"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="NAD_Glyph" layout:species="NAD">
+            <layout:boundingBox>
+              <layout:position layout:x="220" layout:y="481"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="NADH_Glyph" layout:species="NADH">
+            <layout:boundingBox>
+              <layout:position layout:x="204" layout:y="456"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="Glyc_Glyph" layout:species="Glyc">
+            <layout:boundingBox>
+              <layout:position layout:x="724" layout:y="294"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="Trh_Glyph" layout:species="Trh">
+            <layout:boundingBox>
+              <layout:position layout:x="763" layout:y="401"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="CO2_Glyph" layout:species="CO2">
+            <layout:boundingBox>
+              <layout:position layout:x="288" layout:y="772"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="SUCC_Glyph" layout:species="SUCC">
+            <layout:boundingBox>
+              <layout:position layout:x="303" layout:y="573"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="GLCo_Glyph" layout:species="GLCo">
+            <layout:boundingBox>
+              <layout:position layout:x="968" layout:y="551"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="ETOH_Glyph" layout:species="ETOH">
+            <layout:boundingBox>
+              <layout:position layout:x="90" layout:y="584"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="GLY_Glyph" layout:species="GLY">
+            <layout:boundingBox>
+              <layout:position layout:x="84" layout:y="354"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="ATP_Glyph" layout:species="ATP">
+            <layout:boundingBox>
+              <layout:position layout:x="573" layout:y="462"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="ADP_Glyph" layout:species="ADP">
+            <layout:boundingBox>
+              <layout:position layout:x="619" layout:y="556"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="SUM_P_Glyph" layout:species="SUM_P">
+            <layout:boundingBox>
+              <layout:position layout:x="452" layout:y="1094"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="AMP_Glyph" layout:species="AMP">
+            <layout:boundingBox>
+              <layout:position layout:x="538" layout:y="202"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="F26BP_Glyph" layout:species="F26BP">
+            <layout:boundingBox>
+              <layout:position layout:x="491" layout:y="211"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+        </layout:listOfSpeciesGlyphs>
+        <layout:listOfReactionGlyphs>
+          <layout:reactionGlyph layout:id="vGLK_Glyph" layout:reaction="vGLK">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vGLK_SpeciesRef1" layout:speciesReference="GLCi" layout:speciesGlyph="GLCi_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="793.186473588613" layout:y="510.792428502322"/>
+                      <layout:end layout:x="665.4" layout:y="477"/>
+                      <layout:basePoint1 layout:x="773.730911665002" layout:y="505.65602925601"/>
+                      <layout:basePoint2 layout:x="683.218809178281" layout:y="486.082402736502"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLK_SpeciesRef2" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="578.82530881567" layout:y="463.154188010296"/>
+                      <layout:end layout:x="665.4" layout:y="477"/>
+                      <layout:basePoint1 layout:x="598.681631891137" layout:y="466.341939318996"/>
+                      <layout:basePoint2 layout:x="683.218809178281" layout:y="486.082402736502"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLK_SpeciesRef3" layout:speciesReference="G6P" layout:speciesGlyph="G6P_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="665.4" layout:y="477"/>
+                      <layout:end layout:x="708.800499984382" layout:y="389.919652948547"/>
+                      <layout:basePoint1 layout:x="647.581190821719" layout:y="467.917597263498"/>
+                      <layout:basePoint2 layout:x="708.809294876393" layout:y="389.902091972278"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLK_SpeciesRef4" layout:speciesReference="ATP" layout:speciesGlyph="ATP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="623.051360927382" layout:y="473.767598199506"/>
+                      <layout:end layout:x="650.435642982332" layout:y="475.966549929719"/>
+                      <layout:basePoint1 layout:x="650.42591007648" layout:y="475.965877767713"/>
+                      <layout:basePoint2 layout:x="645.447523976442" layout:y="475.622066572959"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLK_SpeciesRef5" layout:speciesReference="ADP" layout:speciesGlyph="ADP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="643.976212836152" layout:y="546.364735027761"/>
+                      <layout:end layout:x="661.134274069551" layout:y="491.380666962498"/>
+                      <layout:basePoint1 layout:x="661.13288616491" layout:y="491.385345883447"/>
+                      <layout:basePoint2 layout:x="659.712365426068" layout:y="496.174222616665"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vPGI_Glyph" layout:reaction="vPGI">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vPGI_SpeciesRef1" layout:speciesReference="G6P" layout:speciesGlyph="G6P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="709.340025973113" layout:y="353.684967804649"/>
+                      <layout:end layout:x="677.5" layout:y="307.5"/>
+                      <layout:basePoint1 layout:x="698.003872457272" layout:y="337.24077699269"/>
+                      <layout:basePoint2 layout:x="689.028689488651" layout:y="323.842867516879"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPGI_SpeciesRef2" layout:speciesReference="F6P" layout:speciesGlyph="F6P_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="677.5" layout:y="307.5"/>
+                      <layout:end layout:x="644.805895834853" layout:y="261.2138111412"/>
+                      <layout:basePoint1 layout:x="665.971310511349" layout:y="291.157132483121"/>
+                      <layout:basePoint2 layout:x="644.794631124789" layout:y="261.197863337033"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vGLYCO_Glyph" layout:reaction="vGLYCO">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vGLYCO_SpeciesRef1" layout:speciesReference="G6P" layout:speciesGlyph="G6P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="693.392091919652" layout:y="380.957175739073"/>
+                      <layout:end layout:x="672" layout:y="377.666666666667"/>
+                      <layout:basePoint1 layout:x="673.651910162548" layout:y="377.952862041713"/>
+                      <layout:basePoint2 layout:x="658.020588709854" layout:y="391.969675440381"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLYCO_SpeciesRef2" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="573.655894208299" layout:y="441.876231665615"/>
+                      <layout:end layout:x="672" layout:y="377.666666666667"/>
+                      <layout:basePoint1 layout:x="590.485390625828" layout:y="430.898220711367"/>
+                      <layout:basePoint2 layout:x="658.020588709854" layout:y="391.969675440381"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLYCO_SpeciesRef3" layout:speciesReference="Glyc" layout:speciesGlyph="Glyc_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="672" layout:y="377.666666666667"/>
+                      <layout:end layout:x="726.986196185269" layout:y="321.20992020091"/>
+                      <layout:basePoint1 layout:x="685.979411290146" layout:y="363.363657892953"/>
+                      <layout:basePoint2 layout:x="726.999848475162" layout:y="321.19590269854"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vTreha_Glyph" layout:reaction="vTreha">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vTreha_SpeciesRef1" layout:speciesReference="G6P" layout:speciesGlyph="G6P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="700.86526878785" layout:y="387.908913265388"/>
+                      <layout:end layout:x="685" layout:y="413.333333333333"/>
+                      <layout:basePoint1 layout:x="690.258945785578" layout:y="404.844203778594"/>
+                      <layout:basePoint2 layout:x="665.005666525117" layout:y="413.809388892259"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vTreha_SpeciesRef2" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="578.445351230636" layout:y="445.541430873556"/>
+                      <layout:end layout:x="685" layout:y="413.333333333333"/>
+                      <layout:basePoint1 layout:x="597.665392802479" layout:y="439.720970120511"/>
+                      <layout:basePoint2 layout:x="665.005666525117" layout:y="413.809388892259"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vTreha_SpeciesRef3" layout:speciesReference="Trh" layout:speciesGlyph="Trh_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="685" layout:y="413.333333333333"/>
+                      <layout:end layout:x="752.946531069218" layout:y="411.321759952876"/>
+                      <layout:basePoint1 layout:x="704.994333474883" layout:y="412.857277774408"/>
+                      <layout:basePoint2 layout:x="752.966069063386" layout:y="411.321181305066"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vPFK_Glyph" layout:reaction="vPFK">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vPFK_SpeciesRef1" layout:speciesReference="F6P" layout:speciesGlyph="F6P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="616.305720140171" layout:y="260.505590513627"/>
+                      <layout:end layout:x="544.5" layout:y="311.166666666667"/>
+                      <layout:basePoint1 layout:x="599.933052871978" layout:y="272.103155106036"/>
+                      <layout:basePoint2 layout:x="559.782417796887" layout:y="324.068128067662"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPFK_SpeciesRef2" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="549.871284616818" layout:y="436.979495988229"/>
+                      <layout:end layout:x="544.5" layout:y="311.166666666667"/>
+                      <layout:basePoint1 layout:x="549.04167534148" layout:y="416.874905182527"/>
+                      <layout:basePoint2 layout:x="559.782417796887" layout:y="324.068128067662"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPFK_SpeciesRef3" layout:speciesReference="F16P" layout:speciesGlyph="F16P_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="544.5" layout:y="311.166666666667"/>
+                      <layout:end layout:x="453.477144959284" layout:y="271.370225171353"/>
+                      <layout:basePoint1 layout:x="529.217582203113" layout:y="298.265205265671"/>
+                      <layout:basePoint2 layout:x="453.459174793638" layout:y="271.362380217719"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPFK_SpeciesRef4" layout:speciesReference="AMP" layout:speciesGlyph="AMP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="554.70887309137" layout:y="232.012120248976"/>
+                      <layout:end layout:x="546.52335388436" layout:y="296.303758503772"/>
+                      <layout:basePoint1 layout:x="546.5240122066" layout:y="296.298922679917"/>
+                      <layout:basePoint2 layout:x="547.197805179147" layout:y="291.349455782807"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPFK_SpeciesRef5" layout:speciesReference="F26BP" layout:speciesGlyph="F26BP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="517.587712394422" layout:y="240.429515229771"/>
+                      <layout:end layout:x="539.275896956944" layout:y="297.105772406502"/>
+                      <layout:basePoint1 layout:x="539.274197232917" layout:y="297.101197527404"/>
+                      <layout:basePoint2 layout:x="537.534529275926" layout:y="292.418807653114"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPFK_SpeciesRef6" layout:speciesReference="ATP" layout:speciesGlyph="ATP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="586.142963373843" layout:y="452.315804245468"/>
+                      <layout:end layout:x="548.830693871761" layout:y="325.527902358246"/>
+                      <layout:basePoint1 layout:x="548.831398565214" layout:y="325.530239228287"/>
+                      <layout:basePoint2 layout:x="550.274258495682" layout:y="330.314980922106"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vALD_Glyph" layout:reaction="vALD">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vALD_SpeciesRef1" layout:speciesReference="F16P" layout:speciesGlyph="F16P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="394.833761555972" layout:y="274.141928046185"/>
+                      <layout:end layout:x="337" layout:y="300"/>
+                      <layout:basePoint1 layout:x="376.587538707832" layout:y="282.300371687072"/>
+                      <layout:basePoint2 layout:x="355.32797833227" layout:y="291.994676130733"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vALD_SpeciesRef2" layout:speciesReference="TRIO" layout:speciesGlyph="TRIO_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="337" layout:y="300"/>
+                      <layout:end layout:x="279.235963572711" layout:y="325.015974794538"/>
+                      <layout:basePoint1 layout:x="318.67202166773" layout:y="308.005323869267"/>
+                      <layout:basePoint2 layout:x="279.218035549627" layout:y="325.023738786073"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vGAPDH_Glyph" layout:reaction="vGAPDH">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vGAPDH_SpeciesRef1" layout:speciesReference="TRIO" layout:speciesGlyph="TRIO_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="252.845305405661" layout:y="357.887455310951"/>
+                      <layout:end layout:x="282" layout:y="446.5"/>
+                      <layout:basePoint1 layout:x="259.09285429942" layout:y="376.940316094886"/>
+                      <layout:basePoint2 layout:x="266.872736550957" layout:y="433.416961341368"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGAPDH_SpeciesRef2" layout:speciesReference="NAD" layout:speciesGlyph="NAD_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="248.379050194191" layout:y="471.95179316439"/>
+                      <layout:end layout:x="282" layout:y="446.5"/>
+                      <layout:basePoint1 layout:x="264.283527767213" layout:y="459.863920681578"/>
+                      <layout:basePoint2 layout:x="266.872736550957" layout:y="433.416961341368"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGAPDH_SpeciesRef3" layout:speciesReference="BPG" layout:speciesGlyph="BPG_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="282" layout:y="446.5"/>
+                      <layout:end layout:x="384.271972210824" layout:y="482.442697033845"/>
+                      <layout:basePoint1 layout:x="297.127263449043" layout:y="459.583038658632"/>
+                      <layout:basePoint2 layout:x="384.290492890937" layout:y="482.449191188153"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGAPDH_SpeciesRef4" layout:speciesReference="NADH" layout:speciesGlyph="NADH_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="282" layout:y="446.5"/>
+                      <layout:end layout:x="254.01600409326" layout:y="463.141565163723"/>
+                      <layout:basePoint1 layout:x="297.127263449043" layout:y="459.583038658632"/>
+                      <layout:basePoint2 layout:x="253.999200204451" layout:y="463.151516037445"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vPGK_Glyph" layout:reaction="vPGK">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vPGK_SpeciesRef1" layout:speciesReference="BPG" layout:speciesGlyph="BPG_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="443.577174169122" layout:y="500.07510207236"/>
+                      <layout:end layout:x="553.8" layout:y="535.4"/>
+                      <layout:basePoint1 layout:x="462.707925815417" layout:y="506.206351894448"/>
+                      <layout:basePoint2 layout:x="534.738263807711" layout:y="529.34605803335"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPGK_SpeciesRef2" layout:speciesReference="P3G" layout:speciesGlyph="P3G_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="553.8" layout:y="535.4"/>
+                      <layout:end layout:x="572.981897167391" layout:y="670.941732101359"/>
+                      <layout:basePoint1 layout:x="572.86173619229" layout:y="541.45394196665"/>
+                      <layout:basePoint2 layout:x="572.984623536311" layout:y="670.961242024333"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPGK_SpeciesRef3" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="553.8" layout:y="535.4"/>
+                      <layout:end layout:x="553.817373003872" layout:y="476.653591527918"/>
+                      <layout:basePoint1 layout:x="572.86173619229" layout:y="541.45394196665"/>
+                      <layout:basePoint2 layout:x="553.817342468148" layout:y="476.634012934523"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPGK_SpeciesRef4" layout:speciesReference="ATP" layout:speciesGlyph="ATP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="580.808155254675" layout:y="490.610551983837"/>
+                      <layout:end layout:x="561.688390311249" layout:y="522.641736078235"/>
+                      <layout:basePoint1 layout:x="561.690956892811" layout:y="522.637585025403"/>
+                      <layout:basePoint2 layout:x="564.317853748332" layout:y="518.388981437647"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPGK_SpeciesRef5" layout:speciesReference="ADP" layout:speciesGlyph="ADP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="609.490563662109" layout:y="554.704043347582"/>
+                      <layout:end layout:x="567.917109264831" layout:y="540.470229383848"/>
+                      <layout:basePoint1 layout:x="567.921702434149" layout:y="540.471879043251"/>
+                      <layout:basePoint2 layout:x="572.622812353108" layout:y="542.16030584513"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vPGM_Glyph" layout:reaction="vPGM">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vPGM_SpeciesRef1" layout:speciesReference="P3G" layout:speciesGlyph="P3G_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="582.603250022993" layout:y="709.943491701708"/>
+                      <layout:end layout:x="615" layout:y="773.5"/>
+                      <layout:basePoint1 layout:x="591.687546526506" layout:y="727.764348775683"/>
+                      <layout:basePoint2 layout:x="606.099173104026" layout:y="755.589799538589"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPGM_SpeciesRef2" layout:speciesReference="P2G" layout:speciesGlyph="P2G_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="615" layout:y="773.5"/>
+                      <layout:end layout:x="646.527500555423" layout:y="836.990411411678"/>
+                      <layout:basePoint1 layout:x="623.900826895974" layout:y="791.410200461411"/>
+                      <layout:basePoint2 layout:x="646.536196441919" layout:y="837.007923306538"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vENO_Glyph" layout:reaction="vENO">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vENO_SpeciesRef1" layout:speciesReference="P2G" layout:speciesGlyph="P2G_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="653.049852089408" layout:y="835.986399171586"/>
+                      <layout:end layout:x="647.5" layout:y="781.5"/>
+                      <layout:basePoint1 layout:x="651.026656748994" layout:y="816.1187606113"/>
+                      <layout:basePoint2 layout:x="649.767170538334" layout:y="801.371082953632"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vENO_SpeciesRef2" layout:speciesReference="PEP" layout:speciesGlyph="PEP_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="647.5" layout:y="781.5"/>
+                      <layout:end layout:x="641.17129807546" layout:y="726.990148995047"/>
+                      <layout:basePoint1 layout:x="645.232829461666" layout:y="761.628917046368"/>
+                      <layout:basePoint2 layout:x="641.169046627242" layout:y="726.970757662718"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vPYK_Glyph" layout:reaction="vPYK">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vPYK_SpeciesRef1" layout:speciesReference="PEP" layout:speciesGlyph="PEP_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="629.616397954314" layout:y="687.946652583211"/>
+                      <layout:end layout:x="575" layout:y="575.2"/>
+                      <layout:basePoint1 layout:x="620.850239040508" layout:y="669.850261672383"/>
+                      <layout:basePoint2 layout:x="583.736185837139" layout:y="593.191082708358"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPYK_SpeciesRef2" layout:speciesReference="PYR" layout:speciesGlyph="PYR_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="575" layout:y="575.2"/>
+                      <layout:end layout:x="470.962615479128" layout:y="656.74113628929"/>
+                      <layout:basePoint1 layout:x="566.263814162861" layout:y="557.208917291642"/>
+                      <layout:basePoint2 layout:x="470.947121490569" layout:y="656.753327292615"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPYK_SpeciesRef3" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="575" layout:y="575.2"/>
+                      <layout:end layout:x="551.787780185863" layout:y="476.898478291868"/>
+                      <layout:basePoint1 layout:x="566.263814162861" layout:y="557.208917291642"/>
+                      <layout:basePoint2 layout:x="551.783281560977" layout:y="476.879390839305"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPYK_SpeciesRef4" layout:speciesReference="ATP" layout:speciesGlyph="ATP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="589.299424249462" layout:y="491.906026759824"/>
+                      <layout:end layout:x="577.57736862421" layout:y="560.423086554529"/>
+                      <layout:basePoint1 layout:x="577.577788015386" layout:y="560.420682045121"/>
+                      <layout:basePoint2 layout:x="578.436491498947" layout:y="555.497448739372"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPYK_SpeciesRef5" layout:speciesReference="ADP" layout:speciesGlyph="ADP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="609.074827747636" layout:y="569.62498355342"/>
+                      <layout:end layout:x="589.847380799266" layout:y="573.065689010106"/>
+                      <layout:basePoint1 layout:x="589.857037623097" layout:y="573.06430084168"/>
+                      <layout:basePoint2 layout:x="594.796507732355" layout:y="572.354252013474"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vPDC_Glyph" layout:reaction="vPDC">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vPDC_SpeciesRef1" layout:speciesReference="PYR" layout:speciesGlyph="PYR_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="425.057259125404" layout:y="678.522624023278"/>
+                      <layout:end layout:x="345.666666666667" layout:y="690.666666666667"/>
+                      <layout:basePoint1 layout:x="405.267270252972" layout:y="681.54983509267"/>
+                      <layout:basePoint2 layout:x="365.438263156597" layout:y="687.652703787104"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPDC_SpeciesRef2" layout:speciesReference="ACE" layout:speciesGlyph="ACE_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="345.666666666667" layout:y="690.666666666667"/>
+                      <layout:end layout:x="285.655158656706" layout:y="634.316722764148"/>
+                      <layout:basePoint1 layout:x="325.895070176736" layout:y="693.680629546229"/>
+                      <layout:basePoint2 layout:x="285.640899250145" layout:y="634.303292272761"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vPDC_SpeciesRef3" layout:speciesReference="CO2" layout:speciesGlyph="CO2_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="345.666666666667" layout:y="690.666666666667"/>
+                      <layout:end layout:x="312.013919867205" layout:y="762.146691289991"/>
+                      <layout:basePoint1 layout:x="325.895070176736" layout:y="693.680629546229"/>
+                      <layout:basePoint2 layout:x="312.005606433376" layout:y="762.164423687034"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vSUC_Glyph" layout:reaction="vSUC">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vSUC_SpeciesRef1" layout:speciesReference="ACE" layout:speciesGlyph="ACE_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="286.891536075461" layout:y="597.848492205324"/>
+                      <layout:end layout:x="322" layout:y="522.6"/>
+                      <layout:basePoint1 layout:x="295.413962613907" layout:y="579.664207421311"/>
+                      <layout:basePoint2 layout:x="341.984670634054" layout:y="521.817095377223"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vSUC_SpeciesRef2" layout:speciesReference="NAD" layout:speciesGlyph="NAD_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="269.624981378719" layout:y="499.920514592748"/>
+                      <layout:end layout:x="322" layout:y="522.6"/>
+                      <layout:basePoint1 layout:x="288.029832483595" layout:y="507.87180697323"/>
+                      <layout:basePoint2 layout:x="341.984670634054" layout:y="521.817095377223"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vSUC_SpeciesRef3" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="519.403935993142" layout:y="466.016435375545"/>
+                      <layout:end layout:x="322" layout:y="522.6"/>
+                      <layout:basePoint1 layout:x="499.925930394645" layout:y="471.609218292272"/>
+                      <layout:basePoint2 layout:x="341.984670634054" layout:y="521.817095377223"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vSUC_SpeciesRef4" layout:speciesReference="NADH" layout:speciesGlyph="NADH_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="322" layout:y="522.6"/>
+                      <layout:end layout:x="245.13335084931" layout:y="481.917239554269"/>
+                      <layout:basePoint1 layout:x="302.015329365946" layout:y="523.382904622777"/>
+                      <layout:basePoint2 layout:x="245.116047193022" layout:y="481.908059706413"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vSUC_SpeciesRef5" layout:speciesReference="SUCC" layout:speciesGlyph="SUCC_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="322" layout:y="522.6"/>
+                      <layout:end layout:x="315.770118388639" layout:y="563.48104096302"/>
+                      <layout:basePoint1 layout:x="302.015329365946" layout:y="523.382904622777"/>
+                      <layout:basePoint2 layout:x="315.76721366717" layout:y="563.500350455887"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vGLT_Glyph" layout:reaction="vGLT">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vGLT_SpeciesRef1" layout:speciesReference="GLCo" layout:speciesGlyph="GLCo_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="958.224481997574" layout:y="552.630567509933"/>
+                      <layout:end layout:x="905.5" layout:y="539.5"/>
+                      <layout:basePoint1 layout:x="938.84671429876" layout:y="547.805141587791"/>
+                      <layout:basePoint2 layout:x="924.853590464068" layout:y="544.543662969424"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vGLT_SpeciesRef2" layout:speciesReference="GLCi" layout:speciesGlyph="GLCi_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="905.5" layout:y="539.5"/>
+                      <layout:end layout:x="852.721739134227" layout:y="525.581237409397"/>
+                      <layout:basePoint1 layout:x="886.146409535932" layout:y="534.456337030576"/>
+                      <layout:basePoint2 layout:x="852.702863483448" layout:y="525.576259379395"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vADH_Glyph" layout:reaction="vADH">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vADH_SpeciesRef1" layout:speciesReference="ACE" layout:speciesGlyph="ACE_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="263.095140285793" layout:y="597.220105599441"/>
+                      <layout:end layout:x="212" layout:y="541.75"/>
+                      <layout:basePoint1 layout:x="249.55037693156" layout:y="582.472485208129"/>
+                      <layout:basePoint2 layout:x="231.99589242719" layout:y="541.344677856206"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vADH_SpeciesRef2" layout:speciesReference="NADH" layout:speciesGlyph="NADH_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="226.050256179251" layout:y="486.00004194797"/>
+                      <layout:end layout:x="212" layout:y="541.75"/>
+                      <layout:basePoint1 layout:x="221.198026419243" layout:y="505.407060789854"/>
+                      <layout:basePoint2 layout:x="231.99589242719" layout:y="541.344677856206"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vADH_SpeciesRef3" layout:speciesReference="NAD" layout:speciesGlyph="NAD_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="212" layout:y="541.75"/>
+                      <layout:end layout:x="223.197880440971" layout:y="508.403002017099"/>
+                      <layout:basePoint1 layout:x="192.00410757281" layout:y="542.155322143794"/>
+                      <layout:basePoint2 layout:x="223.20413304806" layout:y="508.384494647947"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vADH_SpeciesRef4" layout:speciesReference="ETOH" layout:speciesGlyph="ETOH_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="212" layout:y="541.75"/>
+                      <layout:end layout:x="133.534933401332" layout:y="578.677998163373"/>
+                      <layout:basePoint1 layout:x="192.00410757281" layout:y="542.155322143794"/>
+                      <layout:basePoint2 layout:x="133.517218894809" layout:y="578.686352294923"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vG3PDH_Glyph" layout:reaction="vG3PDH">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vG3PDH_SpeciesRef1" layout:speciesReference="TRIO" layout:speciesGlyph="TRIO_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="242.375511217809" layout:y="357.381469835656"/>
+                      <layout:end layout:x="204.5" layout:y="414.75"/>
+                      <layout:basePoint1 layout:x="231.372299465256" layout:y="374.088328334192"/>
+                      <layout:basePoint2 layout:x="223.11850933347" layout:y="407.445815569177"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vG3PDH_SpeciesRef2" layout:speciesReference="NADH" layout:speciesGlyph="NADH_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="222.994587909916" layout:y="445.949614403824"/>
+                      <layout:end layout:x="204.5" layout:y="414.75"/>
+                      <layout:basePoint1 layout:x="212.846042576095" layout:y="428.753945457956"/>
+                      <layout:basePoint2 layout:x="223.11850933347" layout:y="407.445815569177"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vG3PDH_SpeciesRef3" layout:speciesReference="NAD" layout:speciesGlyph="NAD_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="204.5" layout:y="414.75"/>
+                      <layout:end layout:x="225.817803122039" layout:y="473.06903622183"/>
+                      <layout:basePoint1 layout:x="185.88149066653" layout:y="422.054184430823"/>
+                      <layout:basePoint2 layout:x="225.824558547889" layout:y="473.087406044282"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vG3PDH_SpeciesRef4" layout:speciesReference="GLY" layout:speciesGlyph="GLY_Glyph" layout:role="product">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="204.5" layout:y="414.75"/>
+                      <layout:end layout:x="126.215433528957" layout:y="379.801848144083"/>
+                      <layout:basePoint1 layout:x="185.88149066653" layout:y="422.054184430823"/>
+                      <layout:basePoint2 layout:x="126.197554585438" layout:y="379.79383679325"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="vATP_Glyph" layout:reaction="vATP">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="0"/>
+              <layout:dimensions layout:width="0" layout:height="0"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="vATP_SpeciesRef1" layout:speciesReference="P" layout:speciesGlyph="P_Glyph" layout:role="substrate">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="575.766963990562" layout:y="471.702450871907"/>
+                      <layout:end layout:x="571" layout:y="464.5"/>
+                      <layout:basePoint1 layout:x="564.802865827148" layout:y="455.11680398118"/>
+                      <layout:basePoint2 layout:x="586.27648518761" layout:y="477.408485593311"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="vATP_SpeciesRef2" layout:speciesReference="ATP" layout:speciesGlyph="ATP_Glyph" layout:role="modifier">
+                <layout:curve>
+                  <layout:listOfCurveSegments>
+                    <layout:curveSegment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CubicBezier">
+                      <layout:start layout:x="584.15634233895" layout:y="469.074700126861"/>
+                      <layout:end layout:x="585.197652822678" layout:y="469.340108916822"/>
+                      <layout:basePoint1 layout:x="587.563783867131" layout:y="470.146744500158"/>
+                      <layout:basePoint2 layout:x="589.930203763571" layout:y="470.953478555763"/>
+                    </layout:curveSegment>
+                  </layout:listOfCurveSegments>
+                </layout:curve>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+        </layout:listOfReactionGlyphs>
+        <layout:listOfTextGlyphs>
+          <layout:textGlyph layout:id="tGLCi_Glyph" layout:text="GLCi" layout:graphicalObject="GLCi_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="803" layout:y="508"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tG6P_Glyph" layout:text="G6P" layout:graphicalObject="G6P_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="703" layout:y="362"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tF6P_Glyph" layout:text="F6P" layout:graphicalObject="F6P_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="612" layout:y="233"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tF16P_Glyph" layout:text="F16P" layout:graphicalObject="F16P_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="404" layout:y="252"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tTRIO_Glyph" layout:text="TRIO" layout:graphicalObject="TRIO_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="230" layout:y="328"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tBPG_Glyph" layout:text="BPG" layout:graphicalObject="BPG_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="394" layout:y="481"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tP3G_Glyph" layout:text="P3G" layout:graphicalObject="P3G_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="554" layout:y="681"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tP2G_Glyph" layout:text="P2G" layout:graphicalObject="P2G_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="636" layout:y="846"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tPEP_Glyph" layout:text="PEP" layout:graphicalObject="PEP_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="619" layout:y="697"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tPYR_Glyph" layout:text="PYR" layout:graphicalObject="PYR_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="435" layout:y="664"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tACE_Glyph" layout:text="ACE" layout:graphicalObject="ACE_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="254" layout:y="606"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tP_Glyph" layout:text="P" layout:graphicalObject="P_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="529" layout:y="447"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tNAD_Glyph" layout:text="NAD" layout:graphicalObject="NAD_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="220" layout:y="481"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tNADH_Glyph" layout:text="NADH" layout:graphicalObject="NADH_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="204" layout:y="456"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tGlyc_Glyph" layout:text="Glyc" layout:graphicalObject="Glyc_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="724" layout:y="294"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tTrh_Glyph" layout:text="Trh" layout:graphicalObject="Trh_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="763" layout:y="401"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tCO2_Glyph" layout:text="CO2" layout:graphicalObject="CO2_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="288" layout:y="772"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tSUCC_Glyph" layout:text="SUCC" layout:graphicalObject="SUCC_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="303" layout:y="573"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tGLCo_Glyph" layout:text="GLCo" layout:graphicalObject="GLCo_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="968" layout:y="551"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tETOH_Glyph" layout:text="ETOH" layout:graphicalObject="ETOH_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="90" layout:y="584"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tGLY_Glyph" layout:text="GLY" layout:graphicalObject="GLY_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="84" layout:y="354"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tATP_Glyph" layout:text="ATP" layout:graphicalObject="ATP_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="573" layout:y="462"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tADP_Glyph" layout:text="ADP" layout:graphicalObject="ADP_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="619" layout:y="556"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tSUM_P_Glyph" layout:text="SUM_P" layout:graphicalObject="SUM_P_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="452" layout:y="1094"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tAMP_Glyph" layout:text="AMP" layout:graphicalObject="AMP_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="538" layout:y="202"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tF26BP_Glyph" layout:text="F26BP" layout:graphicalObject="F26BP_Glyph">
+            <layout:boundingBox>
+              <layout:position layout:x="491" layout:y="211"/>
+              <layout:dimensions layout:width="40" layout:height="20"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+        </layout:listOfTextGlyphs>
+      </layout:layout>
+    </layout:listOfLayouts>
+  </model>
+</sbml>

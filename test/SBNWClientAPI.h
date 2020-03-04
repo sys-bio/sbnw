@@ -8,6 +8,7 @@
 #if defined(_WIN32) || defined (_WIN64) || defined(__CYGWIN__)
 
 #   include <windows.h>
+#include <stdexcept>
 
 #elif defined(__linux__)
 #   include <dlfcn.h>
@@ -98,6 +99,26 @@ typedef enum {
     GF_ROLE_ACTIVATOR,
     GF_ROLE_INHIBITOR
 } gf_specRole;
+
+typedef struct __fr_options {
+    /// Stiffness
+    double k;
+    int boundary;
+    int mag;
+    /// Strength of gravity (must be greater than 5 to have an effect)
+    double grav;
+    /// Center of gravitational force
+    double baryx, baryy;
+    /// Should the barycenter be set automatically from layout info?
+    int autobary;
+    /// Enable compartment-compartment and compartment-node interaction?
+    int enable_comps;
+    /// Randomize node positions before doing layout algo (library code DOES NOT call srand for reproducibility reasons)
+    int prerandomize;
+    /// Padding on compartments
+    double padding;
+} fr_options;
+
 
 typedef struct __gf_SBMLLayout {
     void *pdoc; /// Pointer to SBMLDocument cast to void
@@ -411,6 +432,14 @@ typedef void (*gf_arrowheadSetStylePtr)(gf_specRole, int);
 
 typedef int (*gf_arrowheadGetStylePtr)(gf_specRole);
 
+typedef void (*gf_doLayoutAlgorithmPtr)(fr_options, gf_layoutInfo *);
+
+typedef void (*gf_doLayoutAlgorithm2Ptr)(fr_options, gf_network *, gf_canvas *);
+
+typedef void (*gf_getLayoutOptDefaultsPtr)(fr_options *);
+
+typedef void (*gf_layout_setStiffnessPtr)(fr_options *, double);
+
 class SBNWClientAPI {
 private:
 
@@ -456,8 +485,9 @@ public:
 #elif defined(__APPLE__)
     // something else
 #endif
-    const char* lib;
-    SBNWClientAPI(const char* lib="sbnw.dll"): lib(lib){
+    const char *lib;
+
+    SBNWClientAPI(const char *lib = "sbnw.dll") : lib(lib) {
         getLibrary();
     }
 
@@ -465,7 +495,7 @@ public:
         auto function = getFunction<gf_freeSBMLModelPtr>("gf_freeSBMLModel");
         return function(lo);
     }
-    
+
     gf_SBMLModel *gf_loadSBMLbuf(const char *buf) {
         auto function = getFunction<gf_loadSBMLbufPtr>("gf_loadSBMLbuf");
         return function(buf);
@@ -1229,6 +1259,30 @@ public:
     int gf_arrowheadGetStyle(gf_specRole role) {
         auto function = getFunction<gf_arrowheadGetStylePtr>("gf_arrowheadGetStyle");
         return function(role);
+    }
+
+
+    void gf_doLayoutAlgorithm(fr_options opt, gf_layoutInfo* l) {
+        auto function = getFunction<gf_doLayoutAlgorithmPtr>("gf_doLayoutAlgorithm");
+        return function(opt, l);
+    }
+
+
+    void gf_doLayoutAlgorithm2(fr_options opt, gf_network* n, gf_canvas* c) {
+        auto function = getFunction<gf_doLayoutAlgorithm2Ptr>("gf_doLayoutAlgorithm2");
+        return function(opt, n, c);
+    }
+
+
+    void gf_getLayoutOptDefaults(fr_options* opt) {
+        auto function = getFunction<gf_getLayoutOptDefaultsPtr>("gf_getLayoutOptDefaults");
+        return function(opt);
+    }
+
+
+    void gf_layout_setStiffness(fr_options* opt, double k) {
+        auto function = getFunction<gf_layout_setStiffnessPtr>("gf_layout_setStiffness");
+        return function(opt, k);
     }
 
 };

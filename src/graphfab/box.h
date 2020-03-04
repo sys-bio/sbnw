@@ -54,8 +54,7 @@ namespace Graphfab {
 
     class Box {
         public:
-            Box()
-                {}
+            Box() = default;
 
             /// Construct from upper-left & lower-right extents resp.
             Box(const Point& min, const Point& max)

@@ -81,7 +81,7 @@ if (ENABLE_PYTHON_BINDINGS)
     foreach (f ${HEADERS})
         configure_file(${f} ${f} COPYONLY)
     endforeach ()
-    if (ENABLE_PYTHON_BINDINGS) # FIXME: Why?
+    if (ENABLE_PYTHON_BINDINGS)
         configure_file(graphfab/python/sbnwmodule.c graphfab/python/sbnwmodule.c COPYONLY)
     endif ()
     configure_file(graphfab/setup.py.in setup.py)
@@ -201,4 +201,8 @@ if (${BUILD_TESTS})
             COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
             "$<TARGET_FILE:sbnw>"      # <--this is in-file
             $<TARGET_FILE_DIR:sbnw_tests>/$<TARGET_FILE_NAME:sbnw>)                 # <--this is out-file path
+    add_custom_command(TARGET sbnw POST_BUILD        # Adds a post-build event to MyTest
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different  # which executes "cmake - E copy_if_different..."
+            "$<TARGET_FILE:sbnw>"      # <--this is in-file
+            D:/libsbml-draw/src/python/libsbml_draw/$<TARGET_FILE_NAME:sbnw>)                 # <--this is out-file path
 endif ()

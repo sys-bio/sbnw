@@ -415,12 +415,10 @@ void gf_aliasNodebyDegree(gf_layoutInfo* l, int minDegree) {
 SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
 //     SBMLDocument* doc = (SBMLDocument*)m->pdoc;
     SBMLNamespaces sbmlns(l ? (l->level ? l->level : 3) : 3, l ? (l->version ? l->version : 1) : 1, "layout", 1);
-    SBMLDocument* doc = new SBMLDocument(&sbmlns);
+    auto* doc = new SBMLDocument(&sbmlns);
     AN(doc, "No SBML document");
     AT(doc->isPkgEnabled("layout"), "Layout package not enabled");
-    #if SAGITTARIUS_DEBUG_LEVEL >= 2
-//     std::cout << "doc->isPkgEnabled(\"layout\") = " << doc->isPkgEnabled("layout") << std::endl;
-    #endif
+    std::cout << "doc->isPkgEnabled(\"layout\") = " << doc->isPkgEnabled("layout") << std::endl;
 
     // get the model
 //     Model* mod = doc->getModel();
@@ -496,6 +494,7 @@ SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
         // add compartments
         for(Network::ConstCompIt i=net->CompsBegin(); i!=net->CompsEnd(); ++i) {
             const Graphfab::Compartment* c = *i;
+            std::cout << "c->getMinX()1" << c->getMinX() << std::endl;
 
             // create glyph
             CompartmentGlyph* cg = new CompartmentGlyph();
@@ -513,6 +512,7 @@ SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
             BoundingBox bb;
             bb.setX(sround(c->getMinX()));
             bb.setY(sround(c->getMinY()));
+            std::cout << "c->getMinY()3" << c->getMinY() << std::endl;
             bb.setWidth(sround(c->getWidth()));
             bb.setHeight(sround(c->getHeight()));
             // apply bb to glyph
@@ -2024,22 +2024,11 @@ void gf_fit_to_window(gf_layoutInfo* l, double left, double top, double right, d
     AN(net, "No network");
 
     Graphfab::Box bbox = net->getBoundingBox();
-
-//     std::cerr << "Net bounding box: " << bbox << "\n";
-
     Graphfab::Box window(left, top, right, bottom);
-
-//     std::cout << "Window: " << window << "\n";
-
-    Graphfab::Affine2d tf = Graphfab::Affine2d::FitToWindow(bbox,
-                                                   window);
-
-//     std::cout << "Transform is\n" << tf;
+    Graphfab::Affine2d tf = Graphfab::Affine2d::FitToWindow(bbox, window);
 
     net->setTransform(tf);
     net->setInverseTransform(tf.inv());
-
-//     std::cerr << "New bounding box: " << net->getBoundingBox() << "\n";
 }
 
 gf_transform* gf_tf_fitToWindow(gf_layoutInfo* l, double left, double top, double right, double bottom) {
@@ -2048,20 +2037,10 @@ gf_transform* gf_tf_fitToWindow(gf_layoutInfo* l, double left, double top, doubl
 
     Graphfab::Box bbox = net->getBoundingBox();
 
-//     std::cerr << "Net bounding box: " << bbox << "\n";
-
     Graphfab::Box window(left, top, right, bottom);
-
-//     std::cout << "Window: " << window << "\n";
 
     Graphfab::Affine2d* tf = new Graphfab::Affine2d(Graphfab::Affine2d::FitToWindow(bbox,
                                                    window));
-
-//     std::cout << "Transform is\n" << tf;
-
-//     net->setTransform(tf);
-//     net->setInverseTransform(tf.inv());
-
     gf_transform* t = (gf_transform*)malloc(sizeof(gf_transform));
     t->tf = tf;
     return t;
@@ -2103,12 +2082,6 @@ gf_point gf_tf_getPostDisplacement(gf_transform* tf) {
   Graphfab::Point result(t->inv().applyLinearOnly(t->getDisplacement()));
 //   std::cerr << "  gf_tf_getPostDisplacement: " << result << "\n";
   return Point2gf_point(result);
-}
-
-void gf_dump_transform(gf_transform* tf) {
-    Graphfab::Affine2d* t = (Graphfab::Affine2d*)tf->tf;
-    AN(t, "No transform");
-//     std::cerr << *t;
 }
 
 void gf_release_transform(gf_transform* tf) {
@@ -2169,13 +2142,7 @@ void gf_canvSetHeight(gf_canvas* c, unsigned long height) {
 }
 
 int gf_writeSBMLwithLayout(const char* filename, gf_SBMLModel* m, gf_layoutInfo* l) {
-    #if SAGITTARIUS_DEBUG_LEVEL >= 2
-//     std::cout << "gf_writeSBMLwithLayout started\n" << std::endl;
-    #endif
     SBMLDocument* doc = populateSBMLdoc(m,l);
-    #if SAGITTARIUS_DEBUG_LEVEL >= 2
-//     std::cout << "populateSBMLdoc finished\n" << std::endl;
-    #endif
     SBMLWriter writer;
     writer.setProgramName("Graphfab");
     if(writer.writeSBML(doc, filename))
@@ -2198,7 +2165,9 @@ int gf_writeSBML(const char* filename, gf_SBMLModel* m) {
 }
 
 const char* gf_getSBMLwithLayoutStr(gf_SBMLModel* m, gf_layoutInfo* l) {
+
     SBMLDocument* doc = populateSBMLdoc(m,l);
+    std::cout << "doc " << doc << std::endl;
     SBMLWriter writer;
     writer.setProgramName("Graphfab");
 

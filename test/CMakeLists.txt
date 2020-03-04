@@ -14,6 +14,7 @@ target_include_directories(sbnw_tests PRIVATE
         ${GOOGLETEST_PREFIX}/include
         ${CMAKE_SOURCE_DIR}/src
         ${LIBSBML_INCLUDE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}
         )
 
 message(STATUS "CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR}")
