@@ -1788,8 +1788,6 @@ namespace Graphfab {
                     rand_range(b.getMin().y, b.getMax().y));
             Point dim(d, d);
             c->setExtents(Box(p - dim, p + dim));
-            std::cout << "network.cpp:"<<__LINE__<<": compartment extents: " <<
-                      c->getId() << " " << c->getExtents() << std::endl;
         }
         recalcCurveCPs();
     }

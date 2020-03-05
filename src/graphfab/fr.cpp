@@ -75,12 +75,9 @@ void gf_doLayoutAlgorithm(fr_options opt, gf_layoutInfo *l) {
     auto *can = (Canvas *) l->canv;
     AN(can, "No canvas");
 
-    std::cout << ":fr.cpp:78: marker before prerandomize: " << opt.prerandomize << std::endl;
     if (opt.prerandomize) {
-        std::cout << "fr.cpp:80: prerandomizing" << std::endl;
         double w = can->getWidth();
         double h = can->getHeight();
-        std::cout << "fr.cpp:83: w, h: " << w << " " << h << std::endl;
         net->randomizePositions(
                 Graphfab::Box(
                         Graphfab::Point(0., 0.),
@@ -231,13 +228,9 @@ namespace Graphfab {
 
             net.resetActivity();
 
-            std::cout << "fr.cpp: line 232: net.getExtents(), before updateExtents " << net.getExtents() << std::endl;
-
             net.updateExtents();
 
-            std::cout << "fr.cpp: line 236: net.getExtents(), after updateExtents " << net.getExtents() << std::endl;
-
-            // repulsive forces
+                // repulsive forces
             for (uint64 i = 0; i < net.getNElts(); ++i) {
                 //NetworkElement* u = *i;
                 NetworkElement *u = net.getElt(i);;
@@ -300,8 +293,26 @@ namespace Graphfab {
             net.capDeltas(T);
 
             net.updatePositions(T);
-            Box newBox(0.0, 1024.0, 0, 1024.0);
+
+            Box newBox(
+                    net.getExtents().getMinX(),
+                    net.getExtents().getMinY(),
+                    net.getExtents().getMaxX(),
+                    net.getExtents().getMaxY());
             net.fitToWindow(newBox);
+
+//            std::cout << "fr.cpp:"<<__LINE__<<  "\n"
+//                        ":opt.k: " << opt.k <<  "\n"<<
+//                        "opt.boundary: " << opt.boundary <<  "\n"<<
+//                        "opt.mag: " << opt.mag <<  "\n"<<
+//                        "opt.grav: " << opt.grav <<  "\n"<<
+//                        "opt.baryx: " << opt.baryx <<  "\n"<<
+//                        "opt.baryy: " << opt.baryy <<  "\n"<<
+//                        "opt.autobary: " << opt.autobary <<  "\n"<<
+//                        "opt.prerandomize: " << opt.prerandomize <<  "\n"<<
+//                        "opt.enable_comps: " << opt.enable_comps <<  "\n"<<
+//                        "opt.padding: " << opt.padding << "\n"
+//                << std::endl;
 
 
 #if SBNW_USE_MAGICK && 0

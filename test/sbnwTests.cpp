@@ -60,10 +60,10 @@ TEST(SBNWSharedTests, Test) {
 
 TEST(SBNWSharedTests, Test2) {
     SBNWClientAPI sbnw;
-//    gf_SBMLModel *sbml = sbnw.gf_loadSBMLfile(R"(D:\sbnw\test\teusink2000.xml)");
-    const char* outfile = R"(D:\sbnw\test\teusink2000LayoutFromCpp.xml)";
+    const char* infile = R"(D:\sbnw\test\teusink2000.xml)";
+    const char* outfile1 = R"(D:\sbnw\test\teusink2000LayoutFromCpp.xml)";
     const char* outfile2 = R"(D:\sbnw\test\teusink2000LayoutFromCpp2.xml)";
-    gf_SBMLModel *sbml = sbnw.gf_loadSBMLfile(outfile);
+    gf_SBMLModel *sbml = sbnw.gf_loadSBMLfile(infile);
 
     //  type to store layout info
     gf_layoutInfo *l;
@@ -95,11 +95,9 @@ TEST(SBNWSharedTests, Test2) {
 //    compp.c
     sbnw.gf_doLayoutAlgorithm(opt, l);
 
-
-
     //    sbnw.gf_tf_fitToWindow(l, 0.0, 1024.0, 0.0, 1024.0);
     //  save layout information to new SBML file
-    sbnw.gf_writeSBMLwithLayout(outfile2, sbml, l);
+    sbnw.gf_writeSBMLwithLayout(outfile1, sbml, l);
     //  run destructors on the model
     sbnw.gf_freeSBMLModel(sbml);
     //  run destructors on the layout
