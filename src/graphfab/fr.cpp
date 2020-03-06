@@ -300,15 +300,28 @@ namespace Graphfab {
             net.capDeltas(T);
 
             net.updatePositions(T);
-//            Box newBox(
-//                    net.getExtents().getMinX(),
-//                    net.getExtents().getMinY(),
-//                    net.getExtents().getMaxX(),
-//                    net.getExtents().getMaxY()
-//                    );
-//            net.fitToWindow(newBox);
 
-            net.alignToOrigin(); // not yet implemented
+
+            Box newBox(
+                    net.getExtents().getMinX(),
+                    net.getExtents().getMinY(),
+                    net.getExtents().getMaxX(),
+                    net.getExtents().getMaxY());
+            net.fitToWindow(newBox);
+
+//            std::cout << "fr.cpp:"<<__LINE__<<  "\n"
+//                        ":opt.k: " << opt.k <<  "\n"<<
+//                        "opt.boundary: " << opt.boundary <<  "\n"<<
+//                        "opt.mag: " << opt.mag <<  "\n"<<
+//                        "opt.grav: " << opt.grav <<  "\n"<<
+//                        "opt.baryx: " << opt.baryx <<  "\n"<<
+//                        "opt.baryy: " << opt.baryy <<  "\n"<<
+//                        "opt.autobary: " << opt.autobary <<  "\n"<<
+//                        "opt.prerandomize: " << opt.prerandomize <<  "\n"<<
+//                        "opt.enable_comps: " << opt.enable_comps <<  "\n"<<
+//                        "opt.padding: " << opt.padding << "\n"
+//                << std::endl;
+
 
 #if SBNW_USE_MAGICK && 0
             if(!(z % 10)) {

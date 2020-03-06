@@ -896,7 +896,6 @@ namespace Graphfab {
 
             /// Approximate size; used by distance algorithms etc.
             void recalcExtents() override {
-//                std::cout << "network.h:903: _ext, " << _ext << std::endl;
                 _r = _ext.maxDim()*0.5; // gets the value of the largest dimension
                 _p = (_ext.getMin() + _ext.getMax())*0.5; // getMin and getMax simply return the _min or _max which are both points
             }

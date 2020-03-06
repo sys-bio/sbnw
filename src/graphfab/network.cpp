@@ -1797,6 +1797,7 @@ namespace Graphfab {
                 low = p - dim;
 
             c->setExtents(Box(low, p + dim));
+
         }
         recalcCurveCPs();
     }
