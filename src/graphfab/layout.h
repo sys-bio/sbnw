@@ -41,7 +41,7 @@
 #include "graphfab/core/SagittariusCore.h"
 #include "autolayoutSBML.h"
 #include "graphfab/error.h"
-
+#include "graphfab/UniformRNG.h"
 #include <cstdint>
 
 //-- C methods --
@@ -1201,6 +1201,12 @@ _GraphfabExport void gf_canvSetHeight(gf_canvas* c, unsigned long height);
  */
 _GraphfabExport void gf_getNodeCentroid(gf_layoutInfo* l, const char* id, CPoint* p);
 
+/** @brief Get a node by id
+ *  @param[in] id The node id; used to find the correct node in the layout
+ *  \ingroup C_Internal
+ */
+_GraphfabExport void gf_getNodeById(const std::string& id);
+
 // -- Configuration
 
 /** @brief Lock a node by id
@@ -1360,6 +1366,21 @@ _GraphfabExport void gf_arrowheadSetStyle(gf_specRole role, int style);
  *  \ingroup C_API
  */
 _GraphfabExport int gf_arrowheadGetStyle(gf_specRole role);
+
+/** @brief Random integer generator. Uniform distribution
+ *  @param[low] lower end of unif dist
+ *  @param[high] upper end of unif dist
+ *  \ingroup C_API
+ */
+_GraphfabExport int gf_generateRandomUniformInt(int low, int high);
+
+/** @brief Random integer generator. Uniform distribution
+ *  @param[low] lower end of unif dist
+ *  @param[high] upper end of unif dist
+ *  @param[seed] which seed to use
+ *  \ingroup C_API
+ */
+_GraphfabExport int gf_generateRandomUniformIntWithSeed(int low, int high, int seed);
 
 #ifdef __cplusplus
 }//extern "C"

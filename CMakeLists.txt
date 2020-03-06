@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.15)
 
 # set default install prefix
 set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/INSTALL CACHE PATH "Directory for sbnw installation")
-
-
+SET(CXX_STANDARD 14)
 project(SBNW)
+
 
 # for the ExternalProject_Add command
 include(ExternalProject)

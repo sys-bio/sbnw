@@ -230,7 +230,7 @@ void gf_getNodeCentroid(gf_layoutInfo* l, const char* id, CPoint* p) {
     AN(net, "No network");
 
     Graphfab::Point pp(0,0);
-    Node* n = net->findNodeById(id);
+    Node* n = net->getNodeById(id);
     if(!n) {
         gf_emitError("gf_getNodeCentroid: unable to find a node with the given id");
         return;
@@ -245,7 +245,7 @@ int gf_lockNode(gf_layoutInfo* l, const char* id) {
     Network* net = (Network*)l->net;
     AN(net, "No network");
 
-    Node* n = net->findNodeById(id);
+    Node* n = net->getNodeById(id);
     if(!n)
         return 1;
     n->lock();
@@ -256,7 +256,7 @@ int gf_unlockNode(gf_layoutInfo* l, const char* id) {
     Network* net = (Network*)l->net;
     AN(net, "No network");
 
-    Node* n = net->findNodeById(id);
+    Node* n = net->getNodeById(id);
     if(!n)
         return 1;
     n->unlock();
@@ -267,7 +267,7 @@ int gf_aliasNode(gf_layoutInfo* l, const char* id) {
     Network* net = (Network*)l->net;
     AN(net, "No network");
 
-    Node* n = net->findNodeById(id);
+    Node* n = net->getNodeById(id);
     if(!n)
         return 1;
     n->setAlias(true);
@@ -418,7 +418,6 @@ SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
     auto* doc = new SBMLDocument(&sbmlns);
     AN(doc, "No SBML document");
     AT(doc->isPkgEnabled("layout"), "Layout package not enabled");
-    std::cout << "doc->isPkgEnabled(\"layout\") = " << doc->isPkgEnabled("layout") << std::endl;
 
     // get the model
 //     Model* mod = doc->getModel();
@@ -494,7 +493,6 @@ SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
         // add compartments
         for(Network::ConstCompIt i=net->CompsBegin(); i!=net->CompsEnd(); ++i) {
             const Graphfab::Compartment* c = *i;
-            std::cout << "c->getMinX()1" << c->getMinX() << std::endl;
 
             // create glyph
             CompartmentGlyph* cg = new CompartmentGlyph();
@@ -512,7 +510,6 @@ SBMLDocument*   populateSBMLdoc(gf_SBMLModel* m, gf_layoutInfo* l) {
             BoundingBox bb;
             bb.setX(sround(c->getMinX()));
             bb.setY(sround(c->getMinY()));
-            std::cout << "c->getMinY()3" << c->getMinY() << std::endl;
             bb.setWidth(sround(c->getWidth()));
             bb.setHeight(sround(c->getHeight()));
             // apply bb to glyph
@@ -866,7 +863,6 @@ gf_layoutInfo* gf_loadSBMLIntoLayoutEngine(const char* buf, gf_SBMLModel* r) {
         canv->setWidth(dims->getWidth());
         canv->setHeight(dims->getHeight());
         #if SAGITTARIUS_DEBUG_LEVEL >= 2
-        std::cout << "Canvas width = " << canv->getWidth() << ", height = " << canv->getHeight() << "\n";
         #endif
     } else {
         canv = new Canvas();
@@ -1104,10 +1100,7 @@ gf_compartment gf_nw_newCompartment(gf_network* nw, const char* id, const char* 
     cd.c = NULL;
     AN(net, "No network");
 
-    std::cout << "gf_nw_newCompartment started\n";
     Graphfab::Compartment* c = new Graphfab::Compartment();
-
-    std::cout << "gf_nw_newCompartment setting id\n";
     c->setName(name);
     if(id) {
         if(!net->findCompById(id))
@@ -1139,13 +1132,11 @@ gf_node gf_nw_newNode(gf_network* nw, const char* id, const char* name, gf_compa
     nd.n = NULL;
     AN(net, "No network");
 
-//     std::cout << "gf_nw_newNode started\n";
     Node* n = new Node();
 
-//     std::cout << "gf_nw_newNode setting id\n";
     n->setName(name);
     if(id) {
-        if(!net->findNodeById(id))
+        if(!net->getNodeById(id))
             n->setId(id);
         else {
             #if SAGITTARIUS_DEBUG_LEVEL >= 1
@@ -1170,7 +1161,6 @@ gf_node gf_nw_newNode(gf_network* nw, const char* id, const char* name, gf_compa
 
     net->addNode(n);
 
-//     std::cout << "gf_nw_newNode: node = " << n << ", index " << n->get_i() << "\n";
 
     nd.n = n;
     return nd;
@@ -1183,10 +1173,8 @@ gf_node gf_nw_aliasOf(gf_network* nw, gf_node* srcnode) {
     nd.n = NULL;
     AN(net, "No network");
 
-//     std::cout << "gf_nw_newNode started\n";
     Node* n = new Node();
 
-//     std::cout << "gf_nw_newNode setting id\n";
     n->setName(src->getName());
     n->setId(src->getId());
     n->setGlyph(net->getUniqueGlyphId(*src));
@@ -1323,7 +1311,7 @@ gf_node gf_nw_getInstance(gf_network* nw, gf_node* n, uint64_t i) {
     gf_node result;
     if (!node->isAlias()) {
         gf_emitError("gf_node_getInstance: Not an alias node");
-        return result;
+        throw std::logic_error("gf_node_getInstance: Not an alias node");
     }
     result.n = net->getInstance(node, i);
     return result;
@@ -1610,10 +1598,7 @@ gf_reaction gf_nw_newReaction(gf_network* nw, const char* id, const char* name) 
     rxn.r = NULL;
     AN(net, "No network");
 
-    std::cout << "gf_nw_newReaction started\n";
     Graphfab::Reaction* r = new Graphfab::Reaction();
-
-    std::cout << "gf_nw_newReaction setting id\n";
     r->setName(name);
     if(id) {
         if(!net->findReactionById(id))
@@ -2167,7 +2152,6 @@ int gf_writeSBML(const char* filename, gf_SBMLModel* m) {
 const char* gf_getSBMLwithLayoutStr(gf_SBMLModel* m, gf_layoutInfo* l) {
 
     SBMLDocument* doc = populateSBMLdoc(m,l);
-    std::cout << "doc " << doc << std::endl;
     SBMLWriter writer;
     writer.setProgramName("Graphfab");
 
@@ -2297,5 +2281,18 @@ int gf_arrowheadGetStyle(gf_specRole role) {
     default:
       fprintf(stderr, "gf_arrowheadSetStyle unknown role type %s\n", gf_roleToStr(role));
       AN(0, "Unknown role type");
+      return 1;
   }
+
 }
+
+int gf_generateRandomUniformInt(int low, int high){
+    UniformRNG rng(low, high);
+    return rng.generate();
+};
+
+int gf_generateRandomUniformIntWithSeed(int low, int high, int seed){
+    UniformRNG rng(low, high, seed);
+    return rng.generate();
+};
+

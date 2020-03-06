@@ -93,7 +93,8 @@ configure_file(graphfab/sphinx/source/index.rst graphfab/sphinx/source/index.rst
 configure_file(graphfab/sphinx/Makefile graphfab/sphinx/Makefile COPYONLY)
 
 # ** Shared Library **
-add_library(sbnw SHARED ${SBNW_SOURCES})
+add_library(sbnw SHARED ${SBNW_SOURCES} graphfab/UniformRNG.cpp graphfab/UniformRNG.h)
+set_property(TARGET sbnw PROPERTY CXX_STANDARD ${CXX_STANDARD})
 
 #include directories
 target_include_directories(sbnw PRIVATE
@@ -120,6 +121,8 @@ add_dependencies(sbnw LIBSBML)
 # ** Static Library **
 if (BUILD_STATIC_LIB)
     add_library(sbnw_static STATIC ${SBNW_SOURCES})
+    set_property(TARGET sbnw_static PROPERTY CXX_STANDARD ${CXX_STANDARD})
+
     target_include_directories(sbnw_static PRIVATE
             ${CMAKE_CURRENT_SOURCE_DIR}
             ${SBNW_THIRD_PARTY_LIBS}/libsbml/include

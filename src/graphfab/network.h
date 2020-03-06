@@ -899,25 +899,6 @@ namespace Graphfab {
 //                std::cout << "network.h:903: _ext, " << _ext << std::endl;
                 _r = _ext.maxDim()*0.5; // gets the value of the largest dimension
                 _p = (_ext.getMin() + _ext.getMax())*0.5; // getMin and getMax simply return the _min or _max which are both points
-                std::cout << "network.h:905: _r " << _r << ", _p " << _p << std::endl;
-
-                /*
-                 * The bug
-                 * -------
-                 *                              min point           max point
-                 * network.h: line 903: _ext, [(663.75, 179.516), (1363.75, 879.516)]
-                 * network.h: line 905: _r 350, _p (1013.75, 529.516)
-                 * network.h: line 903: _ext, [(-1396.15, -980.414), (2103.85, 2519.59)]
-                 * network.h: line 905: _r 1750, _p (353.855, 769.586)
-                 * network.h: line 903: _ext, [(926462, 3.04449e+06), (926472, 3.05907e+06)]
-                 * network.h: line 905: _r 7291.5, _p (926467, 3.05178e+06)
-                 * network.h: line 903: _ext, [(-1.16176e+06, -184612), (-1.16175e+06, -184602)]
-                 * network.h: line 905: _r 5, _p (-1.16176e+06, -184607)
-                 * network.h: line 903: _ext, [(-nan(ind), -nan(ind)), (-nan(ind), -nan(ind))]
-                 * network.h: line 905: _r -nan(ind), _p (-nan(ind), -nan(ind))
-                 * network.h: line 903: _ext, [(-nan(ind), -nan(ind)), (-nan(ind), -nan(ind))]
-                 */
-
             }
 
             // Elements
@@ -1049,6 +1030,8 @@ namespace Graphfab {
             /// Destructor
             void hierarchRelease();
 
+            void alignToOrigin();
+
             // Nodes:
 
             /// Add an unlinked node to the network
@@ -1065,8 +1048,8 @@ namespace Graphfab {
             bool isNodeConnected(Node* n, Reaction* r) const;
 
             /// Find the node by specified ID. Returns NULL if no such node exists
-            Node* findNodeById(const std::string& id);
-            const Node* findNodeById(const std::string& id) const;
+            Node* getNodeById(const std::string& id);
+            const Node* getNodeById(const std::string& id) const;
 
             /// Generated unique ID for creating new nodes
             std::string getUniqueId() const;
@@ -1081,12 +1064,12 @@ namespace Graphfab {
 
             Node* getNodeAt(const size_t i) { return _nodes.at(i); }
 
-            Node* getUniqueNodeAt(const size_t n);
+            Node* getUniqueNodeAt(size_t n);
 
             size_t getNumInstances(const Node* u);
 
             /// Get a node in an alias group by instance index
-            Node* getInstance(const Node* u, const size_t n);
+            Node* getInstance(const Node* u, size_t n);
 
             bool containsNode(const Node* n) const;
 

@@ -440,6 +440,10 @@ typedef void (*gf_getLayoutOptDefaultsPtr)(fr_options *);
 
 typedef void (*gf_layout_setStiffnessPtr)(fr_options *, double);
 
+typedef int (*gf_generateRandomUniformIntPtr)(int, int);
+
+typedef int (*gf_generateRandomUniformIntWithSeedPtr)(int, int, int);
+
 class SBNWClientAPI {
 private:
 
@@ -1262,27 +1266,36 @@ public:
     }
 
 
-    void gf_doLayoutAlgorithm(fr_options opt, gf_layoutInfo* l) {
+    void gf_doLayoutAlgorithm(fr_options opt, gf_layoutInfo *l) {
         auto function = getFunction<gf_doLayoutAlgorithmPtr>("gf_doLayoutAlgorithm");
         return function(opt, l);
     }
 
 
-    void gf_doLayoutAlgorithm2(fr_options opt, gf_network* n, gf_canvas* c) {
+    void gf_doLayoutAlgorithm2(fr_options opt, gf_network *n, gf_canvas *c) {
         auto function = getFunction<gf_doLayoutAlgorithm2Ptr>("gf_doLayoutAlgorithm2");
         return function(opt, n, c);
     }
 
 
-    void gf_getLayoutOptDefaults(fr_options* opt) {
+    void gf_getLayoutOptDefaults(fr_options *opt) {
         auto function = getFunction<gf_getLayoutOptDefaultsPtr>("gf_getLayoutOptDefaults");
         return function(opt);
     }
 
-
-    void gf_layout_setStiffness(fr_options* opt, double k) {
+    void gf_layout_setStiffness(fr_options *opt, double k) {
         auto function = getFunction<gf_layout_setStiffnessPtr>("gf_layout_setStiffness");
         return function(opt, k);
+    }
+
+    int gf_generateRandomUniformInt(int low, int high) {
+        auto function = getFunction<gf_generateRandomUniformIntPtr>("gf_generateRandomUniformInt");
+        return function(low, high);
+    }
+
+    int gf_generateRandomUniformIntWithSeed(int low, int high, int seed) {
+        auto function = getFunction<gf_generateRandomUniformIntWithSeedPtr>("gf_generateRandomUniformIntWithSeed");
+        return function(low, high, seed);
     }
 
 };

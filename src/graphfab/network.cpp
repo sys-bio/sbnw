@@ -38,6 +38,7 @@
 #include "graphfab/math/allen.h"
 #include "graphfab/math/sign_mag.h"
 #include "graphfab/math/geom.h"
+#include "UniformRNG.h"
 
 #include <exception>
 #include <typeinfo>
@@ -1080,7 +1081,7 @@ namespace Graphfab {
 
     void Compartment::resizeEnclose(double padding) {
         double minx, miny, maxx, maxy;
-        EltIt i = EltsBegin();
+        auto i = EltsBegin();
         if (i != EltsEnd()) {
             NetworkElement *e = *i;
             minx = e->getMinX();
@@ -1102,10 +1103,11 @@ namespace Graphfab {
     }
 
     void Compartment::autoSize() {
+        UniformRNG rng(0, 10);
         uint64 count = _elt.size();
         double dim = 350 * sqrt((double) count);
         // avoid singularities in layout algo
-        Point shake((rand() % 1000) / 100., (rand() % 1000) / 100.);
+        Point shake(rng.generate() , rng.generate());
         _ext = Box(Point(0, 0) + shake, Point(dim, dim) + shake);
         //_ext = Box(Point(0, 0), Point(dim, dim));
         _ra = _ext.area();
@@ -1159,11 +1161,11 @@ namespace Graphfab {
 
         // This line causes the bug in teusink2000 model
 //        std::cout << "network.cpp:"<<__LINE__<<": addDelta in doInternalForces breaks teusink2000 model" << std::endl;
-//        addDelta(-Point(fx1 + fx2, fy1 + fy2));
+        addDelta(-Point(fx1 + fx2, fy1 + fy2));
     }
 
     void Compartment::doInternalForceAll(const double f, const double t) {
-        for (EltIt i = EltsBegin(); i != EltsEnd(); ++i) {
+        for (auto i = EltsBegin(); i != EltsEnd(); ++i) {
             NetworkElement *e = *i;
             doInternalForce(e, f, t);
         }
@@ -1297,7 +1299,7 @@ namespace Graphfab {
         return r->hasSpecies(n);
     }
 
-    Node *Network::findNodeById(const std::string &id) {
+    Node *Network::getNodeById(const std::string &id) {
         for (NodeVec::iterator i = _nodes.begin(); i != _nodes.end(); ++i) {
             Node *n = *i;
             if (n->getId() == id)
@@ -1307,7 +1309,7 @@ namespace Graphfab {
         return NULL;
     }
 
-    const Node *Network::findNodeById(const std::string &id) const {
+    const Node *Network::getNodeById(const std::string &id) const {
         for (NodeVec::const_iterator i = _nodes.begin(); i != _nodes.end(); ++i) {
             const Node *n = *i;
             if (n->getId() == id)
@@ -1328,7 +1330,7 @@ namespace Graphfab {
             ss << "Node_" << k;
             id = ss.str();
             std::cout << "Trying " << id << "\n";
-        } while (findNodeById(id));
+        } while (getNodeById(id));
 
         std::cout << "Unique ID: " << id << "\n";
 
@@ -1767,29 +1769,34 @@ namespace Graphfab {
     }
 
     void Network::randomizePositions(const Box &b) {
+        UniformRNG uniformRngX((int)getExtents().getMinX(), (int)getExtents().getMaxX());
+        UniformRNG uniformRngY((int)getExtents().getMinY(), (int)getExtents().getMaxY());
+        std::cout << getExtents() << std::endl;
         for (auto n : _nodes) {
             if (n->isLocked())
                 break;
-            n->setCentroid(rand_range(b.getMin().x, b.getMax().x),
-                           rand_range(b.getMin().y, b.getMax().y));
+            n->setCentroid(uniformRngX.generate(), uniformRngY.generate());
         }
         for (auto r : _rxn) {
             if (r->isLocked())
                 break;
-            r->setCentroid(Point(rand_range(b.getMin().x, b.getMax().x),
-                                 rand_range(b.getMin().y, b.getMax().y)));
+            r->setCentroid(Point(uniformRngX.generate(), uniformRngY.generate()));
         }
         for (auto i = CompsBegin(); i != CompsEnd(); ++i) {
             Graphfab::Compartment *c = *i;
             if (c->isLocked())
                 break;
+            std::cout << "network.cpp:1788 restArea "<< c->restArea() << std::endl;
             double d = sqrt(c->restArea());
-            Point p(rand_range(b.getMin().x, b.getMax().x),
-                    rand_range(b.getMin().y, b.getMax().y));
+            Point p(uniformRngX.generate(), uniformRngY.generate());
+            std::cout << "network.cpp:1791 p "<< p << std::endl;
             Point dim(d, d);
-            c->setExtents(Box(p - dim, p + dim));
-            std::cout << "network.cpp:"<<__LINE__<<": compartment extents: " <<
-                      c->getId() << " " << c->getExtents() << std::endl;
+            std::cout << "network.cpp:1793 dim "<< dim << std::endl;
+            Point low(0.0, 0.0);
+            if (dim.x < p.x | dim.y < p.y )
+                low = p - dim;
+
+            c->setExtents(Box(low, p + dim));
         }
         recalcCurveCPs();
     }
@@ -1842,6 +1849,22 @@ namespace Graphfab {
         }
     }
 
+    void Network::alignToOrigin() {
+        for (auto i = EltsBegin(); i != EltsEnd(); ++i) {
+            NetworkElement *e = *i;
+//            std::cout << "network.cpp:1846 before: "<<e->getExtents() << std::endl;
+            e->recalcExtents(); // does nothing!
+//            std::cout << "network.cpp:1846 after: "<<e->getExtents() << std::endl;
+//            if (e->getType() == NET_ELT_TYPE_SPEC) {
+//                std::cout << "network.cpp:1847: Species element" << std::endl;
+//            } else if (e->getType() == NET_ELT_TYPE_COMP) {
+//                std::cout << "network.cpp:1849: Compartment element" << std::endl;
+//            } else if (e->getType() == NET_ELT_TYPE_RXN) {
+//                std::cout << "network.cpp:1851: reaction element" << std::endl;
+//            }
+        }
+    }
+
     //--GLOBAL--
 
     Network *networkFromLayout(const Layout &lay, const Model &mod) {
@@ -1883,7 +1906,7 @@ namespace Graphfab {
         for (int i = 0; i < lay.getNumSpeciesGlyphs(); ++i) {
             const SpeciesGlyph *sg = lay.getSpeciesGlyph(i);
 
-            Node *n = net->findNodeById(sg->getSpeciesId());
+            Node *n = net->getNodeById(sg->getSpeciesId());
             AN(n, "No such node exists");
 
 //             std::cerr << "Species glyph: " << sg->getSpeciesId() << "(" << sg->getId() << ")\n";
@@ -2164,7 +2187,7 @@ namespace Graphfab {
             for (int i_spc = 0; i_spc < rxn->getNumReactants(); ++i_spc) {
                 //get the reference
                 const SpeciesReference *spc = rxn->getReactant(i_spc);
-                Node *src = net->findNodeById(spc->getSpecies());
+                Node *src = net->getNodeById(spc->getSpecies());
                 AN(src, "Invalid species reference");
                 r->addSpeciesRef(src, RXN_ROLE_SUBSTRATE);
             }
@@ -2173,7 +2196,7 @@ namespace Graphfab {
             for (int i_spc = 0; i_spc < rxn->getNumProducts(); ++i_spc) {
                 //get the reference
                 const SpeciesReference *spc = rxn->getProduct(i_spc);
-                Node *src = net->findNodeById(spc->getSpecies());
+                Node *src = net->getNodeById(spc->getSpecies());
                 AN(src, "Invalid species reference");
                 r->addSpeciesRef(src, RXN_ROLE_PRODUCT);
             }
@@ -2182,7 +2205,7 @@ namespace Graphfab {
             for (int i_spc = 0; i_spc < rxn->getNumModifiers(); ++i_spc) {
                 //get the reference
                 const ModifierSpeciesReference *spc = rxn->getModifier(i_spc);
-                Node *src = net->findNodeById(spc->getSpecies());
+                Node *src = net->getNodeById(spc->getSpecies());
                 AN(src, "Invalid species reference");
                 r->addSpeciesRef(src, RXN_ROLE_MODIFIER);
             }

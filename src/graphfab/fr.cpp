@@ -75,12 +75,9 @@ void gf_doLayoutAlgorithm(fr_options opt, gf_layoutInfo *l) {
     auto *can = (Canvas *) l->canv;
     AN(can, "No canvas");
 
-    std::cout << ":fr.cpp:78: marker before prerandomize: " << opt.prerandomize << std::endl;
     if (opt.prerandomize) {
-        std::cout << "fr.cpp:80: prerandomizing" << std::endl;
         double w = can->getWidth();
         double h = can->getHeight();
-        std::cout << "fr.cpp:83: w, h: " << w << " " << h << std::endl;
         net->randomizePositions(
                 Graphfab::Box(
                         Graphfab::Point(0., 0.),
@@ -147,10 +144,6 @@ namespace Graphfab {
             }
         }
 
-        if (dumpForces_)
-            std::cout << "Repulsion force between " << eltTypeToStr(u.getType()) << " and " << eltTypeToStr(v.getType())
-                      << ": " << f.mag() / d << "\n";
-
         u.addDelta(f);
 
         v.addDelta(-f);
@@ -191,6 +184,17 @@ namespace Graphfab {
     }
 
     void FruchtermanReingold(fr_options opt, Network &net, Canvas *can, gf_layoutInfo *l) {
+        std::cout <<  "opt.k: " << opt.k << std::endl;
+        std::cout <<  "opt.boundary: " << opt.boundary << std::endl;
+        std::cout <<  "opt.mag: " << opt.mag<< std::endl;
+        std::cout <<  "opt.grav: " << opt.grav<< std::endl;
+        std::cout <<  "opt.baryx: " << opt.baryx << std::endl;
+        std::cout <<  "opt.baryx: " << opt.baryx << std::endl;
+        std::cout <<  "opt.autobary: " << opt.autobary << std::endl;
+        std::cout <<  "opt.prerandomize: " << opt.prerandomize << std::endl;
+        std::cout <<  "opt.enable_comps: " << opt.enable_comps << std::endl;
+        std::cout <<  "opt.padding: " << opt.padding << std::endl;
+
         Box bound;
         if (opt.boundary) {
             AN(can, "Boundary specified but no canvas");
@@ -231,11 +235,7 @@ namespace Graphfab {
 
             net.resetActivity();
 
-            std::cout << "fr.cpp: line 232: net.getExtents(), before updateExtents " << net.getExtents() << std::endl;
-
             net.updateExtents();
-
-            std::cout << "fr.cpp: line 236: net.getExtents(), after updateExtents " << net.getExtents() << std::endl;
 
             // repulsive forces
             for (uint64 i = 0; i < net.getNElts(); ++i) {
@@ -300,9 +300,15 @@ namespace Graphfab {
             net.capDeltas(T);
 
             net.updatePositions(T);
-            Box newBox(0.0, 1024.0, 0, 1024.0);
-            net.fitToWindow(newBox);
+//            Box newBox(
+//                    net.getExtents().getMinX(),
+//                    net.getExtents().getMinY(),
+//                    net.getExtents().getMaxX(),
+//                    net.getExtents().getMaxY()
+//                    );
+//            net.fitToWindow(newBox);
 
+            net.alignToOrigin(); // not yet implemented
 
 #if SBNW_USE_MAGICK && 0
             if(!(z % 10)) {

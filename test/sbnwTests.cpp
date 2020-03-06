@@ -27,7 +27,7 @@ TEST(SBNWSharedTests, TestLoadSbml) {
 
 
 TEST(SBNWSharedTests, Test) {
-    const char* outfile = R"(D:\sbnw\test\teusink2000Layout.xml)";
+    const char* outfile = R"(D:\sbnw\test\teusink2000LayoutFromCpp.xml)";
     SBNWClientAPI sbnw;
     gf_SBMLModel *sbml = sbnw.gf_loadSBMLfile(R"(D:\sbnw\test\teusink2000.xml)");
 
@@ -48,6 +48,8 @@ TEST(SBNWSharedTests, Test) {
     opt.baryx = opt.baryy = 500.;
     opt.autobary = 1;
     opt.prerandomize = true;
+    opt.enable_comps = false;
+    opt.padding = 20;
     sbnw.gf_doLayoutAlgorithm(opt, l);
     //  save layout information to new SBML file
     sbnw.gf_writeSBMLwithLayout(outfile, sbml, l);
@@ -77,7 +79,6 @@ TEST(SBNWSharedTests, Test2) {
     gf_network* network = sbnw.gf_getNetworkp(l);
 
     int s = sbnw.gf_nw_isLayoutSpecified(network);
-    std::cout << "is layout specified? " << s << endl;
 
     gf_compartment*  compp = sbnw.gf_nw_getCompartmentp(network, 0);
 
@@ -97,13 +98,14 @@ TEST(SBNWSharedTests, Test2) {
 
 
 
-    //    sbnw.gf_tf_fitToWindow(l, 0.0, 1024.0, 0.0, 1024.0);
-    //  save layout information to new SBML file
-    sbnw.gf_writeSBMLwithLayout(outfile2, sbml, l);
-    //  run destructors on the model
-    sbnw.gf_freeSBMLModel(sbml);
-    //  run destructors on the layout
-    sbnw.gf_freeLayoutInfo(l);
+//
+//    //    sbnw.gf_tf_fitToWindow(l, 0.0, 1024.0, 0.0, 1024.0);
+//    //  save layout information to new SBML file
+//    sbnw.gf_writeSBMLwithLayout(outfile2, sbml, l);
+//    //  run destructors on the model
+//    sbnw.gf_freeSBMLModel(sbml);
+//    //  run destructors on the layout
+//    sbnw.gf_freeLayoutInfo(l);
 
 }
 
