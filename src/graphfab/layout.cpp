@@ -235,15 +235,9 @@ void gf_getNodeCentroid(gf_layoutInfo *l, const char *id, CPoint *p) {
     Network *net = (Network *) l->net;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Graphfab::Point pp(0,0);
     Node* n = net->getNodeById(id);
     if(!n) {
-=======
-    Graphfab::Point pp(0, 0);
-    Node *n = net->findNodeById(id);
-    if (!n) {
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
         gf_emitError("gf_getNodeCentroid: unable to find a node with the given id");
         return;
     }
@@ -257,13 +251,8 @@ int gf_lockNode(gf_layoutInfo *l, const char *id) {
     Network *net = (Network *) l->net;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Node* n = net->getNodeById(id);
     if(!n)
-=======
-    Node *n = net->findNodeById(id);
-    if (!n)
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
         return 1;
     n->lock();
     return 0;
@@ -273,13 +262,8 @@ int gf_unlockNode(gf_layoutInfo *l, const char *id) {
     Network *net = (Network *) l->net;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Node* n = net->getNodeById(id);
     if(!n)
-=======
-    Node *n = net->findNodeById(id);
-    if (!n)
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
         return 1;
     n->unlock();
     return 0;
@@ -289,13 +273,8 @@ int gf_aliasNode(gf_layoutInfo *l, const char *id) {
     Network *net = (Network *) l->net;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Node* n = net->getNodeById(id);
     if(!n)
-=======
-    Node *n = net->findNodeById(id);
-    if (!n)
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
         return 1;
     n->setAlias(true);
     for (Network::RxnIt i = net->RxnsBegin(); i != net->RxnsEnd(); ++i) {
@@ -517,13 +496,9 @@ SBMLDocument *populateSBMLdoc(gf_SBMLModel *m, gf_layoutInfo *l) {
         net->rebuildCurves();
 
         // add compartments
-<<<<<<< HEAD
         for(Network::ConstCompIt i=net->CompsBegin(); i!=net->CompsEnd(); ++i) {
             const Graphfab::Compartment* c = *i;
-=======
-        for (Network::ConstCompIt i = net->CompsBegin(); i != net->CompsEnd(); ++i) {
-            const Graphfab::Compartment *c = *i;
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
+
 
             // create glyph
             CompartmentGlyph *cg = new CompartmentGlyph();
@@ -900,13 +875,7 @@ gf_layoutInfo *gf_loadSBMLIntoLayoutEngine(const char *buf, gf_SBMLModel *r) {
         const Dimensions *dims = layout->getDimensions();
         canv->setWidth(dims->getWidth());
         canv->setHeight(dims->getHeight());
-<<<<<<< HEAD
-        #if SAGITTARIUS_DEBUG_LEVEL >= 2
-        #endif
-=======
-#if SAGITTARIUS_DEBUG_LEVEL >= 2
-#endif
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
+
     } else {
         canv = new Canvas();
         //get dimensions from SBML layout
@@ -1143,12 +1112,8 @@ gf_compartment gf_nw_newCompartment(gf_network *nw, const char *id, const char *
     cd.c = NULL;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Graphfab::Compartment* c = new Graphfab::Compartment();
-=======
-    Graphfab::Compartment *c = new Graphfab::Compartment();
 
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
     c->setName(name);
     if (id) {
         if (!net->findCompById(id))
@@ -1180,19 +1145,11 @@ gf_node gf_nw_newNode(gf_network *nw, const char *id, const char *name, gf_compa
     nd.n = NULL;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Node* n = new Node();
 
     n->setName(name);
     if(id) {
         if(!net->getNodeById(id))
-=======
-    Node *n = new Node();
-
-    n->setName(name);
-    if (id) {
-        if (!net->findNodeById(id))
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
             n->setId(id);
         else {
 #if SAGITTARIUS_DEBUG_LEVEL >= 1
@@ -1229,11 +1186,8 @@ gf_node gf_nw_aliasOf(gf_network *nw, gf_node *srcnode) {
     nd.n = NULL;
     AN(net, "No network");
 
-<<<<<<< HEAD
-    Node* n = new Node();
-=======
+
     Node *n = new Node();
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
 
     n->setName(src->getName());
     n->setId(src->getId());
@@ -1658,12 +1612,8 @@ gf_reaction gf_nw_newReaction(gf_network *nw, const char *id, const char *name) 
     rxn.r = NULL;
     AN(net, "No network");
 
-<<<<<<< HEAD
     Graphfab::Reaction* r = new Graphfab::Reaction();
-=======
-    Graphfab::Reaction *r = new Graphfab::Reaction();
 
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
     r->setName(name);
     if (id) {
         if (!net->findReactionById(id))
@@ -2230,11 +2180,8 @@ int gf_writeSBML(const char *filename, gf_SBMLModel *m) {
 
 const char *gf_getSBMLwithLayoutStr(gf_SBMLModel *m, gf_layoutInfo *l) {
 
-<<<<<<< HEAD
-    SBMLDocument* doc = populateSBMLdoc(m,l);
-=======
+
     SBMLDocument *doc = populateSBMLdoc(m, l);
->>>>>>> 625f2a8b7bb8fabf1054d7d665417568d48d8a28
     SBMLWriter writer;
     writer.setProgramName("Graphfab");
 
